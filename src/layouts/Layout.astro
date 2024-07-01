@@ -19,18 +19,38 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <Header />
     <style is:global>
-      root {
-        --color-black: rgb(12, 12, 12);
+      :root {
+        --color-bg: #f0f7da;
+        --color-green-100: #e9f29c;
+        --color-green-200: #a7d129;
+        --color-green-300: #7fb069;
+        --color-green-400: #4d6d46;
+        --color-green-500: #364d2e;
       }
       body,
       html {
-        padding: 0;
+        height: 100%;
         margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .main--wrapper {
+        width: 100%;
+        background-color: var(--color-bg);
+        display: grid;
+        height: 100%;
       }
     </style>
-
-    <Footer />
+    <div class="main--wrapper">
+      <Header />
+      <slot slot="MainPage" />
+      <Footer />
+    </div>
   </body>
 </html>

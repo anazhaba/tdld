@@ -1,15 +1,10 @@
 ---
+import MainPage from "../components/MainPage.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Toadland">
   <main>
-    <slot />
+    <MainPage slot="MainPage" />
   </main>
 </Layout>
-
-<style>
-  body {
-    background-color: red;
-  }
-</style>
