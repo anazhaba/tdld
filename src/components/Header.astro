@@ -2,6 +2,7 @@
   <button class="menu-open-button">Open Menu</button>
 </header>
 
+<div class="unique-menu-overlay" id="uniqueMenuOverlay"></div>
 <div class="unique-menu" id="uniqueMenu">
   <div class="unique-menu-top" id="uniqueMenuTop">
     <p id="uniqueSplashText"></p>
@@ -18,10 +19,10 @@
       <a href="#">Link 8</a>
       <a href="#">Link 9</a>
     </div>
+    <button class="unique-menu-close-button" id="uniqueMenuCloseButton"
+      >Close</button
+    >
   </div>
-  <button class="unique-menu-close-button" id="uniqueMenuCloseButton"
-    >Close</button
-  >
 </div>
 
 <style>
@@ -46,19 +47,35 @@
     font-size: 1rem;
   }
 
-  .unique-menu {
+  .unique-menu-overlay {
     position: fixed;
-    top: -100%;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #ffffff;
-    z-index: 1000;
-    transition: top 0.5s ease-in-out;
-    overflow-y: auto;
+    background-color: rgb(255, 255, 255);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+    visibility: hidden;
+  }
+
+  .unique-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    z-index: 1000;
+    overflow: hidden;
+    visibility: hidden;
+    background-color: rgba(255, 255, 255, 0);
+    transition:
+      visibility 0s linear 0.5s,
+      transform 0.5s ease-in-out;
   }
 
   .unique-menu-top {
@@ -70,21 +87,31 @@
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
-    border-bottom-left-radius: 30%;
-    border-bottom-right-radius: 30%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    transition: transform 0.5s ease-in-out;
+    transform: translateY(-100%);
   }
 
   .unique-menu-content {
     padding: 2rem;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     flex-grow: 1;
+    transition: transform 0.5s ease-in-out;
+    transform: translateY(100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    margin-top: 2rem;
   }
 
   .unique-menu-links {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    margin-top: 2rem;
+    width: 100%;
+    max-width: 600px;
   }
 
   .unique-menu-links a {
@@ -97,20 +124,58 @@
   }
 
   .unique-menu-close-button {
-    margin: 1rem;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
     padding: 1rem 2rem;
     background-color: #4caf50;
     color: white;
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    align-self: flex-end;
   }
 
+  /* Когда меню открыто */
   .unique-menu.open {
-    top: 0;
+    visibility: visible;
+    transition: visibility 0s linear 0s;
   }
 
+  .unique-menu.open .unique-menu-top {
+    transform: translateY(0);
+  }
+
+  .unique-menu.open .unique-menu-content {
+    transform: translateY(0);
+  }
+
+  .unique-menu.closing {
+    visibility: visible;
+    transition:
+      visibility 0s linear 0.5s,
+      transform 0.5s ease-in-out;
+  }
+
+  .unique-menu.closing .unique-menu-top {
+    transform: translateY(-100%);
+  }
+
+  .unique-menu.closing .unique-menu-content {
+    transform: translateY(100%);
+  }
+
+  .unique-menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .unique-menu-overlay.closing {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  /* Запрещаем прокрутку фона */
   body.no-scroll {
     overflow: hidden;
   }
@@ -131,33 +196,49 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const menu = document.getElementById("uniqueMenu");
+    const menuOverlay = document.getElementById("uniqueMenuOverlay");
     const openButton = document.querySelector(".menu-open-button");
     const closeButton = document.getElementById("uniqueMenuCloseButton");
     const menuTop = document.getElementById("uniqueMenuTop");
     const splashText = document.getElementById("uniqueSplashText");
     const splashPhrases = [
-      "Сплеш 1",
-      "Сплеш 2",
-      "Сплеш 3",
-      "Сплеш 4",
-      "Сема скинь сиськи",
+      "Welcome to our site!",
+      "Explore the menu!",
+      "Enjoy your stay!",
+      "Check out our features!",
     ];
 
+    // Helper function to get a random phrase
     function getRandomPhrase() {
       return splashPhrases[Math.floor(Math.random() * splashPhrases.length)];
     }
 
+    // Open menu
     function openMenu() {
       splashText.textContent = getRandomPhrase();
+      menu.classList.remove("closing");
+      menuOverlay.classList.remove("closing");
       menu.classList.add("open");
+      menuOverlay.classList.add("open");
       document.body.classList.add("no-scroll");
     }
 
+    // Close menu
     function closeMenu() {
-      menu.classList.remove("open");
-      document.body.classList.remove("no-scroll");
+      menu.classList.add("closing");
+      menuOverlay.classList.add("closing");
+      setTimeout(() => {
+        menu.classList.remove("open");
+        menuOverlay.classList.remove("open");
+        setTimeout(() => {
+          menu.classList.remove("closing");
+          menuOverlay.classList.remove("closing");
+          document.body.classList.remove("no-scroll");
+        }, 100); // Дождемся завершения анимации закрытия блоков
+      }, 100); // Дождемся завершения анимации затухания фона
     }
 
+    // Event listeners
     openButton.addEventListener("click", openMenu);
     closeButton.addEventListener("click", closeMenu);
     menuTop.addEventListener("click", closeMenu);

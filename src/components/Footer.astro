@@ -1,11 +1,47 @@
-<footer class="main--footer"></footer>
+<footer class="main--footer">
+  <div class="footer-menu-block">
+    <ul class="footer-menu">
+      <li class="footer-menu-element">
+        <a href="#" class="footer-menu-link"></a>
+      </li>
+      <li class="footer-menu-element">
+        <a href="#" class="footer-menu-link">Map</a>
+      </li>
+      <li class="footer-menu-element">
+        <a href="#" class="footer-menu-link">Files</a>
+      </li>
+      <li class="footer-menu-element">
+        <a href="#" class="footer-menu-link">Vk</a>
+      </li>
+      <li class="footer-menu-element">
+        <a href="#" class="footer-menu-link">Tg</a>
+      </li>
+    </ul>
+  </div>
+</footer>
 
 <style>
   .main--footer {
+    padding: 1rem;
     grid-area: footer;
     background-color: #4caf50;
     color: white;
     text-align: center;
-    padding: 1rem;
+  }
+  .footer-menu-block {
+    display: flex;
+
+    justify-content: center;
+  }
+  .footer-menu {
+    list-style: none;
+    color: white;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .footer-menu-element {
+    padding: 5px;
   }
 </style>
