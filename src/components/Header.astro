@@ -1,4 +1,29 @@
-<header class="main--header"></header>
+<header class="main--header">
+  <button class="menu-open-button">Open Menu</button>
+</header>
+
+<div class="unique-menu" id="uniqueMenu">
+  <div class="unique-menu-top" id="uniqueMenuTop">
+    <p id="uniqueSplashText"></p>
+  </div>
+  <div class="unique-menu-content">
+    <div class="unique-menu-links">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+      <a href="#">Link 4</a>
+      <a href="#">Link 5</a>
+      <a href="#">Link 6</a>
+      <a href="#">Link 7</a>
+      <a href="#">Link 8</a>
+      <a href="#">Link 9</a>
+    </div>
+  </div>
+  <button class="unique-menu-close-button" id="uniqueMenuCloseButton"
+    >Close</button
+  >
+</div>
+
 <style>
   .main--header {
     grid-area: header;
@@ -7,4 +32,134 @@
     text-align: center;
     padding: 1rem;
   }
+
+  .content-container {
+    padding: 2rem;
+  }
+
+  .menu-open-button {
+    padding: 1rem 2rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  .unique-menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 1000;
+    transition: top 0.5s ease-in-out;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .unique-menu-top {
+    height: 50%;
+    background-color: #4caf50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-bottom-left-radius: 30%;
+    border-bottom-right-radius: 30%;
+  }
+
+  .unique-menu-content {
+    padding: 2rem;
+    background-color: white;
+    flex-grow: 1;
+  }
+
+  .unique-menu-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .unique-menu-links a {
+    padding: 1rem;
+    background-color: #4caf50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .unique-menu-close-button {
+    margin: 1rem;
+    padding: 1rem 2rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    align-self: flex-end;
+  }
+
+  .unique-menu.open {
+    top: 0;
+  }
+
+  body.no-scroll {
+    overflow: hidden;
+  }
+
+  /* Адаптивные стили */
+  @media (max-width: 768px) {
+    .unique-menu-links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .unique-menu-links {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menu = document.getElementById("uniqueMenu");
+    const openButton = document.querySelector(".menu-open-button");
+    const closeButton = document.getElementById("uniqueMenuCloseButton");
+    const menuTop = document.getElementById("uniqueMenuTop");
+    const splashText = document.getElementById("uniqueSplashText");
+    const splashPhrases = [
+      "Сплеш 1",
+      "Сплеш 2",
+      "Сплеш 3",
+      "Сплеш 4",
+      "Сема скинь сиськи",
+    ];
+
+    function getRandomPhrase() {
+      return splashPhrases[Math.floor(Math.random() * splashPhrases.length)];
+    }
+
+    function openMenu() {
+      splashText.textContent = getRandomPhrase();
+      menu.classList.add("open");
+      document.body.classList.add("no-scroll");
+    }
+
+    function closeMenu() {
+      menu.classList.remove("open");
+      document.body.classList.remove("no-scroll");
+    }
+
+    openButton.addEventListener("click", openMenu);
+    closeButton.addEventListener("click", closeMenu);
+    menuTop.addEventListener("click", closeMenu);
+  });
+</script>
