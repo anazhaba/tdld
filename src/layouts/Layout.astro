@@ -41,15 +41,18 @@ const { title } = Astro.props;
         height: 100vh;
       }
       .main--wrapper {
-        width: 100%;
-        background-color: var(--color-bg);
         display: grid;
-        height: 100%;
+        grid-template-areas:
+          "header"
+          "content"
+          "footer";
+        grid-template-rows: auto 1fr auto;
+        height: 100vh;
       }
     </style>
     <div class="main--wrapper">
       <Header />
-      <slot slot="MainPage" />
+      <slot />
       <Footer />
     </div>
   </body>
