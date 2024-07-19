@@ -1,9 +1,10 @@
 ---
 import MainPage from "../components/MainPage.astro";
 import Layout from "../layouts/Layout.astro";
+const title = "Главная";
 ---
 
-<Layout title="Toadland">
+<Layout title={title}>
   <main>
     <MainPage slot="MainPage" />
   </main>

@@ -4,19 +4,22 @@ import Footer from "../components/Footer.astro";
 interface Props {
   title: string;
 }
-
 const { title } = Astro.props;
+const pageTitle = title ? `Toadland  ${title}` : "Toadland";
 ---
 
 <!doctype html>
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta
+      name="description"
+      content="тыттат бытаб тпкыйт! ЛАпкт эетыте, ытпое."
+    />
+    <title>{pageTitle}</title>
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
   </head>
   <body>
     <style is:global>
@@ -38,76 +41,24 @@ const { title } = Astro.props;
         --color-green-400: #4d6d46;
         --color-green-500: #364d2e;
       }
-      body,
-      html {
+      body {
         margin: 0;
         padding: 0;
       }
       .main--wrapper {
         display: grid;
         grid-template-areas:
-          "header headerButton"
-          "content content"
-          "footer footer";
+          "header"
+          "content"
+          "footer";
         grid-template-rows: auto 1fr auto;
         min-height: 100vh;
       }
-      .menu-open-button-icon {
-        fill: var(--color-green-400);
-        transition: all 0.5s ease;
-      }
-      .menu-open-button {
-        color: var(--color-green-300);
-        cursor: pointer;
-        top: 0;
-        position: sticky;
-        grid-area: headerButton;
-        margin-right: 15px;
-      }
     </style>
     <div class="main--wrapper">
-      <a class="menu-open-button">
-        <svg
-          class="menu-open-button-icon"
-          xmlns="http://www.w3.org/2000/svg"
-          height="48px"
-          viewBox="0 -960 960 960"
-          width="48px"
-          ><path
-            d="M150-240q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm0-210q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm0-210q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Z"
-          ></path></svg
-        >
-      </a>
       <Header />
-
       <slot />
       <Footer />
     </div>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const button = document.querySelector(".menu-open-button");
-        const icon = button.querySelector(".menu-open-button-icon");
-
-        const defaultIcon = `
-   <path
-            d="M150-240q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm0-210q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm0-210q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Z"
-          ></path>
-  `;
-
-        const hoverIcon = `
-    <path
-            d="M150-240q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h460q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm627-74L630-460q-9-9-9-21t9-21l146-146q9-9 21.5-9t21.5 9q9 9 9 21.5t-9 21.5L695-481l125 125q9 9 9 21t-9 21q-9 9-21.5 9t-21.5-9ZM150-452q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h340q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm0-208q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h460q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Z"
-          ></path>
-  `;
-
-        button.addEventListener("mouseenter", function () {
-          icon.innerHTML = hoverIcon;
-        });
-
-        button.addEventListener("mouseleave", function () {
-          icon.innerHTML = defaultIcon;
-        });
-      });
-    </script>
   </body>
 </html>
