@@ -20,6 +20,16 @@ const { title } = Astro.props;
   </head>
   <body>
     <style is:global>
+      @font-face {
+        font-family: "Nunito";
+        src: url("/fonts/Nunito-Regular.woff") format("woff");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+      * {
+        font-family: nunito;
+      }
       :root {
         --color-bg: #f0f7da;
         --color-green-100: #e9f29c;
@@ -43,14 +53,66 @@ const { title } = Astro.props;
       .main--wrapper {
         display: grid;
         grid-template-areas:
-          "header"
-          "content"
-          "footer";
+          "header headerButton"
+          "content content"
+          "footer footer";
         grid-template-rows: auto 1fr auto;
         height: 100vh;
       }
+      .menu-open-button-icon {
+        fill: var(--color-green-400);
+      }
+      .menu-open-button {
+        color: var(--color-green-300);
+        cursor: pointer;
+        top: 0;
+        position: sticky;
+        grid-area: headerButton;
+      }
+      .menu-open-button-icon,
+      .menu-open-button-icon-hover {
+        fill: var(--color-green-400);
+        transition: opacity 0.3s ease;
+        position: sticky;
+        top: 0;
+      }
+
+      .menu-open-button-icon-hover {
+        opacity: 0;
+      }
+
+      .menu-open-button:hover .menu-open-button-icon {
+        opacity: 0;
+      }
+
+      .menu-open-button:hover .menu-open-button-icon-hover {
+        opacity: 1;
+      }
     </style>
     <div class="main--wrapper">
+      <a class="menu-open-button">
+        <svg
+          class="menu-open-button-icon"
+          xmlns="http://www.w3.org/2000/svg"
+          height="48px"
+          viewBox="0 -960 960 960"
+          width="48px"
+          ><path
+            d="M150-240q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm0-210q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm0-210q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h660q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Z"
+          ></path></svg
+        >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="48px"
+          viewBox="0 -960 960 960"
+          width="48px"
+          class="menu-open-button-icon-hover"
+          ><path
+            d="M150-240q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h460q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm627-74L630-460q-9-9-9-21t9-21l146-146q9-9 21.5-9t21.5 9q9 9 9 21.5t-9 21.5L695-481l125 125q9 9 9 21t-9 21q-9 9-21.5 9t-21.5-9ZM150-452q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h340q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Zm0-208q-12.75 0-21.37-8.68-8.63-8.67-8.63-21.5 0-12.82 8.63-21.32 8.62-8.5 21.37-8.5h460q12.75 0 21.38 8.68 8.62 8.67 8.62 21.5 0 12.82-8.62 21.32-8.63 8.5-21.38 8.5H150Z"
+          ></path></svg
+        ></a
+      >
+
       <Header />
       <slot />
       <Footer />

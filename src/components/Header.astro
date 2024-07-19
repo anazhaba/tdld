@@ -1,6 +1,4 @@
-<header class="main--header">
-  <button class="menu-open-button">Open Menu</button>
-</header>
+<header class="main--header"></header>
 
 <div class="unique-menu-overlay" id="uniqueMenuOverlay"></div>
 <div class="unique-menu" id="uniqueMenu">
@@ -20,33 +18,20 @@
       <a href="#">Link 9</a>
     </div>
     <button class="unique-menu-close-button" id="uniqueMenuCloseButton"
-      >Close</button
+      >X</button
     >
   </div>
 </div>
-
 <style>
   .main--header {
     grid-area: header;
-    background-color: #4caf50;
-    color: white;
+    background-color: var(--color-green-100);
     text-align: center;
     padding: 1rem;
   }
-
   .content-container {
     padding: 2rem;
   }
-
-  .menu-open-button {
-    padding: 1rem 2rem;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-
   .unique-menu-overlay {
     position: fixed;
     top: 0;
@@ -87,23 +72,25 @@
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
-    border-bottom-left-radius: 10%;
-    border-bottom-right-radius: 10%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
     transition: transform 0.5s ease-in-out;
     transform: translateY(-100%);
+    @media (max-width: 768px) {
+      height: 40%;
+    }
   }
 
   .unique-menu-content {
     padding: 2rem;
     background-color: rgb(255, 255, 255);
     flex-grow: 1;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     transform: translateY(100%);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow-y: auto;
-    margin-top: 2rem;
   }
 
   .unique-menu-links {
@@ -112,8 +99,14 @@
     gap: 1rem;
     width: 100%;
     max-width: 600px;
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: 480px) {
+      margin-top: 7rem;
+      grid-template-columns: 1fr;
+    }
   }
-
   .unique-menu-links a {
     padding: 1rem;
     background-color: #4caf50;
@@ -125,11 +118,9 @@
 
   .unique-menu-close-button {
     position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    padding: 1rem 2rem;
-    background-color: #4caf50;
-    color: white;
+    right: 0;
+    bottom: 0;
+    color: red;
     border: none;
     cursor: pointer;
     font-size: 1rem;
@@ -181,15 +172,9 @@
   }
 
   /* Адаптивные стили */
-  @media (max-width: 768px) {
-    .unique-menu-links {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
 
   @media (max-width: 480px) {
     .unique-menu-links {
-      grid-template-columns: 1fr;
     }
   }
 </style>
@@ -201,12 +186,7 @@
     const closeButton = document.getElementById("uniqueMenuCloseButton");
     const menuTop = document.getElementById("uniqueMenuTop");
     const splashText = document.getElementById("uniqueSplashText");
-    const splashPhrases = [
-      "Welcome to our site!",
-      "Explore the menu!",
-      "Enjoy your stay!",
-      "Check out our features!",
-    ];
+    const splashPhrases = ["Привет1", "Привет2", "Привет3", "Привет4"];
 
     // Helper function to get a random phrase
     function getRandomPhrase() {
