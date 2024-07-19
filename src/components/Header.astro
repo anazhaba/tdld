@@ -27,19 +27,15 @@ const heading = "Главная";
   </div>
   <div class="unique-menu-content">
     <div class="unique-menu-links">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-      <a href="#">Link 4</a>
-      <a href="#">Link 5</a>
-      <a href="#">Link 6</a>
-      <a href="#">Link 7</a>
-      <a href="#">Link 8</a>
-      <a href="#">Link 9</a>
+      <a href="#">Покупка</a>
+      <a href="#">Вики</a>
+      <a href="#">Правила</a>
+      <a href="#">Моды</a>
+      <a href="#">Разное</a>
+      <a href="#">О нас</a>
+      <a href="#">maybe soon</a>
     </div>
-    <button class="unique-menu-close-button" id="uniqueMenuCloseButton"
-      >X</button
-    >
+    <a class="unique-menu-close-button" id="uniqueMenuCloseButton">X</a>
   </div>
 </div>
 <style>
@@ -134,7 +130,7 @@ const heading = "Главная";
 
   .unique-menu-links {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     width: 100%;
     max-width: 600px;
@@ -152,7 +148,7 @@ const heading = "Главная";
     color: white;
     text-align: center;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 15px;
   }
 
   .unique-menu-close-button {
