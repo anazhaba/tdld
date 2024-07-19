@@ -1,52 +1,80 @@
 <h1 class="main-page-heading">ToadLand это:</h1>
 <div class="MainPage">
   <div class="info-block">
-    <h2 class="info-block-heading">Ответ 1</h2>
+    <h2 class="info-block-heading">Расширенный геймплей с модами</h2>
     <p class="info-block-text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus
-      magnam explicabo perspiciatis! Pariatur nesciunt at, atque asperiores
-      officiis doloremque itaque tempora dolores. Ducimus debitis optio impedit
-      porro maxime, eius nostrum.
+      Сервер предлагает насыщенный мир Minecraft с модами, такими как Create для
+      продвинутых механизмов и автоматизации, сезонными изменениями для
+      динамической среды и измененной генерацией мира для уникальных ландшафтов.
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Ответ2</h2>
+    <h2 class="info-block-heading">Разнообразная фауна</h2>
     <p class="info-block-text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus
-      magnam explicabo perspiciatis! Pariatur nesciunt at, atque asperiores
-      officiis doloremque itaque tempora dolores. Ducimus debitis optio impedit
-      porro maxime, eius nostrum.
+      Игроки могут взаимодействовать с разнообразными лягушками, добавляющими
+      новую дикую природу в игру и улучшая экологический опыт.
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Ответ 3</h2>
+    <h2 class="info-block-heading">Сезонная динамика</h2>
     <p class="info-block-text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus
-      magnam explicabo perspiciatis! Pariatur nesciunt at, atque asperiores
-      officiis doloremque itaque tempora dolores. Ducimus debitis optio impedit
-      porro maxime, eius nostrum.
+      Сезоны меняются, влияя на окружающую среду и геймплей, обеспечивая более
+      захватывающий и реалистичный опыт в Minecraft.
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Ответ4</h2>
+    <h2 class="info-block-heading">Продвинутые механизмы Create</h2>
     <p class="info-block-text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus
-      magnam explicabo perspiciatis! Pariatur nesciunt at, atque asperiores
-      officiis doloremque itaque tempora dolores. Ducimus debitis optio impedit
-      porro maxime, eius nostrum.
+      Возможность строить сложные машины и системы автоматизации с помощью мода
+      Create, что позволяет эффективно управлять ресурсами и проявлять
+      креативность.
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Ответ 5</h2>
+    <h2 class="info-block-heading">Система экономики</h2>
     <p class="info-block-text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus
-      magnam explicabo perspiciatis! Pariatur nesciunt at, atque asperiores
-      officiis doloremque itaque tempora dolores. Ducimus debitis optio impedit
-      porro maxime, eius nostrum.
+      Экономика, управляемая игроками, где можно торговать товарами и услугами,
+      создавая процветающее сообщество с системой внутриигровой валюты.
+    </p>
+  </div>
+  <div class="info-block">
+    <h2 class="info-block-heading">Интеграция голосового чата</h2>
+    <p class="info-block-text">
+      Легко общайтесь с друзьями и другими игроками с помощью встроенного
+      голосового чата, улучшая командную работу и социальное взаимодействие.
+    </p>
+  </div>
+  <div class="info-block">
+    <h2 class="info-block-heading">Варка алкоголя</h2>
+    <p class="info-block-text">
+      Создавайте и наслаждайтесь различными алкогольными напитками, добавляя
+      забавный и уникальный элемент в ваши приключения в Minecraft.
+    </p>
+  </div>
+  <div class="info-block">
+    <h2 class="info-block-heading">Выпечка и кулинария</h2>
+    <p class="info-block-text">
+      Расширенные возможности в выпечке и кулинарии, готовьте новые блюда и
+      делайте игровой опыт еще более разнообразным.
+    </p>
+  </div>
+  <div class="info-block">
+    <h2 class="info-block-heading">Улучшенное фермерство</h2>
+    <p class="info-block-text">
+      Усовершенствованные системы фермерства позволяют выращивать больше типов
+      растений и животных, делая процесс фермерства интереснее и продуктивнее.
+    </p>
+  </div>
+
+  <div class="info-block">
+    <h2 class="info-block-heading">Измененная генерация мира</h2>
+    <p class="info-block-text">
+      Исследуйте мир с уникальными ландшафтами и биомами благодаря измененной
+      генерации мира, что делает каждое путешествие по-своему неповторимым и
+      увлекательным.
     </p>
   </div>
 </div>
-
 <style>
   .main-page-heading {
     text-align: center;
@@ -65,31 +93,54 @@
     grid-template-rows: 1fr;
     padding: 2rem;
     background-color: var(--color-bg);
-    @media (max-width: 768px) {
+    @media (max-width: 1080px) {
       grid-template-columns: repeat(2, auto);
     }
-    @media (max-width: 568px) {
+    @media (max-width: 668px) {
+      grid-template-columns: repeat(1, auto);
+    }
+    @media (max-width: 378px) {
       grid-template-columns: repeat(1, auto);
     }
   }
   .info-block {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
-    max-width: 250px;
-    max-height: 250px;
+    width: 250px;
+    height: 250px;
     background-color: red;
     padding: 1rem;
     border-radius: 15px;
+    @media (max-width: 700px) {
+      width: 250px;
+      height: 250x;
+    }
+    @media (max-width: 668px) {
+      width: 350px;
+      height: 350x;
+    }
+    @media (max-width: 458px) {
+      width: 250px;
+      height: 250x;
+    }
+    @media (max-width: 368px) {
+      width: auto;
+      height: 250px;
+    }
   }
   .info-block-heading {
     align-items: flex-start;
     text-align: center;
-    margin: 0;
+    margin: 5px;
+    @media (max-width: 700px) {
+      font-size: 18px;
+    }
   }
   .info-block-text {
+    align-content: center;
     margin: 0;
-    @media (max-width: 268px) {
+    @media (max-width: 368px) {
       font-size: 12px;
     }
   }
