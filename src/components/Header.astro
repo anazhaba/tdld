@@ -52,10 +52,18 @@ const heading = "Главная";
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: 378px) {
+      flex-direction: column;
+      justify-content: center;
+    }
   }
   .header-title {
     font-size: 48px;
     margin: 0px 0px 0px 2rem;
+    @media (max-width: 378px) {
+      margin: 0;
+      font-size: 28px;
+    }
   }
 
   .menu-open-button-icon {
@@ -66,6 +74,9 @@ const heading = "Главная";
     color: var(--color-green-300);
     cursor: pointer;
     margin: 0px 2rem 0px 0px;
+    @media (max-width: 378px) {
+      margin: 0;
+    }
   }
   .unique-menu-overlay {
     position: fixed;
