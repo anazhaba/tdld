@@ -1,7 +1,10 @@
 <h1 class="main-page-heading">ToadLand это:</h1>
 <div class="MainPage">
   <div class="info-block">
-    <h2 class="info-block-heading">Расширенный геймплей с модами</h2>
+    <span class="emoji-container"
+      ><h2 class="info-block-heading">Расширенный геймплей с модами</h2></span
+    >
+
     <p class="info-block-text">
       Сервер предлагает насыщенный мир Minecraft с модами, такими как Create для
       продвинутых механизмов и автоматизации, сезонными изменениями для
@@ -9,21 +12,29 @@
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Разнообразная фауна</h2>
+    <span class="emoji-container">
+      <h2 class="info-block-heading">Разнообразная<br /> фауна</h2></span
+    >
     <p class="info-block-text">
       Игроки могут взаимодействовать с разнообразными лягушками, добавляющими
       новую дикую природу в игру и улучшая экологический опыт.
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Сезонная динамика</h2>
+    <span class="emoji-container">
+      <h2 class="info-block-heading">Сезонная<br /> динамика</h2></span
+    >
     <p class="info-block-text">
       Сезоны меняются, влияя на окружающую среду и геймплей, обеспечивая более
       захватывающий и реалистичный опыт в Minecraft.
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Продвинутые механизмы Create</h2>
+    <span class="emoji-container"
+      ><h2 class="info-block-heading">
+        Продвинутые <br />механизмы Create
+      </h2></span
+    >
     <p class="info-block-text">
       Возможность строить сложные машины и системы автоматизации с помощью мода
       Create, что позволяет эффективно управлять ресурсами и проявлять
@@ -31,35 +42,47 @@
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Система экономики</h2>
+    <span class="emoji-container"
+      ><h2 class="info-block-heading">Система <br />экономики</h2></span
+    >
     <p class="info-block-text">
       Экономика, управляемая игроками, где можно торговать товарами и услугами,
       создавая процветающее сообщество с системой внутриигровой валюты.
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Интеграция голосового чата</h2>
+    <span class="emoji-container">
+      <h2 class="info-block-heading">
+        Интеграция <br />голосового <br /> чата
+      </h2></span
+    >
     <p class="info-block-text">
       Легко общайтесь с друзьями и другими игроками с помощью встроенного
       голосового чата, улучшая командную работу и социальное взаимодействие.
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Варка алкоголя</h2>
+    <span class="emoji-container">
+      <h2 class="info-block-heading">Варка <br /> алкоголя</h2></span
+    >
     <p class="info-block-text">
       Создавайте и наслаждайтесь различными алкогольными напитками, добавляя
       забавный и уникальный элемент в ваши приключения в Minecraft.
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Выпечка и кулинария</h2>
+    <span class="emoji-container"
+      ><h2 class="info-block-heading">Выпечка <br /> и кулинария</h2></span
+    >
     <p class="info-block-text">
       Расширенные возможности в выпечке и кулинарии, готовьте новые блюда и
       делайте игровой опыт еще более разнообразным.
     </p>
   </div>
   <div class="info-block">
-    <h2 class="info-block-heading">Улучшенное фермерство</h2>
+    <span class="emoji-container"
+      ><h2 class="info-block-heading">Улучшенное фермерство</h2></span
+    >
     <p class="info-block-text">
       Усовершенствованные системы фермерства позволяют выращивать больше типов
       растений и животных, делая процесс фермерства интереснее и продуктивнее.
@@ -67,7 +90,9 @@
   </div>
 
   <div class="info-block">
-    <h2 class="info-block-heading">Измененная генерация мира</h2>
+    <span class="emoji-container">
+      <h2 class="info-block-heading">Измененная генерация мира</h2></span
+    >
     <p class="info-block-text">
       Исследуйте мир с уникальными ландшафтами и биомами благодаря измененной
       генерации мира, что делает каждое путешествие по-своему неповторимым и
@@ -76,42 +101,33 @@
   </div>
 </div>
 <style>
+  .emoji-container {
+    width: 100%;
+    text-align: center;
+    background-color: var(--color-green-400);
+    border-radius: 10px; /* Скругление углов фона иконки */
+  }
   .main-page-heading {
+    color: var(--color-main-green);
+    font-family: Gilroy-black;
     text-align: center;
     margin: 0;
+    font-size: 3rem;
     padding-top: 1rem;
     @media (max-width: 378px) {
       font-size: 20px;
     }
   }
-  .MainPage {
-    justify-content: center;
-    margin: 0;
-    display: grid;
-    grid-area: content;
-    justify-items: center;
-    align-items: start;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(3, auto);
-    grid-template-rows: 1fr;
-    padding: 2rem;
-    @media (max-width: 1080px) {
-      grid-template-columns: repeat(2, auto);
-    }
-    @media (max-width: 668px) {
-      grid-template-columns: repeat(1, auto);
-    }
-    @media (max-width: 378px) {
-      grid-template-columns: repeat(1, auto);
-    }
-  }
+
   .info-block {
+    justify-content: flex-start;
+    text-align: center;
     align-items: center;
     display: flex;
     flex-direction: column;
-    width: 250px;
-    height: 250px;
-    background-color: red;
+    width: 280px;
+    height: 280px;
+    background-color: var(--color-green-300);
     padding: 1rem;
     border-radius: 15px;
 
@@ -140,14 +156,56 @@
   }
 
   .info-block-heading {
-    align-items: flex-start;
+    margin: 0;
+    padding: 10px;
+    color: var(--color-sun-yellow-300);
+    font-family: Gilroy-black;
     text-align: center;
-    margin: 5px;
     @media (max-width: 700px) {
       font-size: 18px;
     }
   }
+  .info-block-heading::before {
+    position: absolute;
+    justify-self: left;
+    content: "";
+    font-size: 1.5rem;
+    display: block;
+  }
+  .info-block:nth-of-type(1) .info-block-heading::before {
+    content: "🎮";
+  }
+  .info-block:nth-of-type(2) .info-block-heading::before {
+    content: "🦎";
+  }
+  .info-block:nth-of-type(3) .info-block-heading::before {
+    content: "🍁";
+  }
+  .info-block:nth-of-type(4) .info-block-heading::before {
+    content: "⚙️";
+  }
+  .info-block:nth-of-type(5) .info-block-heading::before {
+    content: "🏦";
+  }
+  .info-block:nth-of-type(6) .info-block-heading::before {
+    content: "🎤";
+  }
+  .info-block:nth-of-type(7) .info-block-heading::before {
+    content: "🍷";
+  }
+  .info-block:nth-of-type(8) .info-block-heading::before {
+    content: "🥐";
+  }
+  .info-block:nth-of-type(9) .info-block-heading::before {
+    content: "🥕";
+  }
+  .info-block:nth-of-type(10) .info-block-heading::before {
+    content: "🌍";
+  }
   .info-block-text {
+    text-align: center;
+    color: var(--color-bg);
+    font-family: Gilroy-bold;
     align-content: center;
     margin: 0;
     @media (max-width: 368px) {
@@ -155,6 +213,27 @@
     }
     @media (max-width: 298px) {
       font-size: 14px;
+    }
+  }
+  .MainPage {
+    justify-content: center;
+    margin: 0;
+    display: grid;
+    grid-area: content;
+    justify-items: center;
+    align-items: start;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: 1fr;
+    padding: 2rem;
+    @media (max-width: 1080px) {
+      grid-template-columns: repeat(2, auto);
+    }
+    @media (max-width: 668px) {
+      grid-template-columns: repeat(1, auto);
+    }
+    @media (max-width: 378px) {
+      grid-template-columns: repeat(1, auto);
     }
   }
 </style>

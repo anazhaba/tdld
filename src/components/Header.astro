@@ -1,5 +1,5 @@
 ---
-const heading = "Главная";
+const heading = "ToadLand";
 ---
 
 <header class="main--header">
@@ -109,7 +109,8 @@ const heading = "Главная";
   }
   .header-title {
     color: var(--color-sun-yellow-100);
-    font-family: Gilroy-bold;
+    letter-spacing: -3px;
+    font-family: Gilroy-black;
     font-size: 48px;
     margin: 0px 0px 0px 2rem;
     padding: 5px;
@@ -211,7 +212,7 @@ const heading = "Главная";
   }
   .unique-menu-content {
     padding: 2rem;
-    background-color: var(--color-bg);
+    background-color: var(--color-s-green-100);
     flex-grow: 1;
     transition: transform 0.2s ease-in-out;
     transform: translateY(100%);
@@ -272,12 +273,10 @@ const heading = "Главная";
     right: 0;
   }
   .unique-menu-close-button > svg {
-    margin: 10px;
+    margin: 5px;
     width: 34px;
     height: 34px;
     fill: var(--color-green-100);
-    background: var(--color-green-400);
-    border-radius: 5px;
   }
   /* Когда меню открыто */
   .unique-menu.open {
