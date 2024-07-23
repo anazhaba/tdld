@@ -3,8 +3,10 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 interface Props {
   title: string;
+  description: string;
 }
-const { title } = Astro.props;
+
+const { title, description } = Astro.props;
 const pageTitle = title ? `Toadland  ${title}` : "Toadland";
 ---
 
@@ -12,13 +14,11 @@ const pageTitle = title ? `Toadland  ${title}` : "Toadland";
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="тыттат бытаб тпкыйт! ЛАпкт эетыте, ытпое."
-    />
     <title>{pageTitle}</title>
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta property="og:description" content={description} />
+    <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
   </head>
   <body>

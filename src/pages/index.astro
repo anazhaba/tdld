@@ -1,10 +1,12 @@
 ---
 import MainPage from "../components/MainPage.astro";
 import Layout from "../layouts/Layout.astro";
-const title = "Главная";
+const title = "Toadland - Приватный майнкрафт сервер";
+const description =
+  "Приватный minecraft сервер 1.20.1 с модами и дружелюбной атмосферой!";
 ---
 
-<Layout title={title}>
+<Layout title={title} description={description}>
   <main>
     <MainPage slot="MainPage" />
   </main>
