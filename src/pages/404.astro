@@ -6,5 +6,90 @@ const description =
 ---
 
 <Layout title={title} description={description}>
-  <h1>Такой страницы не существует.</h1>
+  <div class="wrapper">
+    <h1 class="err-title">
+      ⛔️Такой страницы не существует потому что.. <span></span>
+    </h1>
+    <a href="/" class="back-to-button"
+      ><h1 class="err-btb-text">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
+          ><path
+            d="M283.5-227.91q-20.59 0-35.54-14.96Q233-257.83 233-278.41v-404.18q0-20.58 14.96-35.54 14.95-14.96 35.54-14.96t35.54 14.96Q334-703.17 334-682.59v404.18q0 20.58-14.96 35.54-14.95 14.96-35.54 14.96ZM567.09-480l145.45 145.46q14.96 14.95 14.71 35.54t-15.21 35.04q-14.95 14.46-35.29 14.46t-34.79-14.46L462.02-443.89q-7.19-7.2-11.36-16.77-4.16-9.58-4.16-19.34t4.16-19.34q4.17-9.57 11.36-16.77l179.94-179.93q14.45-14.46 34.79-14.46t35.29 14.46Q727-681.59 727.25-661t-14.71 35.54L567.09-480Z"
+          ></path></svg
+        >Вернутся
+      </h1></a
+    >
+  </div>
 </Layout>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const words = [
+      "она не создана🤔",
+      "она не прошла жаб-контроль❌🐸",
+      "не обквакали вопрос о ее создании🐸",
+      "она отжабнула😨",
+      "она не проходит по требованиям квачества🆘",
+      "она не для квакушек😳",
+    ];
+    const randomWord = words[Math.floor(Math.random() * words.length)];
+    document.querySelector(".err-title span").textContent = randomWord;
+  });
+</script>
+<style>
+  .wrapper {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .err-title {
+    max-width: 1080px;
+    color: var(--color-sun-yellow-300);
+    font-family: Gilroy-bold;
+    font-size: 5rem;
+    align-self: center;
+    @media (max-width: 480px) {
+      font-size: 3rem;
+    }
+    @media (max-width: 368px) {
+      font-size: 2rem;
+    }
+  }
+  .err-btb-text {
+    align-items: center;
+    display: flex;
+    font-family: gilroy-bold;
+    margin: 0;
+    padding: 0;
+  }
+  .back-to-button {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: white;
+    align-self: center;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: var(--color-green-300);
+    @media (max-width: 368px) {
+      font-size: 1rem;
+    }
+    @media (max-width: 238px) {
+      font-size: 0.5rem;
+    }
+  }
+  .err-title > span {
+    font-family: "Gilroy-black";
+  }
+
+  svg {
+    background-color: var(--color-green-400);
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    fill: var(--color-green-100);
+  }
+</style>

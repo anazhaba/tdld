@@ -1,8 +1,10 @@
 <h1 class="main-page-heading">ToadLand это:</h1>
 <div class="MainPage">
   <div class="info-block">
-    <span class="emoji-container"
-      ><h2 class="info-block-heading">Расширенный геймплей с модами</h2></span
+    <span class="info-block-heading-wrapper"
+      ><span class="emoji">🎮</span><h2 class="info-block-heading">
+        Расширенный геймплей
+      </h2></span
     >
 
     <p class="info-block-text">
@@ -12,8 +14,10 @@
     </p>
   </div>
   <div class="info-block">
-    <span class="emoji-container">
-      <h2 class="info-block-heading">Разнообразная<br /> фауна</h2></span
+    <span class="info-block-heading-wrapper">
+      <span class="emoji">🦎</span><h2 class="info-block-heading">
+        Разнообразная фауна
+      </h2></span
     >
     <p class="info-block-text">
       Игроки могут взаимодействовать с разнообразными лягушками, добавляющими
@@ -21,8 +25,10 @@
     </p>
   </div>
   <div class="info-block">
-    <span class="emoji-container">
-      <h2 class="info-block-heading">Сезонная<br /> динамика</h2></span
+    <span class="info-block-heading-wrapper">
+      <span class="emoji">🍂</span><h2 class="info-block-heading">
+        Сезонная динамика
+      </h2></span
     >
     <p class="info-block-text">
       Сезоны меняются, влияя на окружающую среду и геймплей, обеспечивая более
@@ -30,9 +36,9 @@
     </p>
   </div>
   <div class="info-block">
-    <span class="emoji-container"
-      ><h2 class="info-block-heading">
-        Продвинутые <br />механизмы Create
+    <span class="info-block-heading-wrapper"
+      ><span class="emoji">⚙️</span><h2 class="info-block-heading">
+        Механизмы Create
       </h2></span
     >
     <p class="info-block-text">
@@ -42,8 +48,10 @@
     </p>
   </div>
   <div class="info-block">
-    <span class="emoji-container"
-      ><h2 class="info-block-heading">Система <br />экономики</h2></span
+    <span class="info-block-heading-wrapper"
+      ><span class="emoji">💵</span><h2 class="info-block-heading">
+        Система экономики
+      </h2></span
     >
     <p class="info-block-text">
       Экономика, управляемая игроками, где можно торговать товарами и услугами,
@@ -51,10 +59,9 @@
     </p>
   </div>
   <div class="info-block">
-    <span class="emoji-container">
-      <h2 class="info-block-heading">
-        Интеграция <br />голосового <br /> чата
-      </h2></span
+    <span class="info-block-heading-wrapper">
+      <span class="emoji">🎤</span>
+      <h2 class="info-block-heading">Интеграция голосового чата</h2></span
     >
     <p class="info-block-text">
       Легко общайтесь с друзьями и другими игроками с помощью встроенного
@@ -62,8 +69,10 @@
     </p>
   </div>
   <div class="info-block">
-    <span class="emoji-container">
-      <h2 class="info-block-heading">Варка <br /> алкоголя</h2></span
+    <span class="info-block-heading-wrapper">
+      <span class="emoji">🍺</span><h2 class="info-block-heading">
+        Варка алкоголя и напитков
+      </h2></span
     >
     <p class="info-block-text">
       Создавайте и наслаждайтесь различными алкогольными напитками, добавляя
@@ -71,8 +80,10 @@
     </p>
   </div>
   <div class="info-block">
-    <span class="emoji-container"
-      ><h2 class="info-block-heading">Выпечка <br /> и кулинария</h2></span
+    <span class="info-block-heading-wrapper"
+      ><span class="emoji">🥐</span><h2 class="info-block-heading">
+        Выпечка и кулинария
+      </h2></span
     >
     <p class="info-block-text">
       Расширенные возможности в выпечке и кулинарии, готовьте новые блюда и
@@ -80,8 +91,10 @@
     </p>
   </div>
   <div class="info-block">
-    <span class="emoji-container"
-      ><h2 class="info-block-heading">Улучшенное фермерство</h2></span
+    <span class="info-block-heading-wrapper"
+      ><span class="emoji">🥕</span><h2 class="info-block-heading">
+        Улучшенное фермерство
+      </h2></span
     >
     <p class="info-block-text">
       Усовершенствованные системы фермерства позволяют выращивать больше типов
@@ -90,8 +103,10 @@
   </div>
 
   <div class="info-block">
-    <span class="emoji-container">
-      <h2 class="info-block-heading">Измененная генерация мира</h2></span
+    <span class="info-block-heading-wrapper">
+      <span class="emoji">🌍</span><h2 class="info-block-heading">
+        Измененная генерация мира
+      </h2></span
     >
     <p class="info-block-text">
       Исследуйте мир с уникальными ландшафтами и биомами благодаря измененной
@@ -101,12 +116,6 @@
   </div>
 </div>
 <style>
-  .emoji-container {
-    width: 100%;
-    text-align: center;
-    background-color: var(--color-green-400);
-    border-radius: 10px; /* Скругление углов фона иконки */
-  }
   .main-page-heading {
     color: var(--color-main-green);
     font-family: Gilroy-black;
@@ -120,15 +129,14 @@
   }
 
   .info-block {
+    padding: 1rem;
     justify-content: flex-start;
-    text-align: center;
     align-items: center;
     display: flex;
     flex-direction: column;
     width: 280px;
     height: 280px;
     background-color: var(--color-green-300);
-    padding: 1rem;
     border-radius: 15px;
 
     @media (max-width: 700px) {
@@ -154,54 +162,34 @@
       height: 350px;
     }
   }
+  .emoji {
+    font-size: 2rem;
+    justify-self: left;
+  }
+  .info-block-heading-wrapper {
+    text-align: center;
+    background: var(--color-green-400);
+    display: flex;
+    width: 100%;
 
+    border-radius: 15px;
+    height: auto;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+  }
   .info-block-heading {
-    margin: 0;
+    margin-right: 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
     padding: 10px;
     color: var(--color-sun-yellow-300);
     font-family: Gilroy-black;
-    text-align: center;
     @media (max-width: 700px) {
       font-size: 18px;
     }
   }
-  .info-block-heading::before {
-    position: absolute;
-    justify-self: left;
-    content: "";
-    font-size: 1.5rem;
-    display: block;
-  }
-  .info-block:nth-of-type(1) .info-block-heading::before {
-    content: "🎮";
-  }
-  .info-block:nth-of-type(2) .info-block-heading::before {
-    content: "🦎";
-  }
-  .info-block:nth-of-type(3) .info-block-heading::before {
-    content: "🍁";
-  }
-  .info-block:nth-of-type(4) .info-block-heading::before {
-    content: "⚙️";
-  }
-  .info-block:nth-of-type(5) .info-block-heading::before {
-    content: "🏦";
-  }
-  .info-block:nth-of-type(6) .info-block-heading::before {
-    content: "🎤";
-  }
-  .info-block:nth-of-type(7) .info-block-heading::before {
-    content: "🍷";
-  }
-  .info-block:nth-of-type(8) .info-block-heading::before {
-    content: "🥐";
-  }
-  .info-block:nth-of-type(9) .info-block-heading::before {
-    content: "🥕";
-  }
-  .info-block:nth-of-type(10) .info-block-heading::before {
-    content: "🌍";
-  }
+
   .info-block-text {
     text-align: center;
     color: var(--color-bg);
