@@ -1,6 +1,7 @@
 ---
 import MainPage from "../components/MainPage.astro";
 import Layout from "../layouts/Layout.astro";
+import { ViewTransitions } from "astro:transitions";
 const title = "Toadland - Приватный майнкрафт сервер";
 const description =
   "Приватный minecraft сервер 1.20.1 с модами и дружелюбной атмосферой!";
@@ -11,6 +12,7 @@ const description =
     <MainPage slot="MainPage" />
   </main>
 </Layout>
+<ViewTransitions />
 <style>
   body {
     margin: 0;
