@@ -1,8 +1,11 @@
 ---
 const heading = "ToadLand";
+import { slide } from "astro:transitions";
+import { ViewTransitions } from "astro:transitions";
 ---
 
-<header class="main--header">
+<ViewTransitions />
+<header transition:animate={slide({ duration: "0.5s" })} class="main--header">
   <span class="header-title-block"
     ><a href="/"><h1 class="header-title">{heading}</h1></a>
     <a class="menu-open-button">
