@@ -20,7 +20,14 @@
       будут радовать глаз и вызывать желание продолжать исследование.
     </p>
   </div>
-  <div class="gameplay-block-second">Тут могла была быть ваша реклама</div>
+  <div class="gameplay-block-second">
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="/assets/create.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
   <!--       -->
   <div class="seasons-block">
     <h1 class="seasons-heading">Смена сезонов</h1>
@@ -35,7 +42,14 @@
       игровой процесс.
     </p>
   </div>
-  <div class="seasons-block-second">Тут могла была быть ваша реклама</div>
+  <div class="seasons-block-second">
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="/assets/create.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
   <!--       -->
   <div class="create-block">
     <h1 class="create-heading">Механики мода Create</h1>
@@ -72,7 +86,14 @@
       тебе насладиться процессом приготовления и дегустации пищи.
     </p>
   </div>
-  <div class="coocking-block-second">Тут могла была быть ваша реклама</div>
+  <div class="coocking-block-second">
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="/assets/create.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 </div>
 <style>
   * {
@@ -80,12 +101,25 @@
   }
   .page-heading {
     padding: 1rem;
+    color: var(--color-black);
   }
   .gameplay-heading,
   .seasons-heading,
   .create-heading,
   .coocking-heading {
     margin: 0;
+    color: var(--color-sun-yellow-300);
+    background: var(--color-green-400);
+    padding: 1rem;
+    font-size: 2rem;
+    border-radius: 15px;
+  }
+  .gameplay-heading::before {
+    content: "😭";
+    background-color: var(--color-green-500);
+    padding: 0.5rem;
+    border-radius: 10px;
+    margin-right: 10px;
   }
   .gameplay-text,
   .seasons-text,
@@ -93,6 +127,7 @@
   .coocking-text {
     font-size: 1.5rem;
     letter-spacing: 1px;
+    color: var(--color-black);
   }
   .video-container {
     position: absolute;
@@ -136,16 +171,32 @@
     gap: 5rem;
   }
   .gameplay-block {
+    background-color: var(--color-green-500);
+    padding: 1rem;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
     grid-area: gameplay1;
   }
   .gameplay-block-second {
+    grid-area: create2;
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
     grid-area: gameplay2;
   }
   .seasons-block {
+    position: relative;
+    overflow: hidden;
     grid-area: seasons1;
   }
   .seasons-block-second {
     grid-area: seasons2;
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
   }
   .create-block {
     grid-area: create1;
@@ -160,9 +211,15 @@
     text-align: center;
   }
   .coocking-block {
+    position: relative;
+    overflow: hidden;
     grid-area: coocking1;
   }
   .coocking-block-second {
     grid-area: coocking2;
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
   }
 </style>
