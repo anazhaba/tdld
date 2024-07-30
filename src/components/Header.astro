@@ -1,11 +1,12 @@
 ---
 const heading = "ToadLand";
 import { slide } from "astro:transitions";
+import { fade } from "astro:transitions";
 import { ViewTransitions } from "astro:transitions";
 ---
 
 <ViewTransitions />
-<header transition:animate={slide({ duration: "0.5s" })} class="main--header">
+<header class="main--header">
   <span class="header-title-block"
     ><a href="/"><h1 class="header-title">{heading}</h1></a>
     <a class="menu-open-button">
@@ -23,10 +24,17 @@ import { ViewTransitions } from "astro:transitions";
 
 <div class="unique-menu-overlay" id="uniqueMenuOverlay"></div>
 <div class="unique-menu" id="uniqueMenu">
-  <div class="unique-menu-top" id="uniqueMenuTop">
+  <div
+    transition:animate={slide({ duration: "0.7s" })}
+    class="unique-menu-top"
+    id="uniqueMenuTop"
+  >
     <p id="uniqueSplashText"></p>
   </div>
-  <div class="unique-menu-content">
+  <div
+    transition:animate={slide({ duration: "0.7s" })}
+    class="unique-menu-content"
+  >
     <div class="unique-menu-links">
       <a href="/buy"
         ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
@@ -267,8 +275,8 @@ import { ViewTransitions } from "astro:transitions";
   }
   .unique-menu-links svg {
     background-color: var(--color-green-400);
-    padding: 0.5rem; /* Отступы вокруг иконки */
-    border-radius: 10px; /* Скругление углов фона иконки */
+    padding: 0.5rem;
+    border-radius: 10px;
     width: 24px;
     height: 24px;
     fill: var(--color-green-100);
@@ -293,7 +301,6 @@ import { ViewTransitions } from "astro:transitions";
     height: 34px;
     fill: var(--color-green-100);
   }
-  /* Когда меню открыто */
   .unique-menu.open {
     visibility: visible;
     transition: visibility 0s linear 0s;
@@ -333,7 +340,6 @@ import { ViewTransitions } from "astro:transitions";
     transition: opacity 0.2s ease-in-out;
   }
 
-  /* Запрещаем прокрутку фона */
   body.no-scroll {
     overflow: hidden;
   }
