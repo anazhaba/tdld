@@ -35,7 +35,10 @@ import { ViewTransitions } from "astro:transitions";
     transition:animate={slide({ duration: "0.7s" })}
     class="unique-menu-content"
   >
-    <div class="unique-menu-links">
+    <div
+      transition:animate={slide({ duration: "0.7s" })}
+      class="unique-menu-links"
+    >
       <a href="/buy"
         ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
           ><path
@@ -162,6 +165,8 @@ import { ViewTransitions } from "astro:transitions";
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
     visibility: hidden;
+
+    background-color: var(--color-s-green-100);
   }
 
   .unique-menu {
