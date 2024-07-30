@@ -1,0 +1,159 @@
+---
+
+---
+
+<h1>tdlds</h1>
+<div class="wrapper">
+  <div class="gameplay-block">
+    <h1 class="gameplay-heading">Начало</h1>
+    <p class="gameplay-text">
+      Toadland - это уникальный мир Minecraft, созданный на версии 1.20.1 с
+      модами fabric, где каждое приключение становится особенно захватывающим.
+      Благодаря уникальной генерации ландшафта, каждый уголок мира полон новых и
+      удивительных особенностей. Исследование разнообразных биомов и
+      нестандартных ландшафтов превращается в увлекательное путешествие, где
+      каждое открытие приносит радость и вдохновение. Эта система генерации
+      создает неповторимые природные формации и ландшафтные элементы, которые
+      будут радовать глаз и вызывать желание продолжать исследование.
+    </p>
+  </div>
+  <div class="gameplay-block-second">Тут могла была быть ваша реклама</div>
+  <!--       -->
+  <div class="seasons-block">
+    <h1 class="seasons-heading">Смена сезонов</h1>
+    <p class="seasons-text">
+      Смена сезонов в Toadland добавляет реалистичности и глубины в процесс
+      сельского хозяйства. Растения растут медленнее зимой и быстрее летом, что
+      требует от тебя стратегического планирования и умения адаптироваться к
+      климатическим условиям. Зимой тебе придется тщательно следить за своим
+      урожаем и готовиться к весне, а летом – использовать все возможности для
+      максимального роста и сбора плодов. Эти сезонные изменения делают каждый
+      период года важным элементом твоего плана, добавляя сложности и реализма в
+      игровой процесс.
+    </p>
+  </div>
+  <div class="seasons-block-second">Тут могла была быть ваша реклама</div>
+  <!--       -->
+  <div class="create-block">
+    <h1 class="create-heading">Механики мода Create</h1>
+    <p class="create-text">
+      Механики мода Create предоставляют тебе возможность погрузиться в мир
+      сложных и инновационных механизмов. Этот мод откроет перед тобой целый
+      спектр возможностей для автоматизации процессов, что значительно упростит
+      и ускорит выполнение задач. Построй сложные машины, заводы и системы,
+      которые помогут тебе эффективно управлять ресурсами и улучшить свой
+      игровой процесс. С Create каждый проект становится более масштабным и
+      интересным, предоставляя новые горизонты для творчества и инженерного
+      мышления.
+    </p>
+  </div>
+  <div class="create-block-second">
+    <div class="video-container">
+      <video autoplay muted loop>
+        <source src="/public/video/create.webm" type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="overlay-content"></div>
+  </div>
+  <!--       -->
+  <div class="coocking-block">
+    <h1 class="coocking-heading">Кулинария</h1>
+    <p class="coocking-text">
+      Если ты увлекаешься кулинарией, Toadland предложит тебе уникальные
+      возможности для пивоварения и создания вин. Используй специальное
+      оборудование, такое как плиты и сковороды, чтобы готовить различные блюда
+      и напитки. Экспериментируй с ингредиентами и рецептами, создавая
+      уникальные кулинарные шедевры, которые можно не только употреблять, но и
+      показывать друзьям. Эта система добавляет разнообразие в игру, позволяя
+      тебе насладиться процессом приготовления и дегустации пищи.
+    </p>
+  </div>
+  <div class="coocking-block-second">Тут могла была быть ваша реклама</div>
+</div>
+<style>
+  * {
+    font-family: Gilroy-bold;
+  }
+  .video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .video-container video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .overlay-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  .wrapper {
+    display: grid;
+    height: auto;
+    width: 100%;
+    grid-template-areas:
+      "gameplay1 gameplay2"
+      "seasons2 seasons1"
+      "create1 create2"
+      "coocking2 coocking1";
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 500px;
+    grid-auto-flow: dense;
+    gap: 1rem;
+  }
+  .gameplay-block {
+    background-color: blue;
+    grid-area: gameplay1;
+  }
+  .gameplay-block-second {
+    background-color: blueviolet;
+    grid-area: gameplay2;
+  }
+  .seasons-block {
+    background-color: rgb(0, 255, 255);
+    grid-area: seasons1;
+  }
+  .seasons-block-second {
+    background-color: yellowgreen;
+    grid-area: seasons2;
+  }
+  .create-block {
+    background-color: silver;
+    grid-area: create1;
+    position: relative;
+    overflow: hidden;
+  }
+  .create-block-second {
+    background-color: silver;
+    grid-area: create2;
+    position: relative;
+    z-index: 1;
+    color: white; /* Цвет текста, измените по необходимости */
+    text-align: center;
+    padding: 20px;
+  }
+  .coocking-block {
+    background-color: salmon;
+    grid-area: coocking1;
+  }
+  .coocking-block-second {
+    background-color: silver;
+    grid-area: coocking2;
+  }
+</style>
