@@ -22,6 +22,22 @@ const { title, description } = Astro.props;
     <meta property="og:description" content={description} />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta
+      property="og:image"
+      content="https://minenya.vercel.app/images/icone2.webp"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://minenya.vercel.app/images/icon2.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="logoImage" />
+    <meta
+      name="keywords"
+      content="Тодленд, toadland, тод ленд, тоад ленд, toad land, тоад land, Тод land, майнкрафт сервер, приватный сервер minecraft, mineacraft toadland, minecraft, майнкрафт, сервер майнкрафт, сервер с жабами, майнкрафт с жабами"
+    />
     <ViewTransitions />
   </head>
   <body>
@@ -53,21 +69,20 @@ const { title, description } = Astro.props;
       :root {
         --color-black: #1d1e18;
         --color-bg: #f0f7da;
-        --color-s-green-100: #f9fdcf;
-        --color-s-green-150: #d2f4d2;
-        --color-s-green-200: #c3ea4f;
-        --color-s-green-300: #7fb069;
-        --color-s-green-400: #4d6d46;
-        --color-s-green-500: #364d2e;
-        --color-main-green: #a7d129;
+        --color-s-green-100: #f4f7e4;
+        --color-s-green-150: #e4edd9;
+        --color-s-green-200: #d2dfb2;
+        --color-s-green-300: #a8bc95;
+        --color-s-green-400: #849b74;
+        --color-s-green-500: #677b5b;
+        --color-main-green: #b2c98a;
 
-        /* Дополнительные зеленые оттенки */
-        --color-green-100: #d4e89b; /* Светло-зеленый */
-        --color-green-200: #b8d768; /* Насыщенный зеленый */
-        --color-green-300: #96ba3b; /* Ярко-зеленый */
-        --color-green-400: #85a923; /* Темно-зеленый */
-        --color-green-450: #799826; /* Темно-зеленый на полшишки */
-        --color-green-500: #71901d; /* Темно-зеленый */
+        --color-green-100: #e0e6c3;
+        --color-green-200: #cfd8a8;
+        --color-green-300: #b6c28a;
+        --color-green-400: #a2af7b;
+        --color-green-450: #98a671;
+        --color-green-500: #8e9d67;
 
         /* Дополнительные природные цвета */
         --color-water-blue-100: #cce4f6; /* Светлый голубой */
