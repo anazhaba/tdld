@@ -1,12 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { ViewTransitions } from "astro:transitions";
-const title = "Toadland - О нас";
+const title = "Toadland";
+const subtitle = "О нас";
 const description =
   "Приватный minecraft сервер 1.20.1 с модами и дружелюбной атмосферой! | О нас";
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} {subtitle} description={description}>
   <h1>О нас</h1>
 </Layout>
 <ViewTransitions />

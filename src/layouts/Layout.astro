@@ -1,25 +1,26 @@
 ---
 import Header from "../components/Header.astro";
+import Meta from "../components/Meta.astro";
 import Footer from "../components/Footer.astro";
 import { fade } from "astro:transitions";
-import { slide } from "astro:transitions";
 import { ViewTransitions } from "astro:transitions";
+
 interface Props {
+  subtitle?: string;
   title: string;
   description: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, subtitle }: Props = Astro.props;
 ---
 
 <!doctype html>
 <html lang="ru">
   <head>
+    <Meta {title} {subtitle} description={description} />
     <meta charset="UTF-8" />
-    <title>{title}</title>
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta property="og:description" content={description} />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <meta
@@ -119,10 +120,9 @@ const { title, description } = Astro.props;
       }
     </style>
     <div transition:animate={fade({ duration: "0.5s" })} class="main--wrapper">
-      <Header />
+      <Header {title} {subtitle} />
       <slot />
       <Footer />
     </div>
   </body>
 </html>
-<script></script>

@@ -4,13 +4,14 @@ import MainTest from "../components/MainTest.astro";
 import Layout from "../layouts/Layout.astro";
 import { fade } from "astro:transitions";
 import { ViewTransitions } from "astro:transitions";
-const title = "Toadland - Приватный Minecraft сервер";
+const title = "Toadland";
+const subtitle = "Главная";
 const description =
   "Приватный Minecraft сервер 1.20.1 с модами и дружелюбной атмосферой!";
 ---
 
 <ViewTransitions />
-<Layout title={title} description={description}>
+<Layout title={title} {subtitle} description={description}>
   <main class="main-page-container">
     <MainTest slot="MainTest" />
   </main>

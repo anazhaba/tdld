@@ -1,14 +1,19 @@
 ---
-const heading = "ToadLand";
 import { slide } from "astro:transitions";
-import { fade } from "astro:transitions";
 import { ViewTransitions } from "astro:transitions";
+const { title, subtitle } = Astro.props;
 ---
 
 <ViewTransitions />
 <header class="main--header">
   <span class="header-title-block"
-    ><a href="/"><h1 class="header-title">{heading}</h1></a>
+    ><div class="header-title-dynamic-container">
+      <a class="header-title-link-back" href="/">{title}</a><h1
+        class="header-title"
+      >
+        {subtitle}
+      </h1>
+    </div>
     <div class="menu-open-button">
       <svg
         class="menu-open-button-icon"
@@ -116,18 +121,48 @@ import { ViewTransitions } from "astro:transitions";
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @media (max-width: 378px) {
+    @media (max-width: 500px) {
+      text-align: center;
       flex-direction: column;
       justify-content: center;
     }
   }
-  .header-title {
-    color: var(--color-orange-100);
-    letter-spacing: -3px;
+  .header-title-dynamic-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    @media (max-width: 500px) {
+      text-align: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+  .header-title-link-back {
+    margin: 0px 0px 0px 1rem;
+    color: var(--color-accent);
     font-family: Gilroy-black;
     font-size: 48px;
-    margin: 0px 0px 0px 2rem;
+    text-decoration: none;
+    @media (max-width: 500px) {
+      text-align: center;
+      margin: 0;
+    }
+    @media (max-width: 378px) {
+      margin: 0;
+      font-size: 28px;
+    }
+  }
+  .header-title {
+    color: var(--color-bg);
+    letter-spacing: 1px;
+    font-family: Gilroy-black;
+    font-size: 44px;
+    margin: 0px 0px 0px 1rem;
     padding: 5px;
+    @media (max-width: 500px) {
+      text-align: center;
+      margin: 0;
+    }
     @media (max-width: 378px) {
       margin: 0;
       font-size: 28px;

@@ -1,0 +1,13 @@
+---
+const { title, subtitle } = Astro.props;
+interface Props {
+  subtitle?: string;
+  title: string;
+  description: string;
+}
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <title>{title} | {subtitle}</title>
+</head>
