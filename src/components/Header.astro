@@ -213,8 +213,11 @@ import { ViewTransitions } from "astro:transitions";
     background: var(--color-green-500);
     transition: 0.2s;
   }
+  #uniqueSplashText::selection {
+    background: inherit;
+  }
   #uniqueSplashText {
-    color: var(--color-sun-yellow-100);
+    color: var(--color-accent);
     font-family: Gilroy-black;
     letter-spacing: 3px;
     text-align: center;
