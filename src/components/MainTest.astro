@@ -20,6 +20,7 @@
       будут радовать глаз и вызывать желание продолжать исследование.
     </p>
   </div>
+
   <div class="gameplay-block-second">
     <div class="video-container">
       <video autoplay muted loop>
@@ -28,6 +29,7 @@
       </video>
     </div>
   </div>
+
   <!--       -->
   <div class="seasons-block">
     <h1 class="seasons-heading">Смена сезонов</h1>
@@ -108,7 +110,7 @@
   .create-heading,
   .coocking-heading {
     margin: 0;
-    color: var(--color-sun-yellow-300);
+    color: var(--color-orange-100);
     background: var(--color-green-300);
     padding: 1rem;
     font-size: 2rem;
@@ -140,7 +142,7 @@
   }
   .gameplay-heading::before {
     content: "👾";
-    background-color: var(--color-green-450);
+    background-color: var(--color-green-200);
     padding: 0.5rem;
     border-radius: 10px;
     margin-right: 10px;
@@ -151,7 +153,7 @@
   .coocking-text {
     font-size: 1.5rem;
     letter-spacing: 1px;
-    color: var(--color-bg);
+    color: var(--color-black);
     @media (max-width: 1300px) {
       font-size: 18px;
     }
@@ -220,11 +222,12 @@
       "coocking2 coocking1";
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 1fr;
-    gap: 5rem;
+    gap: 3rem;
     @media (max-width: 868px) {
       display: flex;
       flex-direction: column;
       margin-bottom: 50px;
+      gap: 1rem;
     }
   }
   .gameplay-block-second,
@@ -236,7 +239,7 @@
     }
   }
   .gameplay-block {
-    background-color: var(--color-green-400);
+    background-color: var(--color-white);
     padding: 1rem;
     border-radius: 15px;
     position: relative;
