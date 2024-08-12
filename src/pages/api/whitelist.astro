@@ -1,0 +1,25 @@
+<script>
+  import { Rcon } from "rcon-client";
+  export async function post({ request }) {
+    const { nickname } = await request.json();
+
+    try {
+      const rcon = await Rcon.connect({
+        host: "46.8.220.84",
+        port: 25575, // обычно 25575
+        password: "9un5CFwxHDHgcdnh8yn",
+      });
+
+      await rcon.send(`whitelistd add ${nickname}`);
+      await rcon.end();
+
+      return new Response(JSON.stringify({ success: true }), { status: 200 });
+    } catch (error) {
+      console.error("Ошибка RCON:", error);
+      return new Response(
+        JSON.stringify({ success: false, error: error.message }),
+        { status: 500 }
+      );
+    }
+  }
+</script>

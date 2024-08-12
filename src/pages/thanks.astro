@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+const title = "Спасибо за пожертование";
+const subtitle = "Добро пожаловать!";
+const description =
+  "Приватный minecraft сервер 1.20.1 с модами и дружелюбной атмосферой! | Спасибо!";
+const url = new URL(Astro.request.url);
+const nickname = url.searchParams.get("nickname") || "";
+---
+
+<Layout title={title} {subtitle} description={description}>
+  <div class="buy-wrapper">
+    <h1 class="buy-wrapper-title">{title}</h1>
+    <div class="buy-container">
+      <h1>Спасибо за оплату!</h1>
+      <p>Ваш никнейм: {nickname}</p>
+      <p>Теперь вы можете присоединиться к нашему серверу. Добро пожаловать!</p>
+    </div>
+  </div>
+</Layout>
+<style></style>

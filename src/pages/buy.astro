@@ -10,23 +10,12 @@ const description =
   <div class="buy-wrapper">
     <h1 class="buy-wrapper-title">{title}</h1>
     <div class="buy-container">
-      <h2 class="buy-container-title">
-        Здесь Вы можете оплатить игру на сервере
-      </h2>
-      <p class="buy-container-text">
-        Присоединяйся к toadland за 100 рублей. Одного платежа достаточно, чтобы
-        играть на сервере все ближайшие сезоны.
-      </p>
-      <div class="yoomoney-container">
-        <iframe
-          class="yoomoney-iframe"
-          src="https://yoomoney.ru/quickpay/fundraise/button?billNumber=12351ISL51E.240413&"
-          width="330"
-          height="50"
-          frameborder="0"
-          allowtransparency="true"
-          scrolling="no"></iframe>
-      </div>
+      <h1>Присоединиться к серверу</h1>
+      <form id="join-form" action="/pay" method="GET">
+        <label for="nickname">Введите ваш никнейм в Minecraft:</label>
+        <input type="text" id="nickname" name="nickname" required />
+        <button type="submit">Перейти к оплате</button>
+      </form>
     </div>
   </div>
 </Layout>
