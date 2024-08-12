@@ -6,6 +6,6 @@ export function getFiles(directory: string): { name: string; path: string }[] {
 
   return files.map((file) => ({
     name: file,
-    path: path.join('/download', file) // Создание ссылки на скачивание файла
+    path: path.join('/mods', file) // Создание ссылки на скачивание файла
   }));
 }
