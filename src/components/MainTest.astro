@@ -110,6 +110,12 @@
       font-size: 1.5rem;
     }
   }
+  .gameplay-heading,
+  .seasons-heading,
+  .create-heading,
+  .coocking-heading {
+    @include block-heading();
+  }
   * {
     font-family: Gilroy-bold;
   }
@@ -117,12 +123,7 @@
     padding: 1rem;
     color: var(--color-black);
   }
-  .gameplay-heading,
-  .seasons-heading,
-  .create-heading,
-  .coocking-heading {
-    @include block-heading();
-  }
+
   .coocking-heading:before {
     content: "🧑‍🍳";
     background-color: var(--color-green-500);

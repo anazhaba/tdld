@@ -13,12 +13,18 @@ const pageIcon = "/icons/files.svg";
 <Layout title={title} {subtitle} icon={pageIcon} description={description}>
   <div class="mods-wrapper">
     <div class="mods-container">
-      <h1 class="mods-heading">Available Mods for Download</h1>
       <ul class="mods-list">
         {
           files.map((file) => (
             <li class="mods-list-item">
               <a class="mods-download-link" href={file.path} download>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="mod-download-icon"
+                  viewBox="0 -960 960 960"
+                >
+                  <path d="M480-337q-8 0-15-2.5t-13-8.5L308-492q-12-12-11.5-28t11.5-28q12-12 28.5-12.5T365-549l75 75v-286q0-17 11.5-28.5T480-800q17 0 28.5 11.5T520-760v286l75-75q12-12 28.5-11.5T652-548q11 12 11.5 28T652-492L508-348q-6 6-13 8.5t-15 2.5ZM240-160q-33 0-56.5-23.5T160-240v-80q0-17 11.5-28.5T200-360q17 0 28.5 11.5T240-320v80h480v-80q0-17 11.5-28.5T760-360q17 0 28.5 11.5T800-320v80q0 33-23.5 56.5T720-160H240Z" />
+                </svg>{" "}
                 {file.name}
               </a>
             </li>
@@ -30,45 +36,65 @@ const pageIcon = "/icons/files.svg";
 </Layout>
 <style>
   .mods-container {
-    max-width: 800px;
+    max-width: 1440px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-
-  .mods-heading {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--color-primary, #333);
-    margin-bottom: 20px;
+    font-family: gilroy;
   }
 
   .mods-list {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
     list-style: none;
     padding: 0;
     margin: 0;
+    @media (max-width: 668px) {
+      grid-template-columns: 1fr;
+    }
   }
-
+  .mod-download-icon {
+    margin-right: 6px;
+    background-color: var(--color-green-400);
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 24px;
+    height: 24px;
+    fill: var(--color-green-100);
+  }
   .mods-list-item {
-    background: var(--color-secondary, #f5f5f5);
-    border: 1px solid var(--color-border, #ddd);
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-  }
-
-  .mods-list-item:hover {
-    background: var(--color-accent, #e0e0e0);
-    transform: translateY(-2px);
+    display: flex;
+    align-items: center;
+    align-content: center;
   }
 
   .mods-download-link {
+    height: 50px;
+    width: 100%;
+    font-size: 1.5rem;
+    font-family: Gilroy-bold;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--color-green-300);
+    color: white;
+    text-align: center;
     text-decoration: none;
-    color: var(--color-link, #007bff);
-    font-size: 1.2rem;
+    border-radius: 15px;
+    text-transform: uppercase;
+    position: relative;
+    @media (max-width: 868px) {
+      font-size: 18px;
+    }
   }
 
   .mods-download-link:hover {
-    text-decoration: underline;
+    background-color: var(--color-green-400);
+    transition: 0.2s;
+  }
+  .mods-download-link:hover svg {
+    background-color: var(--color-green-500);
+    transition: 0.2s;
   }
 </style>
