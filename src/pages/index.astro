@@ -8,10 +8,11 @@ const title = "Toadland";
 const subtitle = "Главная";
 const description =
   "Приватный Minecraft сервер 1.20.1 с модами и дружелюбной атмосферой!";
+const pageIcon = "/icons/love.svg";
 ---
 
 <ViewTransitions />
-<Layout title={title} {subtitle} description={description}>
+<Layout title={title} {subtitle} icon={pageIcon} description={description}>
   <main class="main-page-container">
     <MainTest slot="MainTest" />
   </main>

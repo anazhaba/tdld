@@ -1,7 +1,7 @@
 ---
 import { slide } from "astro:transitions";
 import { ViewTransitions } from "astro:transitions";
-const { title, subtitle } = Astro.props;
+const { title, subtitle, icon } = Astro.props;
 ---
 
 <ViewTransitions />
@@ -13,6 +13,7 @@ const { title, subtitle } = Astro.props;
       >
         {subtitle}
       </h1>
+      {icon && <img src={icon} alt="Page icon" class="page-icon" />}
     </div>
     <div class="menu-open-button">
       <svg
@@ -116,12 +117,14 @@ const { title, subtitle } = Astro.props;
     height: auto;
   }
   .header-title-block {
+    max-width: 1440px;
+    margin: 0 auto;
     flex-wrap: wrap;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @media (max-width: 510px) {
+    @media (max-width: 540px) {
       text-align: center;
       flex-direction: column;
       justify-content: center;
@@ -131,7 +134,8 @@ const { title, subtitle } = Astro.props;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    @media (max-width: 510px) {
+    align-items: center;
+    @media (max-width: 540px) {
       text-align: center;
       flex-direction: column;
       justify-content: center;
@@ -139,11 +143,14 @@ const { title, subtitle } = Astro.props;
   }
   .header-title-link-back {
     margin: 0px 0px 0px 1rem;
-    color: var(--color-accent);
+    color: var(--color-bg);
+    background-color: var(--color-green-500);
+    padding: 0.5rem;
+
     font-family: Gilroy-black;
-    font-size: 48px;
+    font-size: 44px;
     text-decoration: none;
-    @media (max-width: 510px) {
+    @media (max-width: 540px) {
       text-align: center;
       margin: 0;
     }
@@ -159,7 +166,7 @@ const { title, subtitle } = Astro.props;
     font-size: 44px;
     margin: 0px 0px 0px 1rem;
     padding: 5px;
-    @media (max-width: 510px) {
+    @media (max-width: 540px) {
       text-align: center;
       margin: 0;
     }
@@ -188,7 +195,7 @@ const { title, subtitle } = Astro.props;
     padding: 0;
     border: 0;
     margin: 0px 2rem 0px 0px;
-    @media (max-width: 510px) {
+    @media (max-width: 544px) {
       margin: 0;
     }
   }

@@ -9,9 +9,10 @@ interface Props {
   subtitle?: string;
   title: string;
   description: string;
+  icon?: string;
 }
 
-const { title, description, subtitle }: Props = Astro.props;
+const { title, description, subtitle, icon }: Props = Astro.props;
 ---
 
 <!doctype html>
@@ -118,9 +119,17 @@ const { title, description, subtitle }: Props = Astro.props;
           transform 300ms ease-in-out,
           opacity 300ms ease-in-out;
       }
+      .page-icon {
+        margin-left: 10px;
+        width: 28px;
+        height: 28px;
+        @media (max-width: 540px) {
+          margin: 0;
+        }
+      }
     </style>
     <div transition:animate={fade({ duration: "0.5s" })} class="main--wrapper">
-      <Header {title} {subtitle} />
+      <Header {title} {subtitle} icon={icon} />
       <slot />
       <Footer />
     </div>

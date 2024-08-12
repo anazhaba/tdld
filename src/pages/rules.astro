@@ -4,148 +4,279 @@ const title = "Toadland";
 const description =
   "Приватный minecraft сервер 1.20.1 с модами и дружелюбной атмосферой! | Правила сервера";
 const subtitle = "Правила";
+const pageIcon = "/icons/rules.svg";
 ---
 
-<Layout title={title} {subtitle} description={description}>
-  <div class="rule-wrapper">
-    <header class="rule-wrapper-header">
-      <ul class="header-links-list">
-        <li class="header-links-item">
-          <a href="#" class="header-links-item-link"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              class="list-link-icon"
-              ><path
-                d="M408-480 252-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L308-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Zm272-240q17 0 28.5 11.5T720-680v400q0 17-11.5 28.5T680-240q-17 0-28.5-11.5T640-280v-400q0-17 11.5-28.5T680-720Z"
-              ></path></svg
-            >Аккаунт</a
-          >
-        </li>
-        <li class="header-links-item">
-          <a href="#" class="header-links-item-link"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 -960 960 960"
-              class="list-link-icon"
-              ><path
-                d="M408-480 252-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L308-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Zm272-240q17 0 28.5 11.5T720-680v400q0 17-11.5 28.5T680-240q-17 0-28.5-11.5T640-280v-400q0-17 11.5-28.5T680-720Z"
-              ></path></svg
-            >Действия персонажа</a
-          >
-        </li>
-        <li class="header-links-item">
-          <a href="#" class="header-links-item-link"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="list-link-icon"
-              viewBox="0 -960 960 960"
-              ><path
-                d="M408-480 252-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L308-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Zm272-240q17 0 28.5 11.5T720-680v400q0 17-11.5 28.5T680-240q-17 0-28.5-11.5T640-280v-400q0-17 11.5-28.5T680-720Z"
-              ></path></svg
-            >Другое</a
-          >
-        </li>
-        <li class="header-links-item">
-          <a href="#" class="header-links-item-link"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="list-link-icon"
-              viewBox="0 -960 960 960"
-              ><path
-                d="M408-480 252-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L308-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Zm272-240q17 0 28.5 11.5T720-680v400q0 17-11.5 28.5T680-240q-17 0-28.5-11.5T640-280v-400q0-17 11.5-28.5T680-720Z"
-              ></path></svg
-            >Скины</a
-          >
-        </li>
-        <li class="header-links-item">
-          <a href="#" class="header-links-item-link"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="list-link-icon"
-              viewBox="0 -960 960 960"
-              ><path
-                d="M408-480 252-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L308-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Zm272-240q17 0 28.5 11.5T720-680v400q0 17-11.5 28.5T680-240q-17 0-28.5-11.5T640-280v-400q0-17 11.5-28.5T680-720Z"
-              ></path></svg
-            >Чат</a
-          >
-        </li>
-        <li class="header-links-item">
-          <a href="#" class="header-links-item-link"
-            ><svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="list-link-icon"
-              viewBox="0 -960 960 960"
-              ><path
-                d="M408-480 252-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L308-268q-11 11-28 11t-28-11q-11-11-11-28t11-28l156-156Zm272-240q17 0 28.5 11.5T720-680v400q0 17-11.5 28.5T680-240q-17 0-28.5-11.5T640-280v-400q0-17 11.5-28.5T680-720Z"
-              ></path></svg
-            >Изображения</a
-          >
-        </li>
-      </ul>
-    </header>
-    <h1 class="rule-wrapper-title">{title}</h1>
-
-    <div class="rules-list-container">
-      <div class="rules-list-block">
-        <h1 id="images" class="rules-list-block-title">title</h1>
-        <p class="rules-list-block-text">Text</p>
-      </div>
-    </div>
+<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+  <div class="rules-container">
+    <ul class="rules-list">
+      <li class="rule-item">
+        <h2 class="rule-title">Чат</h2>
+        <ul class="sub-rules">
+          <li>
+            Запрещены оскорбления в адрес игроков, Администрации, их родных и
+            близких лиц и проекта, в том числе с помощью переименования
+            предметов.
+          </li>
+          <li>Запрещено чрезмерное использование ненормативной лексики.</li>
+          <li>Запрещено введение в заблуждение игроков и Администрации.</li>
+          <li>Запрещено представляться членом Администрации.</li>
+          <li>
+            Запрещена отправка множества сообщений и команд подряд (спам).
+          </li>
+          <li>
+            Запрещена отправка в /helpop сообщений, не являющихся просьбой о
+            помощи.
+          </li>
+          <li>Запрещена реклама иных серверов, сторонних сайтов, игр и пр.</li>
+          <li>Запрещён обход мута посредством переименования предмета.</li>
+        </ul>
+      </li>
+      <li class="rule-item">
+        <h2 class="rule-title">Игровой процесс</h2>
+        <h3 class="sub-title">Общее</h3>
+        <ul class="sub-rules">
+          <li>
+            Запрещено использование программ, текстурпаков и пр., дающих
+            преимущество над другими игроками.
+          </li>
+          <li>Запрещено создание и использование дюпа.</li>
+          <li>Запрещено использование багов и ошибок игры и сервера.</li>
+          <li>
+            Запрещён несанкционированный доступ к чужому аккаунту на сервере.
+          </li>
+          <li>Запрещено мешать игровому процессу других игроков.</li>
+          <li>Запрещено убивать других игроков без весомой RP-причины.</li>
+          <li>Запрещено убивать одного игрока несколько раз подряд.</li>
+          <li>
+            Запрещено использовать лаг-машины, механизмы, плагины и иное,
+            чрезмерно нагружающее сервер и нарушающее его работоспособность.
+          </li>
+          <li>
+            Запрещён шантаж, вымогательство реальных/игровых денежных средств,
+            ресурсов, информации и пр.
+          </li>
+        </ul>
+        <h3 class="sub-title">Грифферство</h3>
+        <ul class="sub-rules">
+          <li>
+            Запрещено разрушать либо видоизменять чужие постройки, в том числе
+            таблички.
+          </li>
+          <li>
+            Запрещено взаимодействовать с блоками других игроков и,
+            соответственно, запрещено брать/воровать чужие вещи.
+          </li>
+        </ul>
+        <h3 class="sub-title">Строительство</h3>
+        <ul class="sub-rules">
+          <li>
+            Запрещено строиться на чужой территории либо поблизости без
+            разрешения ответственного лица.
+          </li>
+          <li>
+            Территория считается занятой после нанесения ее границ на карте.
+            Спорные ситуации решаются по усмотрению администрации.
+          </li>
+          <li>
+            Запрещено портить ландшафт мира бесполезными
+            постройками/блоками/сущностями и чрезмерными разрушениями.
+          </li>
+        </ul>
+        <h3 class="sub-title">Войны</h3>
+        <ul class="sub-rules">
+          <li>
+            Для объявления войны глава государства/города и пр. обязан
+            оповестить противника, указав причины войны.
+          </li>
+          <li>
+            Сторона, которой объявляется война, должна ознакомиться с
+            оповещением о начале войны и принять её.
+          </li>
+          <li>
+            Война между сторонами может быть остановлена Администрацией в случае
+            установления нарушений.
+          </li>
+          <li>
+            Запрещено объявлять войну стороне, не имеющей паритета по силе,
+            ресурсам и людям.
+          </li>
+          <li>
+            Во время войны запрещено необоснованное разрушение строений либо
+            порча ландшафта.
+          </li>
+        </ul>
+      </li>
+      <li class="rule-item">
+        <h2 class="rule-title">Прочие положения</h2>
+        <p class="rule-dop">
+          Мера наказания зависит от частных условий дела и решения
+          Администрации. Окончательная трактовка правил зависит от Администрации
+          и может меняться соотносительно конкретной ситуации. Апелляции по
+          вопросам наказаний и жалобы принимаются в личных сообщениях
+          Администраторов в «ВКонтакте».
+        </p>
+      </li>
+      <li class="rule-item">
+        <h2 class="rule-title">Города</h2>
+        <p class="rule-dop">
+          Для создания своего поселения/города/государства необходимо, чтобы
+          количество будущих жителей сепарируемой стороны составляло как минимум
+          5 человек. После набора необходимого числа игроков необходимо
+          обратиться с соответствующим заявлением в государственные органы
+          начального города. По согласованию с администрацией предусматривается
+          создание поселений с меньшим количеством жителей.
+        </p>
+      </li>
+    </ul>
   </div>
+
+  <style>
+    .rules-container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .rules-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .rule-item {
+      margin-bottom: 20px;
+    }
+
+    .rule-title {
+      font-family: gilroy-bold;
+      letter-spacing: 1px;
+      font-size: 28px;
+      color: var(--color-black);
+      border-bottom: 2px solid var(--color-accent);
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    .sub-title {
+      font-family: gilroy-bold;
+      letter-spacing: 1px;
+      font-size: 20px;
+      color: var(--color-black);
+    }
+    .rule-description {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .sub-rules {
+      list-style: decimal;
+      margin-left: 20px;
+    }
+    .rule-dop {
+      font-size: 0.95rem;
+      color: #666;
+    }
+    .sub-rules li {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .main-title {
+        font-size: 2rem;
+        margin-bottom: 15px;
+      }
+
+      .rule-title {
+        font-size: 1.5rem;
+        border-bottom: 1.5px solid var(--color-accent);
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+      }
+
+      .rule-description {
+        font-size: 0.9rem;
+      }
+
+      .sub-rules {
+        margin-left: 15px;
+      }
+
+      .sub-rules li {
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .main-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .rule-description {
+        font-size: 0.85rem;
+      }
+
+      .sub-rules {
+        margin: 0;
+        padding: 0;
+      }
+
+      .sub-rules li {
+        font-size: 0.8rem;
+      }
+    }
+
+    .list-link-icon {
+      fill: var(--color-green-200);
+      width: 24px;
+      height: 24px;
+    }
+    .rule-wrapper-title {
+      text-align: center;
+    }
+    .rules-list-container {
+      max-width: 1440px;
+      margin: 1rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .rule-wrapper-header {
+      position: sticky;
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+      background-color: var(--color-green-400);
+    }
+    .header-links-list {
+      gap: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .header-links-item {
+      background-color: var(--color-green-500);
+      align-items: center;
+    }
+    .header-links-item-link {
+      letter-spacing: 1px;
+      padding-left: 5px;
+      padding-right: 5px;
+      font-size: 18px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-self: center;
+      color: white;
+      text-decoration: none;
+      font-family: gilroy-black;
+    }
+  </style>
 </Layout>
-<style>
-  .rule-wrapper {
-    max-width: 1440px;
-    margin: 0 auto;
-    width: 100%;
-  }
-  .list-link-icon {
-    fill: var(--color-green-200);
-    width: 24px;
-    height: 24px;
-  }
-  .rule-wrapper-title {
-    text-align: center;
-  }
-  .rules-list-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  .rule-wrapper-header {
-    position: sticky;
-    margin: 0 auto;
-    text-align: center;
-    width: 100%;
-    background-color: var(--color-green-400);
-  }
-  .header-links-list {
-    gap: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  .header-links-item {
-    background-color: var(--color-green-500);
-    align-items: center;
-  }
-  .header-links-item-link {
-    letter-spacing: 1px;
-    padding-left: 5px;
-    padding-right: 5px;
-    font-size: 18px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-self: center;
-    color: white;
-    text-decoration: none;
-    font-family: gilroy-black;
-  }
-</style>
