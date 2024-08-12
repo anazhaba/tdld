@@ -97,19 +97,7 @@
     </div>
   </div>
 </div>
-<style lang="scss">
-  @mixin block-heading {
-    margin: 0;
-    color: var(--color-accent);
-    background: var(--color-green-400);
-    padding: 1rem;
-    font-size: 2rem;
-    border-radius: 15px;
-
-    @media (max-width: 1080px) {
-      font-size: 1.5rem;
-    }
-  }
+<style>
   * {
     font-family: Gilroy-bold;
   }
@@ -121,7 +109,15 @@
   .seasons-heading,
   .create-heading,
   .coocking-heading {
-    @include block-heading();
+    margin: 0;
+    color: var(--color-accent);
+    background: var(--color-green-400);
+    padding: 1rem;
+    font-size: 2rem;
+    border-radius: 15px;
+    @media (max-width: 1080px) {
+      font-size: 1.5rem;
+    }
   }
   .coocking-heading:before {
     content: "🧑‍🍳";
