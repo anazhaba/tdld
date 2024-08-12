@@ -9,6 +9,62 @@ const pageIcon = "/icons/about.svg";
 ---
 
 <Layout title={title} {subtitle} icon={pageIcon} description={description}>
-  <h1>О нас</h1>
+  <div class="about-wrapper">
+    <div class="about-container">
+      <p class="about-text">
+        <span class="about-highlight">ToadLand</span> — это проект, который возник
+        из личной инициативы, и трудно сказать, что наша цель — исключительно коммерция.
+        Средства, которые вносят игроки, играя на нашем сервере, — это необходимый
+        минимум, который помогает нам покрывать часть затрат на поддержание и развитие
+        проекта.
+      </p>
+      <p class="about-text">
+        Мы искренне хотим, чтобы наши игроки с интересом и комфортом проводили
+        время на сервере. Поэтому мы постоянно работаем над улучшением проекта,
+        прислушиваясь к вашему мнению, которое является главным мерилом наших
+        усилий.
+      </p>
+      <p class="about-text">
+        <span class="about-highlight">ToadLand</span>, как и наша команда,
+        только начинает свой путь. На протяжении этого времени у нас были
+        тяжелые моменты, когда как разработчики, так и игроки сталкивались с
+        трудностями. Сегодня мы продолжаем встречать вызовы, но, благодаря опыту
+        и вашей поддержке, преодолеваем их.
+      </p>
+      <p class="about-text">
+        Мы благодарны каждому, кто поддерживал и продолжает поддерживать нас.
+        Без вас <span class="about-highlight">ToadLand</span> не стал бы тем, чем
+        он есть сегодня.❤️
+      </p>
+    </div>
+  </div>
 </Layout>
 <ViewTransitions />
+<style>
+  .about-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .about-subheading {
+    font-family: gilroy-heavy;
+    font-size: 1.75rem;
+    color: #ffb300;
+    margin-top: 20px;
+  }
+
+  .about-text {
+    font-family: gilroy-bold;
+    font-size: 26px;
+    margin-bottom: 15px;
+    text-align: left;
+    line-height: 1.6;
+  }
+
+  .about-highlight {
+    color: #1d1e18;
+    letter-spacing: -1px;
+    font-family: gilroy-black;
+  }
+</style>
