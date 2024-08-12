@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getFiles } from "../utils/getFiles";
+import JSZip from "jszip";
 const directory = "./public/mods";
 const files = getFiles(directory);
 const title = "Toadland";
@@ -13,6 +14,11 @@ const pageIcon = "/icons/files.svg";
 <Layout title={title} {subtitle} icon={pageIcon} description={description}>
   <div class="mods-wrapper">
     <div class="mods-container">
+      <span class="download-all-container">
+        <button class="mods-download-all-link" id="download-all">
+          Скачать все моды архивом
+        </button></span
+      >
       <ul class="mods-list">
         {
           files.map((file) => (
@@ -34,6 +40,32 @@ const pageIcon = "/icons/files.svg";
     </div>
   </div>
 </Layout>
+
+<script>
+  import JSZip from "jszip";
+
+  async function downloadAllMods() {
+    const zip = new JSZip();
+    const files = [...document.querySelectorAll(".mods-download-link")];
+
+    for (const file of files) {
+      const anchor = file as HTMLAnchorElement;
+      const response = await fetch(anchor.href);
+      const blob = await response.blob();
+      zip.file(anchor.innerText.trim(), blob);
+    }
+
+    const content = await zip.generateAsync({ type: "blob" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(content);
+    link.download = "mods.zip";
+    link.click();
+  }
+
+  document
+    .getElementById("download-all")
+    .addEventListener("click", downloadAllMods);
+</script>
 <style>
   .mods-container {
     max-width: 1440px;
@@ -54,6 +86,7 @@ const pageIcon = "/icons/files.svg";
       grid-template-columns: 1fr;
     }
   }
+
   .mod-download-icon {
     margin-right: 6px;
     background-color: var(--color-green-400);
@@ -63,6 +96,7 @@ const pageIcon = "/icons/files.svg";
     height: 24px;
     fill: var(--color-green-100);
   }
+
   .mods-list-item {
     display: flex;
     align-items: center;
@@ -93,8 +127,38 @@ const pageIcon = "/icons/files.svg";
     background-color: var(--color-green-400);
     transition: 0.2s;
   }
+
   .mods-download-link:hover svg {
     background-color: var(--color-green-500);
     transition: 0.2s;
+  }
+
+  .mods-download-all-link {
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    display: flex;
+    width: 100%;
+    border: none;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+    font-family: Gilroy-bold;
+    padding: 2rem;
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 15px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .mods-download-all-link:hover {
+    background-color: var(--color-accent-hover);
+  }
+  .download-all-container {
+    display: flex;
+    justify-content: center;
   }
 </style>
