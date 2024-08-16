@@ -1,0 +1,34 @@
+---
+import Layout from "../layouts/Layout.astro";
+const title = "Toadland";
+const subtitle = "Карта";
+const description =
+  "Приватный minecraft сервер 1.20.1 с модами и дружелюбной атмосферой! | Карта сервера";
+const pageIcon = "/icons/map.svg";
+---
+
+<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+  <div class="map-wrapper">
+    <iframe class="map-iframe" src="https://map.toadland.ru"></iframe>
+  </div>
+</Layout>
+<style>
+  .main--header,
+  .main-footer {
+    visibility: hidden;
+  }
+  .map-wrapper {
+    height: 100%;
+    width: 100%;
+  }
+  .map-iframe {
+    border: none;
+    height: 100%;
+    width: 100%;
+  }
+  .full-map-button {
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+  }
+</style>
