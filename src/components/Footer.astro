@@ -2,19 +2,24 @@
   <div class="footer-menu-block">
     <ul class="footer-menu">
       <li class="footer-menu-element">
-        <a href="#" class="footer-menu-link"></a>
+        <a href="https://map.toadland.ru" class="footer-menu-link"
+          ><img class="footer-link-icon" src="/icons/map.svg" alt="" /></a
+        >
       </li>
       <li class="footer-menu-element">
-        <a href="#" class="footer-menu-link">Map</a>
+        <a href="/mods" class="footer-menu-link"
+          ><img class="footer-link-icon" src="/icons/files.svg" alt="" /></a
+        >
       </li>
       <li class="footer-menu-element">
-        <a href="#" class="footer-menu-link">Files</a>
+        <a href="#" class="footer-menu-link"
+          ><img class="footer-link-icon" src="/icons/vk.svg" alt="" /></a
+        >
       </li>
       <li class="footer-menu-element">
-        <a href="#" class="footer-menu-link">Vk</a>
-      </li>
-      <li class="footer-menu-element">
-        <a href="#" class="footer-menu-link">Tg</a>
+        <a href="#" class="footer-menu-link"
+          ><img class="footer-link-icon" src="/icons/tg.svg" alt="" /></a
+        >
       </li>
     </ul>
   </div>
@@ -22,26 +27,33 @@
 
 <style>
   .main--footer {
-    padding: 1rem;
+    padding: 2rem;
     grid-area: footer;
-    background-color: #4caf50;
+    background-color: var(--color-green-400);
     color: white;
     text-align: center;
   }
   .footer-menu-block {
     display: flex;
-
     justify-content: center;
   }
   .footer-menu {
+    justify-content: center;
     list-style: none;
+    gap: 20px;
     color: white;
     padding: 0;
     display: flex;
     flex-direction: row;
+    align-items: center;
     flex-wrap: wrap;
   }
-  .footer-menu-element {
-    padding: 5px;
+  .footer-link-icon {
+    background-color: var(--color-green-500);
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 48px;
+    height: 48px;
+    fill: var(--color-green-100);
   }
 </style>

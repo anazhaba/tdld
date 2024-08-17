@@ -109,6 +109,12 @@ const { title, subtitle, icon } = Astro.props;
   </div>
 </div>
 <style>
+  .header-title::selection,
+  .header-title-link-back::selection,
+  .page-icon::selection,
+  .unique-menu-links > a > span::selection {
+    background: initial;
+  }
   .main--header {
     grid-area: header;
     background-color: var(--color-green-400);
@@ -402,6 +408,7 @@ const { title, subtitle, icon } = Astro.props;
   }
 
   .unique-menu-overlay.closing {
+    background-color: var(--color-bg);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease-in-out;
