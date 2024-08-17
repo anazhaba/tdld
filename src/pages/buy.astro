@@ -9,9 +9,359 @@ const pageIcon = "/icons/buy.svg";
 
 <Layout title={title} {subtitle} icon={pageIcon} description={description}>
   <div class="buy-wrapper">
-    <div class="buy-container">
-      <h1>Присоединиться к серверу</h1>
+    <h2 class="buy-heading">
+      Здесь Вы можете оплатить игру на сервере или же совершить пожертвование на
+      развитие проекта через форму оплаты ниже.
+    </h2>
+    <p class="buy-text">
+      Обязательно напишите нам в личные сообщения сообщества ВКонтакте после
+      оплаты по форме ниже, чтобы мы могли выслать Вам все необходимые данные!
+    </p>
+    <div class="donate-container">
+      <section class="donate-section">
+        <button class="donate-button"
+          ><svg
+            class="donate-button-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 -960 960 960"
+            ><path
+              d="M640-440 474-602q-31-30-52.5-66.5T400-748q0-55 38.5-93.5T532-880q32 0 60 13.5t48 36.5q20-23 48-36.5t60-13.5q55 0 93.5 38.5T880-748q0 43-21 79.5T807-602L640-440Zm0-112 109-107q19-19 35-40.5t16-48.5q0-22-15-37t-37-15q-14 0-26.5 5.5T700-778l-60 72-60-72q-9-11-21.5-16.5T532-800q-22 0-37 15t-15 37q0 27 16 48.5t35 40.5l109 107ZM280-220l278 76 238-74q-5-9-14.5-15.5T760-240H558q-27 0-43-2t-33-8l-93-31 22-78 81 27q17 5 40 8t68 4q0-11-6.5-21T578-354l-234-86h-64v220ZM40-80v-440h304q7 0 14 1.5t13 3.5l235 87q33 12 53.5 42t20.5 66h80q50 0 85 33t35 87v40L560-60l-280-78v58H40Zm80-80h80v-280h-80v280Zm520-546Z"
+            ></path></svg
+          >Пожертвовать</button
+        >
+      </section>
     </div>
+    <!-- Модальное окно -->
+    <div id="donate-modal" class="modal-background">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <ul>
+          <li>
+            <a href="https://yoomoney.ru" class="donate-option">
+              <strong>Yoomoney</strong>
+              <p>Перевод по карте, из кошелька Yoomoney.</p>
+            </a>
+          </li>
+          <li>
+            <div class="donate-option">
+              <strong>Номер карты</strong>
+              <p class="card-number" data-number="1234 5678 9012 3456">
+                1234 5678 9012 3456
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="notification" class="notification">Номер карты скопирован!</div>
+    <section class="buy-faq">
+      <h2>Часто задаваемые вопросы</h2>
+      <div class="faq-item">
+        <button class="faq-title">Какой срок действия подписки?</button>
+        <div class="faq-content">
+          <p>
+            Мы предлагаем различные варианты подписки – от месячной до годовой.
+            Выберите наиболее удобный для вас.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-title">Могу ли я изменить план после покупки?</button
+        >
+        <div class="faq-content">
+          <p>
+            Да, вы можете изменить свой план или продлить подписку в любое
+            время.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-title"
+          >Как получить помощь, если возникли проблемы?</button
+        >
+        <div class="faq-content">
+          <p>
+            Вы можете обратиться в нашу службу поддержки через [контактную
+            информацию] для получения оперативной помощи.
+          </p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-title"
+          >Какие модификации установлены на сервере?</button
+        >
+        <div class="faq-content">
+          <p>
+            Наш сервер поддерживает [перечислите модификации и особенности, если
+            есть].
+          </p>
+        </div>
+      </div>
+    </section>
   </div>
 </Layout>
-<style></style>
+<style>
+  .buy-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .buy-intro,
+  .buy-features,
+  .buy-purchase {
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    color: #333;
+  }
+
+  ul,
+  ol {
+    padding-left: 20px;
+  }
+
+  .faq-item {
+    margin-bottom: 10px;
+  }
+
+  .faq-title {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .faq-content {
+    display: none;
+    padding: 10px;
+    background-color: #f1f1f1;
+  }
+  .donate-container {
+    display: flex;
+    justify-content: center;
+  }
+  .donate-section {
+    padding: 20px;
+    border-radius: 14px;
+    position: relative;
+  }
+
+  .donate-button {
+    cursor: pointer;
+    color: #fff;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    background-color: var(--color-green-300);
+    padding: 1rem;
+    text-transform: uppercase;
+    font-family: gilroy-bold;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+  }
+  .donate-button-icon {
+    background-color: var(--color-green-400);
+    padding: 0.5rem;
+    border-radius: 10px;
+    width: 24px;
+    height: 24px;
+    fill: var(--color-green-100);
+    margin-right: 5px;
+  }
+  /* Модальное окно */
+  .modal-background {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.049);
+    backdrop-filter: blur(5px); /* Добавлено размытие фона */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+  }
+
+  .modal-background.open {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+  }
+
+  .modal ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .modal li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .modal li:last-child {
+    border-bottom: none;
+  }
+
+  .donate-option {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .donate-option a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .card-number {
+    cursor: pointer;
+    color: #007bff;
+    font-weight: bold;
+  }
+
+  .notification {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Анимации */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const faqTitles = document.querySelectorAll(".faq-title");
+
+    faqTitles.forEach((title) => {
+      title.addEventListener("click", function () {
+        const content = this.nextElementSibling;
+
+        // Убедимся, что content действительно является HTMLElement
+        if (content instanceof HTMLElement) {
+          // Закрываем другие открытые элементы
+          document.querySelectorAll(".faq-content").forEach((item) => {
+            if (item !== content) {
+              (item as HTMLElement).style.display = "none";
+            }
+          });
+
+          // Переключаем отображение текущего элемента
+          content.style.display =
+            content.style.display === "block" ? "none" : "block";
+        }
+      });
+    });
+  });
+</script>
+<script data-astro-rerun>
+  document.addEventListener("DOMContentLoaded", function () {
+    const donateButton = document.querySelector(".donate-button");
+    const modal = document.getElementById("donate-modal");
+    const closeButton = document.querySelector(".close-button");
+    const cardNumberElements = document.querySelectorAll(".card-number");
+    const notification = document.getElementById("notification");
+
+    // Показать модальное окно при клике на кнопку
+    if (donateButton) {
+      donateButton.addEventListener("click", function () {
+        if (modal) {
+          modal.classList.add("open");
+          document.body.style.overflow = "hidden"; // Запрет прокрутки страницы
+        }
+      });
+    }
+
+    // Закрыть модальное окно при клике на кнопку закрытия
+    if (closeButton) {
+      closeButton.addEventListener("click", function () {
+        if (modal) {
+          modal.classList.remove("open");
+          document.body.style.overflow = "auto"; // Разрешение прокрутки страницы
+        }
+      });
+    }
+
+    // Закрыть модальное окно при клике вне его области
+    window.addEventListener("click", function (event) {
+      if (event.target === modal) {
+        if (modal) {
+          modal.classList.remove("open");
+          document.body.style.overflow = "auto"; // Разрешение прокрутки страницы
+        }
+      }
+    });
+
+    // Копирование номера карты в буфер обмена и показ уведомления
+    cardNumberElements.forEach((cardNumberElement) => {
+      cardNumberElement.addEventListener("click", function () {
+        const cardNumber = this.getAttribute("data-number");
+        if (cardNumber) {
+          navigator.clipboard.writeText(cardNumber).then(() => {
+            if (notification) {
+              notification.style.display = "block";
+              setTimeout(() => {
+                notification.style.display = "none";
+              }, 2000);
+            }
+          });
+        }
+      });
+    });
+  });
+</script>

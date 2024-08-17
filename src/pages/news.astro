@@ -19,26 +19,27 @@ async function fetchRSS() {
 const rssItems = await fetchRSS();
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description} >
-<div class="news-wrapper">
-    {rssItems.map(item => (
-      <div class="post">
-        <!-- Отображение заголовка -->
-        <h2>{item.title}</h2>
-        
-        <!-- Отображение HTML-содержимого поста из <description> с использованием компонента -->
-        <HtmlContent html={item.content || item.description} />
-
-        <!-- Дата публикации -->
-        <p>{new Date(item.pubDate).toLocaleDateString()}</p>
-      </div>
-    ))}
-    </div>
+<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+  <div class="news-wrapper">
+    {
+      rssItems.map((item) => (
+        <div class="post">
+          <h2>{item.title}</h2>
+          <HtmlContent html={item.content || item.description} />
+          <p>{new Date(item.pubDate).toLocaleDateString()}</p>
+        </div>
+      ))
+    }
+  </div>
 </Layout>
 <style>
   .news-wrapper {
     max-width: 1440px;
     margin: 0 auto;
+  }
+  .post b {
+    font-size: 2rem;
+    color: red;
   }
   .post {
     padding: 15px;
@@ -47,12 +48,12 @@ const rssItems = await fetchRSS();
     background-color: var(--color-bg);
     max-width: 768px;
   }
-  description {
+  .post > title {
     color: red;
   }
   .post img {
     max-width: 768px;
-    height: 100%;
+    height: 400px;
     margin-top: 10px;
   }
 
