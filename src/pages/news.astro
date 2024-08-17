@@ -5,8 +5,63 @@ const subtitle = "Новости";
 const description =
   "Приватный minecraft сервер 1.20.1 с модами и дружелюбной атмосферой! | Новости сервера";
 const pageIcon = "/icons/news.svg";
+import rssParser from "rss-parser";
+import HtmlContent from "../components/HtmlContent.jsx";
+
+const feedUrl = "https://rsshub.app/telegram/channel/toadland";
+
+async function fetchRSS() {
+  const parser = new rssParser();
+  const feed = await parser.parseURL(feedUrl);
+  return feed.items;
+}
+
+const rssItems = await fetchRSS();
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
-  <h1>Новости</h1>
+<Layout title={title} {subtitle} icon={pageIcon} description={description} >
+<div class="news-wrapper">
+    {rssItems.map(item => (
+      <div class="post">
+        <!-- Отображение заголовка -->
+        <h2>{item.title}</h2>
+        
+        <!-- Отображение HTML-содержимого поста из <description> с использованием компонента -->
+        <HtmlContent html={item.content || item.description} />
+
+        <!-- Дата публикации -->
+        <p>{new Date(item.pubDate).toLocaleDateString()}</p>
+      </div>
+    ))}
+    </div>
 </Layout>
+<style>
+  .news-wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  .post {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: var(--color-bg);
+    max-width: 768px;
+  }
+  description {
+    color: red;
+  }
+  .post img {
+    max-width: 768px;
+    height: 100%;
+    margin-top: 10px;
+  }
+
+  .post h2 {
+    margin-bottom: 10px;
+    font-size: 1.5em;
+    font-family: gilroy-bold;
+  }
+  .post p {
+    font-family: gilroy-black;
+  }
+</style>

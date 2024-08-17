@@ -6,11 +6,9 @@ const subtitle = "О нас";
 const description =
   "Приватный minecraft сервер 1.20.1 с модами и дружелюбной атмосферой! | О нас";
 const pageIcon = "/icons/about.svg";
-import ToadLandEffect from "../components/ToadLandEffect.astro";
 ---
 
 <Layout title={title} {subtitle} icon={pageIcon} description={description}>
-  <ToadLandEffect client:load />
   <div class="about-wrapper">
     <div class="about-container">
       <p class="about-text">
