@@ -35,56 +35,72 @@ const pageIcon = "/icons/buy.svg";
     <div id="donate-modal" class="modal-background">
       <div class="modal-content">
         <span class="close-button">&times;</span>
-        <ul>
-          <li>
+        <ul class="modal-options">
+          <li class="modal-option yoomoney-container">
             <a href="https://yoomoney.ru" class="donate-option">
-              <strong>Yoomoney</strong>
-              <p>Перевод по карте, из кошелька Yoomoney.</p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="modal-content-icon"
+                viewBox="0 -960 960 960"
+              >
+                <path
+                  d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
+                ></path>
+              </svg>
+              <h3 class="modal-heading">Yoomoney</h3>
             </a>
           </li>
-          <li>
-            <div class="donate-option">
-              <strong>Номер карты</strong>
-              <p class="card-number" data-number="1234 5678 9012 3456">
-                1234 5678 9012 3456
-              </p>
-            </div>
+          <li class="modal-option card-container">
+            <span class="card-number" data-number="1234 5678 9012 3456">
+              <svg
+                class="modal-content-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 -960 960 960"
+              >
+                <path
+                  d="M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"
+                ></path>
+              </svg>
+              <h3 class="modal-heading">Номер карты</h3>
+            </span>
           </li>
         </ul>
       </div>
     </div>
+    <div id="notification" class="notification">Номер карты скопирован</div>
 
-    <div id="notification" class="notification">Номер карты скопирован!</div>
     <section class="buy-faq">
-      <h2>Часто задаваемые вопросы</h2>
+      <h2 class="faq-heading">Ответы на вопросы</h2>
       <div class="faq-item">
-        <button class="faq-title">Какой срок действия подписки?</button>
-        <div class="faq-content">
-          <p>
-            Мы предлагаем различные варианты подписки – от месячной до годовой.
-            Выберите наиболее удобный для вас.
-          </p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-title">Могу ли я изменить план после покупки?</button
+        <button class="faq-title"
+          >Имеет ли срок действия купленая проходка?</button
         >
         <div class="faq-content">
           <p>
-            Да, вы можете изменить свой план или продлить подписку в любое
-            время.
+            На данный момент, мы никак не ограничиваем по сезонам\времени доступ
+            к серверу
           </p>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-title"
-          >Как получить помощь, если возникли проблемы?</button
+          >Могу ли я вернуть деньги если мне не понравится сервер?</button
         >
         <div class="faq-content">
           <p>
-            Вы можете обратиться в нашу службу поддержки через [контактную
-            информацию] для получения оперативной помощи.
+            Да, вы можете вернуть средства. Но только в первый день игры (от
+            момента первого захода на сервер). Все комиссии за обратный перевод
+            перекладываются на получателя.
           </p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-title"
+          >Я хочу перед покупкой связаться с администрацией, как мне это
+          сделать?</button
+        >
+        <div class="faq-content">
+          <p>Вы можете обратиться к ССЫЛКА</p>
         </div>
       </div>
       <div class="faq-item">
@@ -92,10 +108,7 @@ const pageIcon = "/icons/buy.svg";
           >Какие модификации установлены на сервере?</button
         >
         <div class="faq-content">
-          <p>
-            Наш сервер поддерживает [перечислите модификации и особенности, если
-            есть].
-          </p>
+          <p>Со списком модификаций вы можете ознакомиться по ССЫЛКА</p>
         </div>
       </div>
     </section>
@@ -103,6 +116,7 @@ const pageIcon = "/icons/buy.svg";
 </Layout>
 <style>
   .buy-wrapper {
+    padding: 20px;
     max-width: 1440px;
     margin: 0 auto;
   }
@@ -125,22 +139,33 @@ const pageIcon = "/icons/buy.svg";
   .faq-item {
     margin-bottom: 10px;
   }
-
+  .faq-heading {
+    text-align: center;
+    font-family: gilroy-black;
+    font-size: 2rem;
+  }
   .faq-title {
-    background-color: #007bff;
+    background-color: var(--color-green-300);
     color: #fff;
     border: none;
-    padding: 10px;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
     width: 100%;
     text-align: left;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1.5rem;
+    font-family: gilroy-medium;
   }
 
   .faq-content {
     display: none;
     padding: 10px;
-    background-color: #f1f1f1;
+    background-color: var(--color-green-100);
+    font-family: gilroy-medium;
+    font-size: 1.5rem;
+  }
+  .faq-content > p {
+    margin: 10px;
   }
   .donate-container {
     display: flex;
@@ -155,13 +180,13 @@ const pageIcon = "/icons/buy.svg";
   .donate-button {
     cursor: pointer;
     color: #fff;
-    font-size: 1.5rem;
     border: none;
     outline: none;
     background-color: var(--color-green-300);
     padding: 1rem;
     text-transform: uppercase;
     font-family: gilroy-bold;
+    font-size: 1.5rem;
     border-radius: 15px;
     display: flex;
     align-items: center;
@@ -177,92 +202,115 @@ const pageIcon = "/icons/buy.svg";
   }
   /* Модальное окно */
   .modal-background {
-    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.049);
-    backdrop-filter: blur(5px); /* Добавлено размытие фона */
-    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    visibility: hidden;
     transition:
       opacity 0.3s ease,
       visibility 0.3s ease;
+    z-index: 1000;
   }
-
+  .modal-content-icon {
+    fill: #fff;
+    height: 24px;
+    width: 24px;
+    background-color: var(--color-green-400);
+    padding: 0.5rem;
+    border-radius: 10px;
+  }
   .modal-background.open {
-    display: flex;
     opacity: 1;
     visibility: visible;
-    animation: fadeIn 0.3s ease-out;
   }
-
+  .card-number {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .donate-option {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
   .modal-content {
     background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 80%;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
     max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
     position: relative;
-    animation: fadeIn 0.3s ease-out;
+    text-align: center;
   }
 
   .close-button {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 15px;
     font-size: 24px;
     cursor: pointer;
     color: #333;
   }
 
-  .modal ul {
+  .modal-heading {
+    font-family: "Gilroy-Bold", sans-serif;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+
+  .modal-options {
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  .modal li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-  }
-
-  .modal li:last-child {
-    border-bottom: none;
-  }
-
-  .donate-option {
+  .modal-option {
+    margin-bottom: 20px;
     display: flex;
-    flex-direction: column;
-  }
-
-  .donate-option a {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-  }
-
-  .card-number {
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 15px;
+    background-color: var(--color-green-300);
+    border-radius: 12px;
     cursor: pointer;
-    color: #007bff;
-    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
   }
 
+  .modal-content-icon {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+  }
   .notification {
-    display: none;
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     background-color: #28a745;
     color: #fff;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    z-index: 1337;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
   }
 
   /* Анимации */
@@ -347,18 +395,31 @@ const pageIcon = "/icons/buy.svg";
       }
     });
 
+    // Функция для показа уведомления
+    function showNotification() {
+      if (notification) {
+        notification.style.opacity = "0"; // Начальное состояние для анимации появления
+        notification.style.visibility = "visible";
+        notification.style.animation = "fadeIn 0.3s ease-out forwards"; // Анимация появления
+
+        setTimeout(() => {
+          notification.style.animation = "fadeOut 0.3s ease-out forwards"; // Анимация исчезновения
+
+          // После окончания анимации скрываем уведомление
+          setTimeout(() => {
+            notification.style.visibility = "hidden"; // Скрываем уведомление
+          }, 300); // Длительность анимации исчезновения
+        }, 2000); // Время отображения уведомления
+      }
+    }
+
     // Копирование номера карты в буфер обмена и показ уведомления
     cardNumberElements.forEach((cardNumberElement) => {
       cardNumberElement.addEventListener("click", function () {
         const cardNumber = this.getAttribute("data-number");
         if (cardNumber) {
           navigator.clipboard.writeText(cardNumber).then(() => {
-            if (notification) {
-              notification.style.display = "block";
-              setTimeout(() => {
-                notification.style.display = "none";
-              }, 2000);
-            }
+            showNotification();
           });
         }
       });
