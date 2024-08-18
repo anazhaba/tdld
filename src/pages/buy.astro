@@ -182,7 +182,7 @@ const pageIcon = "/icons/buy.svg";
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.053);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -198,6 +198,7 @@ const pageIcon = "/icons/buy.svg";
     font-family: gilroy-bold;
   }
   .modal-content-icon {
+    transition: 0.2s;
     fill: #fff;
     height: 24px;
     width: 24px;
@@ -220,6 +221,14 @@ const pageIcon = "/icons/buy.svg";
     display: flex;
     flex-direction: row;
     align-items: center;
+  }
+  .modal-option:hover {
+    background-color: var(--color-green-400);
+    transition: 0.2s;
+  }
+  .modal-option:hover .modal-content-icon {
+    background: var(--color-green-500);
+    transition: 0.2s;
   }
   .modal-content {
     background-color: #fff;
@@ -256,6 +265,7 @@ const pageIcon = "/icons/buy.svg";
   }
 
   .modal-option {
+    transition: 0.2s;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
@@ -283,8 +293,8 @@ const pageIcon = "/icons/buy.svg";
     left: 50%;
     background-color: var(--color-green-400);
     color: #fff;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 1rem;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     opacity: 0;
     z-index: 1337;
