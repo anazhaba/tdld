@@ -189,6 +189,7 @@
     color: var(--color-black);
   }
 </style>
+
 <!--faq/buy-page -->
 <script type="module">
   function setupFAQInteraction() {
@@ -201,13 +202,11 @@
       const icon = question.querySelector(".faq-icon");
       const isOpen = answer.style.maxHeight;
 
-      // Открываем или закрываем ответ
       if (isOpen) {
         answer.style.maxHeight = null;
         icon.style.transform = "rotate(0deg)";
         openItems.splice(openItems.indexOf(answer), 1);
       } else {
-        // Закрываем другие открытые элементы, если больше 2-х открыто
         if (openItems.length >= 2) {
           const oldestOpenItem = openItems.shift();
           const oldestIcon =
@@ -216,33 +215,28 @@
           oldestIcon.style.transform = "rotate(0deg)";
         }
 
-        // Открываем текущий элемент
         answer.style.maxHeight = answer.scrollHeight + "px";
         icon.style.transform = "rotate(180deg)";
         openItems.push(answer);
       }
     }
 
-    // Удалим все предыдущие обработчики и добавим новые
     questions.forEach((question) => {
-      question.removeEventListener("click", toggleFAQ); // Удалим, чтобы не дублировать
-      question.addEventListener("click", toggleFAQ); // Добавим обработчик
+      question.removeEventListener("click", toggleFAQ);
+      question.addEventListener("click", toggleFAQ);
     });
   }
 
   function initFAQ() {
     const title = document.querySelector(".faq-title");
 
-    // Отключаем кликабельность заголовка
     if (title) {
       title.style.pointerEvents = "none";
     }
 
-    // Инициализация взаимодействий с FAQ
     setupFAQInteraction();
   }
 
-  // Используем MutationObserver для отслеживания изменений в DOM
   function observeDOMChanges() {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
@@ -250,20 +244,24 @@
           mutation.addedNodes.length > 0 ||
           mutation.removedNodes.length > 0
         ) {
-          initFAQ(); // Повторная инициализация при изменении DOM
+          initFAQ();
         }
       });
     });
 
-    // Наблюдаем за изменениями в body
     observer.observe(document.body, { childList: true, subtree: true });
   }
 
-  // Запуск скрипта при загрузке и наблюдение за изменениями
+  window.addEventListener("load", () => {
+    initFAQ();
+    observeDOMChanges();
+  });
+
+  // Также добавляем Astro события
   document.addEventListener("astro:page-load", initFAQ);
   document.addEventListener("astro:after-swap", initFAQ);
   document.addEventListener("DOMContentLoaded", () => {
     initFAQ();
-    observeDOMChanges(); // Начинаем наблюдать за изменениями DOM
+    observeDOMChanges();
   });
 </script>
