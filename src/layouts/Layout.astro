@@ -151,38 +151,4 @@ const { title, description, subtitle, icon }: Props = Astro.props;
     </div>
   </body>
 </html>
-<!--faq/buy-page -->
-<script type="module">
-  document.addEventListener("astro:page-load", () => {
-    const questions = document.querySelectorAll(".faq-question");
-    const openItems = [];
 
-    questions.forEach((question) => {
-      question.addEventListener("click", () => {
-        const answer = question.nextElementSibling;
-        const icon = question.querySelector(".faq-icon");
-        const isOpen = answer.style.maxHeight;
-
-        if (isOpen) {
-          answer.style.maxHeight = null;
-          icon.style.transform = "rotate(0deg)";
-
-          openItems.splice(openItems.indexOf(answer), 1);
-        } else {
-          if (openItems.length >= 2) {
-            const oldestOpenItem = openItems.shift();
-            const oldestIcon =
-              oldestOpenItem.previousElementSibling.querySelector(".faq-icon");
-            oldestOpenItem.style.maxHeight = null;
-            oldestIcon.style.transform = "rotate(0deg)";
-          }
-
-          answer.style.maxHeight = answer.scrollHeight + "px";
-          icon.style.transform = "rotate(180deg)";
-
-          openItems.push(answer);
-        }
-      });
-    });
-  });
-</script>
