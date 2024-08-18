@@ -85,8 +85,8 @@ const pageIcon = "/icons/buy.svg";
             </span>
           </li>
         </ul>
-        <div id="notification" class="notification">Номер карты скопирован</div>
       </div>
+      <div id="notification" class="notification">Номер карты скопирован</div>
     </div>
 
     <FAQ />
@@ -275,10 +275,13 @@ const pageIcon = "/icons/buy.svg";
     height: 24px;
   }
   .notification {
-    position: fixed;
-    top: 20px;
+    text-wrap: wrap;
+    font-size: 2rem;
+    font-family: gilroy-black;
+    position: absolute;
+    bottom: 20px;
     left: 50%;
-    background-color: #28a745;
+    background-color: var(--color-green-400);
     color: #fff;
     padding: 10px;
     border-radius: 5px;
