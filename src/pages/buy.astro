@@ -75,24 +75,30 @@ const pageIcon = "/icons/buy.svg";
     </div>
     <div id="notification" class="notification">Номер карты скопирован</div>
 
-    <section class="buy-faq">
-      <h2 class="faq-heading">Ответы на вопросы</h2>
+    <div class="faq-container">
       <div class="faq-item">
-        <button class="faq-title"
-          >Имеет ли срок действия купленая проходка?</button
-        >
-        <div class="faq-content">
+        <div class="faq-question">
+          Имеет ли срок действия купленная проходка?<img
+            src="/icons/arrow_down.svg"
+            alt="Toggle"
+            class="faq-icon"
+          />
+        </div>
+        <div class="faq-answer">
           <p>
-            На данный момент, мы никак не ограничиваем по сезонам\времени доступ
-            к серверу
+            На данный момент мы никак не ограничиваем ее по сезонам\времени.
           </p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-title"
-          >Могу ли я вернуть деньги если мне не понравится сервер?</button
-        >
-        <div class="faq-content">
+        <div class="faq-question">
+          Могу ли я вернуть деньги если мне не понравится сервер?<img
+            src="/icons/arrow_down.svg"
+            alt="Toggle"
+            class="faq-icon"
+          />
+        </div>
+        <div class="faq-answer">
           <p>
             Да, вы можете вернуть средства. Но только в первый день игры (от
             момента первого захода на сервер). Все комиссии за обратный перевод
@@ -101,36 +107,51 @@ const pageIcon = "/icons/buy.svg";
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-title"
-          >Я хочу перед покупкой связаться с администрацией, как мне это
-          сделать?</button
-        >
-        <div class="faq-content">
+        <div class="faq-question">
+          Я хочу связаться с администрацией перед покупкой<img
+            src="/icons/arrow_down.svg"
+            alt="Toggle"
+            class="faq-icon"
+          />
+        </div>
+        <div class="faq-answer">
           <p>Вы можете обратиться к ССЫЛКА</p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-title"
-          >Какие модификации установлены на сервере?</button
-        >
-        <div class="faq-content">
+        <div class="faq-question">
+          Какие модификации установленны на сервере?<img
+            src="/icons/arrow_down.svg"
+            alt="Toggle"
+            class="faq-icon"
+          />
+        </div>
+        <div class="faq-answer">
           <p>Со списком модификаций вы можете ознакомиться по ССЫЛКА</p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-title"
-          >У меня нет возможности оплатить доступ по предложенным реквизитам</button
-        >
-        <div class="faq-content">
+        <div class="faq-question">
+          У меня нет возможности оплатить доступ по предложенным реквизитам<img
+            src="/icons/arrow_down.svg"
+            alt="Toggle"
+            class="faq-icon"
+          />
+        </div>
+        <div class="faq-answer">
           <p>Вы можете написать . чтобы получить больше вариантов</p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-title"
-          >Есть ли возможность зайти бесплатно, посмотреть сервер чтобы решить
-          хочу ли я у вас играть?</button
-        >
-        <div class="faq-content">
+        <div class="faq-question">
+          Есть ли возможность зайти бесплатно, посмотреть сервер чтобы решить
+          хочу ли я у вас играть?<img
+            src="/icons/arrow_down.svg"
+            alt="Toggle"
+            class="faq-icon"
+          />
+        </div>
+        <div class="faq-answer">
           <p>
             Мы можем рассмотреть такой вариант в индивидуальном порядке.
             Напишите:
@@ -138,10 +159,14 @@ const pageIcon = "/icons/buy.svg";
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-title"
-          >За что я плачу когда делаю пожертвование?</button
-        >
-        <div class="faq-content">
+        <div class="faq-question">
+          За что я плачу когда делаю пожертвование?<img
+            src="/icons/arrow_down.svg"
+            alt="Toggle"
+            class="faq-icon"
+          />
+        </div>
+        <div class="faq-answer">
           <p>
             Все средства идут на частичную компенсацию личных затрат за хостинг.
             Мы некоммерческий проект, у нас нет никаких донатных привелегий.
@@ -150,7 +175,7 @@ const pageIcon = "/icons/buy.svg";
           </p>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </Layout>
 <style>
@@ -190,38 +215,55 @@ const pageIcon = "/icons/buy.svg";
   ol {
     padding-left: 20px;
   }
-
+  .faq-container {
+  }
   .faq-item {
     margin-bottom: 10px;
   }
-  .faq-heading {
-    text-align: center;
-    font-family: gilroy-black;
-    font-size: 2rem;
-  }
-  .faq-title {
+
+  .faq-question {
     background-color: var(--color-green-300);
     color: #fff;
     border: none;
     padding: 15px;
     border-radius: 10px 10px 0 0;
-    width: 100%;
     text-align: left;
     cursor: pointer;
     font-size: 1.5rem;
     font-family: gilroy-bold;
+    position: relative;
+    display: flex;
+    align-items: center; /* Вертикальное выравнивание иконки */
   }
 
-  .faq-content {
-    display: none;
-    padding: 10px;
+  .faq-icon {
+    margin-left: auto; /* Перемещает иконку вправо */
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
     background-color: var(--color-white);
     font-family: gilroy-medium;
     font-size: 1.2rem;
     border-radius: 0 0 10px 10px;
   }
-  .faq-content > p {
+
+  .faq-answer p {
     margin: 10px;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 300px; /* Достаточная высота для ответа */
+    padding: 15px;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(180deg); /* Поворачивает иконку при открытом состоянии */
   }
   .donate-container {
     display: flex;
@@ -237,6 +279,7 @@ const pageIcon = "/icons/buy.svg";
   }
 
   .donate-button {
+    transition: 0.2s;
     cursor: pointer;
     color: #fff;
     border: none;
@@ -258,6 +301,13 @@ const pageIcon = "/icons/buy.svg";
     height: 24px;
     fill: var(--color-green-100);
     margin-right: 5px;
+    transition: 0.2s;
+  }
+  .donate-button:hover {
+    background-color: var(--color-green-400);
+  }
+  .donate-button:hover svg {
+    background-color: var(--color-green-500);
   }
   /* Модальное окно */
   .modal-background {
@@ -363,7 +413,7 @@ const pageIcon = "/icons/buy.svg";
     position: fixed;
     bottom: 20px;
     left: 50%;
-    transform: translateX(-50%);
+
     background-color: #28a745;
     color: #fff;
     padding: 10px;
@@ -372,6 +422,7 @@ const pageIcon = "/icons/buy.svg";
     opacity: 0;
     z-index: 1337;
     visibility: hidden;
+    transform: translateX(-50%);
     transition:
       opacity 0.3s ease,
       visibility 0.3s ease;
@@ -485,6 +536,42 @@ const pageIcon = "/icons/buy.svg";
           navigator.clipboard.writeText(cardNumber).then(() => {
             showNotification();
           });
+        }
+      });
+    });
+  });
+</script>
+<script is:inline data-astro-rerun>
+  document.addEventListener("astro:page-load", () => {
+    const questions = document.querySelectorAll(".faq-question");
+    const openItems = []; // Хранит ссылки на открытые элементы
+
+    questions.forEach((question) => {
+      question.addEventListener("click", () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector(".faq-icon");
+        const isOpen = answer.style.maxHeight;
+
+        if (isOpen) {
+          // Если элемент уже открыт, просто закрываем его
+          answer.style.maxHeight = null;
+          icon.style.transform = "rotate(0deg)"; // Вернуть иконку в исходное состояние
+          // Удаляем его из массива открытых элементов
+          openItems.splice(openItems.indexOf(answer), 1);
+        } else {
+          // Закрываем все открытые элементы, если их больше двух
+          if (openItems.length >= 2) {
+            const oldestOpenItem = openItems.shift(); // Удаляем самый старый открытый элемент
+            const oldestIcon =
+              oldestOpenItem.previousElementSibling.querySelector(".faq-icon");
+            oldestOpenItem.style.maxHeight = null; // Закрываем его
+            oldestIcon.style.transform = "rotate(0deg)"; // Вернуть иконку в исходное состояние
+          }
+          // Открываем текущий элемент
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          icon.style.transform = "rotate(180deg)"; // Повернуть иконку
+          // Добавляем текущий элемент в массив открытых элементов
+          openItems.push(answer);
         }
       });
     });
