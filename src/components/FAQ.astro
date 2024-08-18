@@ -1,0 +1,195 @@
+---
+
+---
+
+<div class="faq-container">
+  <h1 class="faq-title">Ответы на вопросы</h1>
+  <div class="faq-item">
+    <div class="faq-question">
+      Имеет ли срок действия купленная проходка?<img
+        src="/icons/arrow_down.svg"
+        alt="Toggle"
+        class="faq-icon"
+      />
+    </div>
+    <div class="faq-answer">
+      <p>На данный момент мы никак не ограничиваем ее по сезонам\времени.</p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">
+      Могу ли я вернуть деньги если мне не понравится сервер?<img
+        src="/icons/arrow_down.svg"
+        alt="Toggle"
+        class="faq-icon"
+      />
+    </div>
+    <div class="faq-answer">
+      <p>
+        Да, вы можете вернуть средства. Но только в первый день игры (от момента
+        первого захода на сервер). Все комиссии за обратный перевод
+        перекладываются на получателя.
+      </p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">
+      Я хочу связаться с администрацией перед покупкой<img
+        src="/icons/arrow_down.svg"
+        alt="Toggle"
+        class="faq-icon"
+      />
+    </div>
+    <div class="faq-answer">
+      <p>
+        Связаться с администрацией возможно по <a href="#" class="faq-link"
+          >ссылке</a
+        >
+      </p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">
+      Какие модификации установленны на сервере?<img
+        src="/icons/arrow_down.svg"
+        alt="Toggle"
+        class="faq-icon"
+      />
+    </div>
+    <div class="faq-answer">
+      <p>
+        Со списком модификаций вы можете ознакомиться на отдельной <a
+          href="/mods"
+          class="faq-link">странице с модами</a
+        >
+      </p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">
+      У меня нет возможности оплатить доступ по предложенным реквизитам<img
+        src="/icons/arrow_down.svg"
+        alt="Toggle"
+        class="faq-icon"
+      />
+    </div>
+    <div class="faq-answer">
+      <p>
+        Вы можете написать <a href="/about" class="faq-link">нам</a> чтобы получить
+        больше вариантов
+      </p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">
+      Есть ли возможность зайти бесплатно, посмотреть сервер чтобы решить хочу
+      ли я у вас играть?<img
+        src="/icons/arrow_down.svg"
+        alt="Toggle"
+        class="faq-icon"
+      />
+    </div>
+    <div class="faq-answer">
+      <p>
+        Мы можем рассмотреть такой вариант в индивидуальном порядке. <a
+          href="#"
+          class="faq-link">Напишите нам</a
+        >
+      </p>
+    </div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">
+      За что я плачу когда делаю пожертвование?<img
+        src="/icons/arrow_down.svg"
+        alt="Toggle"
+        class="faq-icon"
+      />
+    </div>
+    <div class="faq-answer">
+      <p>
+        Все средства идут на частичную компенсацию личных затрат за хостинг. Мы
+        некоммерческий проект, у нас нет никаких донатных привелегий. Наша
+        команда содержит сервер из личных средств. Подробнее о нас вы можете
+        прочитать на <a href="/about" class="faq-link">одноименной странице</a>
+      </p>
+    </div>
+  </div>
+</div>
+<style>
+  .faq-container {
+    margin-top: 20px;
+  }
+  .faq-item {
+    margin-bottom: 10px;
+  }
+  .faq-question::selection {
+    background-color: initial;
+  }
+  .faq-question {
+    background-color: var(--color-green-300);
+    transition: 0.2s;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-family: gilroy-bold;
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .faq-question:hover {
+    background-color: var(--color-green-400);
+  }
+  .faq-link {
+    text-decoration: none;
+    font-family: gilroy-bold;
+    color: var(--color-green-400);
+    transition: 0.2s;
+  }
+  .faq-link:hover {
+    color: var(--color-green-500);
+  }
+  .faq-icon::selection {
+    background-color: initial;
+  }
+  .faq-icon {
+    margin-left: auto;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: var(--color-white);
+    font-family: gilroy-medium;
+    font-size: 1.2rem;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .faq-answer p {
+    margin: 10px;
+  }
+
+  .faq-item.active .faq-answer {
+    min-height: 300px;
+    padding: 15px;
+  }
+
+  .faq-item.active .faq-icon {
+    transform: rotate(180deg);
+  }
+  .faq-title {
+    text-align: center;
+    font-family: gilroy-bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: var(--color-black);
+  }
+</style>

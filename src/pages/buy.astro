@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import FAQ from "../components/FAQ.astro";
+import { fade } from "astro:transitions";
+import { ViewTransitions } from "astro:transitions";
 const title = "Toadland";
 const subtitle = "Доступ";
 const description =
@@ -7,7 +10,14 @@ const description =
 const pageIcon = "/icons/buy.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<ViewTransitions />
+<Layout
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+  transition:animate={fade({ duration: "0.5s" })}
+>
   <div class="buy-wrapper">
     <h1 class="buy-heading">
       Здесь Вы можете оплатить игру на сервере или же совершить пожертвование на
@@ -43,7 +53,11 @@ const pageIcon = "/icons/buy.svg";
         <span class="close-button">&times;</span>
         <ul class="modal-options">
           <li class="modal-option yoomoney-container">
-            <a href="https://yoomoney.ru" class="donate-option">
+            <a
+              target="_blank"
+              href="https://yoomoney.ru/to/410018078306357"
+              class="donate-option"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="modal-content-icon"
@@ -71,111 +85,11 @@ const pageIcon = "/icons/buy.svg";
             </span>
           </li>
         </ul>
+        <div id="notification" class="notification">Номер карты скопирован</div>
       </div>
     </div>
-    <div id="notification" class="notification">Номер карты скопирован</div>
 
-    <div class="faq-container">
-      <div class="faq-item">
-        <div class="faq-question">
-          Имеет ли срок действия купленная проходка?<img
-            src="/icons/arrow_down.svg"
-            alt="Toggle"
-            class="faq-icon"
-          />
-        </div>
-        <div class="faq-answer">
-          <p>
-            На данный момент мы никак не ограничиваем ее по сезонам\времени.
-          </p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          Могу ли я вернуть деньги если мне не понравится сервер?<img
-            src="/icons/arrow_down.svg"
-            alt="Toggle"
-            class="faq-icon"
-          />
-        </div>
-        <div class="faq-answer">
-          <p>
-            Да, вы можете вернуть средства. Но только в первый день игры (от
-            момента первого захода на сервер). Все комиссии за обратный перевод
-            перекладываются на получателя.
-          </p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          Я хочу связаться с администрацией перед покупкой<img
-            src="/icons/arrow_down.svg"
-            alt="Toggle"
-            class="faq-icon"
-          />
-        </div>
-        <div class="faq-answer">
-          <p>Вы можете обратиться к ССЫЛКА</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          Какие модификации установленны на сервере?<img
-            src="/icons/arrow_down.svg"
-            alt="Toggle"
-            class="faq-icon"
-          />
-        </div>
-        <div class="faq-answer">
-          <p>Со списком модификаций вы можете ознакомиться по ССЫЛКА</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          У меня нет возможности оплатить доступ по предложенным реквизитам<img
-            src="/icons/arrow_down.svg"
-            alt="Toggle"
-            class="faq-icon"
-          />
-        </div>
-        <div class="faq-answer">
-          <p>Вы можете написать . чтобы получить больше вариантов</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          Есть ли возможность зайти бесплатно, посмотреть сервер чтобы решить
-          хочу ли я у вас играть?<img
-            src="/icons/arrow_down.svg"
-            alt="Toggle"
-            class="faq-icon"
-          />
-        </div>
-        <div class="faq-answer">
-          <p>
-            Мы можем рассмотреть такой вариант в индивидуальном порядке.
-            Напишите:
-          </p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question">
-          За что я плачу когда делаю пожертвование?<img
-            src="/icons/arrow_down.svg"
-            alt="Toggle"
-            class="faq-icon"
-          />
-        </div>
-        <div class="faq-answer">
-          <p>
-            Все средства идут на частичную компенсацию личных затрат за хостинг.
-            Мы некоммерческий проект, у нас нет никаких донатных привелегий.
-            Наша команда содержит сервер из личных средств. Подробнее о нас вы
-            можете прочитать на одноименной странице:
-          </p>
-        </div>
-      </div>
-    </div>
+    <FAQ client:load />
   </div>
 </Layout>
 <style>
@@ -215,56 +129,7 @@ const pageIcon = "/icons/buy.svg";
   ol {
     padding-left: 20px;
   }
-  .faq-container {
-  }
-  .faq-item {
-    margin-bottom: 10px;
-  }
 
-  .faq-question {
-    background-color: var(--color-green-300);
-    color: #fff;
-    border: none;
-    padding: 15px;
-    border-radius: 10px 10px 0 0;
-    text-align: left;
-    cursor: pointer;
-    font-size: 1.5rem;
-    font-family: gilroy-bold;
-    position: relative;
-    display: flex;
-    align-items: center; /* Вертикальное выравнивание иконки */
-  }
-
-  .faq-icon {
-    margin-left: auto; /* Перемещает иконку вправо */
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
-  }
-
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    background-color: var(--color-white);
-    font-family: gilroy-medium;
-    font-size: 1.2rem;
-    border-radius: 0 0 10px 10px;
-  }
-
-  .faq-answer p {
-    margin: 10px;
-  }
-
-  .faq-item.active .faq-answer {
-    max-height: 300px; /* Достаточная высота для ответа */
-    padding: 15px;
-  }
-
-  .faq-item.active .faq-icon {
-    transform: rotate(180deg); /* Поворачивает иконку при открытом состоянии */
-  }
   .donate-container {
     display: flex;
     justify-content: center;
@@ -411,9 +276,8 @@ const pageIcon = "/icons/buy.svg";
   }
   .notification {
     position: fixed;
-    bottom: 20px;
+    top: 20px;
     left: 50%;
-
     background-color: #28a745;
     color: #fff;
     padding: 10px;
@@ -447,6 +311,7 @@ const pageIcon = "/icons/buy.svg";
     }
   }
 </style>
+
 <script>
   document.addEventListener("astro:page-load", function () {
     const faqTitles = document.querySelectorAll(".faq-title");
@@ -472,7 +337,7 @@ const pageIcon = "/icons/buy.svg";
     });
   });
 </script>
-<script is:inline data-astro-rerun>
+<script>
   document.addEventListener("astro:page-load", function () {
     const donateButton = document.querySelector(".donate-button");
     const modal = document.getElementById("donate-modal");
@@ -480,12 +345,11 @@ const pageIcon = "/icons/buy.svg";
     const cardNumberElements = document.querySelectorAll(".card-number");
     const notification = document.getElementById("notification");
 
-    // Показать модальное окно при клике на кнопку
     if (donateButton) {
       donateButton.addEventListener("click", function () {
         if (modal) {
           modal.classList.add("open");
-          document.body.style.overflow = "hidden"; // Запрет прокрутки страницы
+          document.body.style.overflow = "hidden";
         }
       });
     }
@@ -536,42 +400,6 @@ const pageIcon = "/icons/buy.svg";
           navigator.clipboard.writeText(cardNumber).then(() => {
             showNotification();
           });
-        }
-      });
-    });
-  });
-</script>
-<script is:inline data-astro-rerun>
-  document.addEventListener("astro:page-load", () => {
-    const questions = document.querySelectorAll(".faq-question");
-    const openItems = []; // Хранит ссылки на открытые элементы
-
-    questions.forEach((question) => {
-      question.addEventListener("click", () => {
-        const answer = question.nextElementSibling;
-        const icon = question.querySelector(".faq-icon");
-        const isOpen = answer.style.maxHeight;
-
-        if (isOpen) {
-          // Если элемент уже открыт, просто закрываем его
-          answer.style.maxHeight = null;
-          icon.style.transform = "rotate(0deg)"; // Вернуть иконку в исходное состояние
-          // Удаляем его из массива открытых элементов
-          openItems.splice(openItems.indexOf(answer), 1);
-        } else {
-          // Закрываем все открытые элементы, если их больше двух
-          if (openItems.length >= 2) {
-            const oldestOpenItem = openItems.shift(); // Удаляем самый старый открытый элемент
-            const oldestIcon =
-              oldestOpenItem.previousElementSibling.querySelector(".faq-icon");
-            oldestOpenItem.style.maxHeight = null; // Закрываем его
-            oldestIcon.style.transform = "rotate(0deg)"; // Вернуть иконку в исходное состояние
-          }
-          // Открываем текущий элемент
-          answer.style.maxHeight = answer.scrollHeight + "px";
-          icon.style.transform = "rotate(180deg)"; // Повернуть иконку
-          // Добавляем текущий элемент в массив открытых элементов
-          openItems.push(answer);
         }
       });
     });
