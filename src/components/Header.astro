@@ -8,12 +8,12 @@ const { title, subtitle, icon } = Astro.props;
 <header class="main--header">
   <span class="header-title-block"
     ><div class="header-title-dynamic-container">
-      <a class="header-title-link-back" href="/">{title}</a><h1
-        class="header-title"
-      >
+      <a class="header-title-link-back" href="/"
+        ><img class="header-logo" src="/icons/logo_circle.webp" alt="" /></a
+      ><h1 class="header-title">
+        {icon && <img src={icon} alt="header icon" class="page-icon" />}
         {subtitle}
       </h1>
-      {icon && <img src={icon} alt="header icon" class="page-icon" />}
     </div>
     <div class="menu-open-button">
       <svg
@@ -115,6 +115,7 @@ const { title, subtitle, icon } = Astro.props;
   .unique-menu-links > a > span::selection {
     background: initial;
   }
+
   .main--header {
     grid-area: header;
     background-color: var(--color-green-400);
@@ -158,12 +159,11 @@ const { title, subtitle, icon } = Astro.props;
     }
   }
   .header-title-link-back {
+    align-self: center;
+    transition: 0.2s;
     margin: 0px 0px 0px 1rem;
     color: var(--color-bg);
-    background-color: var(--color-green-500);
     padding: 0.5rem;
-    font-family: Gilroy-black;
-    font-size: 44px;
     text-decoration: none;
     @media (max-width: 540px) {
       text-align: center;
@@ -177,6 +177,12 @@ const { title, subtitle, icon } = Astro.props;
     @media (max-width: 288px) {
       font-size: 18px;
     }
+  }
+  .header-logo {
+    height: 60px;
+  }
+  .header-title-link-back:hover {
+    transform: scale(1.01);
   }
   .header-title {
     color: var(--color-bg);
