@@ -120,19 +120,18 @@
   }
 </style>
 <script>
-  const storageKey = "snow";
   const snow = document.querySelector(".snow") as HTMLElement;
   const snowflakes = document.querySelectorAll(".snow__flake");
-  const snowToggle = document.querySelector(".snow-toggle") as HTMLElement;
   const aboutHighlight = document.querySelector(
     ".about-highlight"
   ) as HTMLElement;
 
   // Проверка наличия элементов
-  if (!snow || !snowToggle || !aboutHighlight) {
+  if (!snow || !aboutHighlight) {
     console.error("Required elements are missing in the DOM.");
   }
 
+  // Функция генерации случайных значений для снежинок
   function getRndInteger(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -142,21 +141,18 @@
   }
 
   // Настройка снежинок
-  snowflakes.forEach((snowflake) => {
-    if (snowflake instanceof HTMLElement) {
-      snowflake.style.fontSize = getRndFloat(0.7, 1.5) + "em";
-      snowflake.style.animationDuration = getRndInteger(20, 30) + "s";
-      snowflake.style.animationDelay =
-        getRndInteger(-1, snowflakes.length / 2) + "s";
-    }
-  });
-
-  function changeSnowAnimation(animationName: string) {
-    if (snow) {
-      snow.style.setProperty("--animation-name", animationName);
-    }
+  function setupSnowflakes() {
+    snowflakes.forEach((snowflake) => {
+      if (snowflake instanceof HTMLElement) {
+        snowflake.style.fontSize = getRndFloat(0.7, 1.5) + "em";
+        snowflake.style.animationDuration = getRndInteger(20, 30) + "s";
+        snowflake.style.animationDelay =
+          getRndInteger(-1, snowflakes.length / 2) + "s";
+      }
+    });
   }
 
+  // Функция переключения анимации снега
   function toggleSnowAnimation() {
     const isSnowEnabled =
       snow.style.getPropertyValue("--animation-name") !== "none";
@@ -164,47 +160,19 @@
     if (isSnowEnabled) {
       // Если анимация включена, выключаем её
       snow.style.setProperty("--animation-name", "none");
-      localStorage.removeItem(storageKey);
     } else {
       // Если анимация выключена, включаем её
-      const newAnimation = localStorage.getItem(storageKey) || "snowfall"; // Замените "snowfall" на значение по умолчанию, если нужно
-      changeSnowAnimation(newAnimation);
-      localStorage.setItem(storageKey, newAnimation);
+      snow.style.setProperty("--animation-name", "snowfall"); // Замените "snowfall" на название вашей анимации
     }
   }
 
-  // Обработчик клика на span для переключения анимации снега
+  // Обработчик клика на span для активации анимации снега
   aboutHighlight.addEventListener("click", () => {
-    // Переключаем анимацию снега при клике на span
+    // Настраиваем снежинки и переключаем анимацию при первом клике на span
+    setupSnowflakes();
     toggleSnowAnimation();
   });
 
-  // При загрузке страницы
-  document.addEventListener("DOMContentLoaded", () => {
-    // Состояние анимации не изменяется при загрузке страницы, чтобы избежать преждевременного старта анимации
-
-    // Если есть сохраненное значение в localStorage, устанавливаем состояние переключателей
-    const currentStorage = localStorage.getItem(storageKey);
-    if (currentStorage) {
-      // Включаем анимацию, если сохраненное значение существует
-      changeSnowAnimation(currentStorage);
-
-      // Устанавливаем состояние переключателей в зависимости от текущей анимации
-      const controls = snowToggle.querySelectorAll(".snow-toggle__control");
-      controls.forEach((control) => {
-        if (control instanceof HTMLInputElement) {
-          control.checked = control.value === currentStorage;
-        }
-      });
-    } else {
-      // Изначально отключаем анимацию
-      snow.style.setProperty("--animation-name", "none");
-    }
-
-    // Обновляем анимацию при изменении localStorage
-    window.addEventListener("storage", () => {
-      const updatedAnimation = localStorage.getItem(storageKey) || "none";
-      changeSnowAnimation(updatedAnimation);
-    });
-  });
+  // Изначально отключаем анимацию
+  snow.style.setProperty("--animation-name", "none");
 </script>
