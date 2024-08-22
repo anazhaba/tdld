@@ -1,0 +1,210 @@
+<div class="snow">
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+  <div class="snow__flake">🐸</div>
+</div>
+<style>
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .snow-toggle {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    gap: 40px;
+    border: 0;
+  }
+
+  .snow-toggle__label {
+    padding-bottom: 10px;
+  }
+
+  .snow-toggle__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .snow-toggle__text::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: calc(50% - 12px);
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ffffff;
+    border-radius: 50%;
+  }
+
+  .snow-toggle__control {
+    width: 25px;
+    height: 25px;
+    opacity: 0;
+    margin-right: 15px;
+  }
+
+  .snow-toggle__control:focus + .snow-toggle__text::before {
+    border-color: #2e9aff;
+  }
+
+  .snow-toggle__control:checked + .snow-toggle__text::before {
+    background-color: #ffffff;
+    background: radial-gradient(
+      circle,
+      #ffffff 0%,
+      #ffffff 40%,
+      transparent 50%,
+      transparent 100%
+    );
+  }
+
+  .snow {
+    --animation-name: snowfall;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+
+  .snow__flake {
+    position: relative;
+    top: -1.5em;
+    animation-name: var(--animation-name);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    will-change: transform;
+    font-size: 2rem;
+  }
+
+  @keyframes snowfall {
+    0% {
+      transform: translateY(0);
+    }
+
+    100% {
+      transform: translateY(calc(100vh + 1.5em));
+    }
+  }
+</style>
+<script>
+  const storageKey = "snow";
+  const snow = document.querySelector(".snow") as HTMLElement;
+  const snowflakes = document.querySelectorAll(".snow__flake");
+  const snowToggle = document.querySelector(".snow-toggle") as HTMLElement;
+  const aboutHighlight = document.querySelector(
+    ".about-highlight"
+  ) as HTMLElement;
+
+  // Проверка наличия элементов
+  if (!snow || !snowToggle || !aboutHighlight) {
+    console.error("Required elements are missing in the DOM.");
+  }
+
+  function getRndInteger(min: number, max: number): number {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function getRndFloat(min: number, max: number): string {
+    return (Math.random() * (max - min) + min).toFixed(1);
+  }
+
+  // Настройка снежинок
+  snowflakes.forEach((snowflake) => {
+    if (snowflake instanceof HTMLElement) {
+      snowflake.style.fontSize = getRndFloat(0.7, 1.5) + "em";
+      snowflake.style.animationDuration = getRndInteger(20, 30) + "s";
+      snowflake.style.animationDelay =
+        getRndInteger(-1, snowflakes.length / 2) + "s";
+    }
+  });
+
+  function changeSnowAnimation(animationName: string) {
+    if (snow) {
+      snow.style.setProperty("--animation-name", animationName);
+    }
+  }
+
+  function toggleSnowAnimation() {
+    const isSnowEnabled =
+      snow.style.getPropertyValue("--animation-name") !== "none";
+
+    if (isSnowEnabled) {
+      // Если анимация включена, выключаем её
+      snow.style.setProperty("--animation-name", "none");
+      localStorage.removeItem(storageKey);
+    } else {
+      // Если анимация выключена, включаем её
+      const newAnimation = localStorage.getItem(storageKey) || "snowfall"; // Замените "snowfall" на значение по умолчанию, если нужно
+      changeSnowAnimation(newAnimation);
+      localStorage.setItem(storageKey, newAnimation);
+    }
+  }
+
+  // Обработчик клика на span для переключения анимации снега
+  aboutHighlight.addEventListener("click", () => {
+    // Переключаем анимацию снега при клике на span
+    toggleSnowAnimation();
+  });
+
+  // При загрузке страницы
+  document.addEventListener("DOMContentLoaded", () => {
+    // Состояние анимации не изменяется при загрузке страницы, чтобы избежать преждевременного старта анимации
+
+    // Если есть сохраненное значение в localStorage, устанавливаем состояние переключателей
+    const currentStorage = localStorage.getItem(storageKey);
+    if (currentStorage) {
+      // Включаем анимацию, если сохраненное значение существует
+      changeSnowAnimation(currentStorage);
+
+      // Устанавливаем состояние переключателей в зависимости от текущей анимации
+      const controls = snowToggle.querySelectorAll(".snow-toggle__control");
+      controls.forEach((control) => {
+        if (control instanceof HTMLInputElement) {
+          control.checked = control.value === currentStorage;
+        }
+      });
+    } else {
+      // Изначально отключаем анимацию
+      snow.style.setProperty("--animation-name", "none");
+    }
+
+    // Обновляем анимацию при изменении localStorage
+    window.addEventListener("storage", () => {
+      const updatedAnimation = localStorage.getItem(storageKey) || "none";
+      changeSnowAnimation(updatedAnimation);
+    });
+  });
+</script>
