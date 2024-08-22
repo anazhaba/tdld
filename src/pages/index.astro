@@ -1,6 +1,7 @@
 ---
 import MainPage from "../components/MainPage.astro";
 import MainTest from "../components/MainTest.astro";
+import Test2 from "../components/Test2.astro";
 import Layout from "../layouts/Layout.astro";
 import { fade } from "astro:transitions";
 import { ViewTransitions } from "astro:transitions";
@@ -14,7 +15,7 @@ const pageIcon = "/icons/love.svg";
 <ViewTransitions />
 <Layout title={title} {subtitle} icon={pageIcon} description={description}>
   <main class="main-page-container">
-    <MainTest slot="MainTest" />
+    <Test2 slot="MainTest" />
   </main>
 </Layout>
 
