@@ -41,30 +41,73 @@ const pageIcon = "/icons/about.svg";
         Без вас <span class="about-highlight">ToadLand</span> не был бы тем, чем
         он является сегодня. Спасибо вам за всё! ❤️🐸
       </p>
+      <div class="frog-emoji frog-left">🐸</div>
+      <div class="frog-emoji frog-right">🐸</div>
     </div>
+    <Frogs />
   </div>
-  <Frogs />
+  <ViewTransitions />
+  <style>
+    .about-wrapper {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      border-radius: 15px;
+    }
+
+    .about-container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-text {
+      font-family: "Gilroy-Bold", sans-serif;
+      font-size: 24px;
+      margin-bottom: 15px;
+      text-align: left;
+      line-height: 1.8;
+      color: #37474f;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-highlight {
+      font-family: "Gilroy-Black", sans-serif;
+      position: relative;
+      display: inline-block;
+    }
+
+    .about-highlight::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 8px;
+      background: no-repeat;
+      background-size: cover;
+      background-image: url("data:image/svg+xml,%3Csvg width='100%' height='10px' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5 Q10 0 20 5 T40 5 T60 0 T80 5 T100 5' fill='none' stroke='%23ff5722' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+    }
+
+    .frog-emoji {
+      font-size: 80px;
+      position: absolute;
+    }
+
+    .frog-left {
+      transform: rotate(160deg);
+      top: -30px;
+      left: -30px;
+    }
+
+    .frog-right {
+      transform: rotate(-50deg);
+      bottom: -30px;
+      right: -30px;
+    }
+  </style>
 </Layout>
-<ViewTransitions />
-<style>
-  .about-wrapper {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-
-  .about-text {
-    font-family: gilroy-bold;
-    font-size: 28px;
-    margin-bottom: 2px;
-    margin-top: 2px;
-    text-align: left;
-    line-height: 1.6;
-  }
-
-  .about-highlight {
-    color: var(--color-black);
-    letter-spacing: -1px;
-    font-family: gilroy-black;
-  }
-</style>
