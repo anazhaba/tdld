@@ -1,0 +1,207 @@
+---
+import { parseStringPromise } from "xml2js";
+
+const rssFeedUrl = "https://rsshub.app/telegram/channel/toadland";
+let feed = [];
+
+const response = await fetch(rssFeedUrl);
+const text = await response.text();
+const parsedFeed = await parseStringPromise(text);
+
+feed = parsedFeed.rss.channel[0].item.map((item) => ({
+  title: item.title[0],
+  description: item.description[0].replace(/<\/?[^>]+(>|$)/g, ""), // Удаление HTML-тегов
+  images:
+    item.description[0]
+      .match(/<img[^>]+src="([^">]+)"/g)
+      ?.map((img) => img.match(/src="([^">]+)"/)[1]) || [],
+  link: item.link[0],
+  pubDate: new Date(item.pubDate[0]).toLocaleDateString(),
+}));
+---
+
+<style>
+  .rss-feed {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 100%;
+  }
+  .rss-item {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+  }
+  .rss-item h3 {
+    color: #2c3e50;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  .rss-item h3:hover {
+    color: #007acc;
+  }
+  .rss-item-content {
+    display: none;
+    transition: max-height 0.3s ease;
+  }
+  .rss-item-content.show {
+    display: block;
+  }
+  .rss-item p {
+    color: #34495e;
+    margin: 10px 0;
+  }
+  .rss-item a {
+    text-decoration: none;
+    color: #2980b9;
+  }
+  .rss-item a:hover {
+    text-decoration: underline;
+  }
+  .img-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .img-grid img {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .img-grid img:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    .img-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .img-grid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal img {
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  .modal.show {
+    display: flex;
+  }
+  @media (max-width: 600px) {
+    .rss-feed {
+      padding: 15px;
+    }
+    .rss-item h3 {
+      font-size: 18px;
+    }
+  }
+</style>
+
+<script>
+  function setupToggle() {
+    const items = document.querySelectorAll(".rss-item h3");
+    items.forEach((item, index) => {
+      item.addEventListener("click", () => {
+        const content = document.getElementById(`content-${index}`);
+        content.classList.toggle("show");
+      });
+    });
+  }
+
+  function setupImagePreview() {
+    const images = document.querySelectorAll(".rss-item img");
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+
+    image.addEventListener("click", () => {
+      const imgElement = image as HTMLImageElement;
+      if (imgElement && imgElement.src) {
+        const imgWindow = window.open(imgElement.src, "_blank");
+        imgWindow?.focus();
+      }
+    });
+
+    modal.addEventListener("click", () => {
+      modal.classList.remove("show");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    setupToggle();
+    setupImagePreview();
+  });
+</script>
+
+<div class="rss-feed">
+  {
+    feed.map((item, idx) => (
+      <div class="rss-item">
+        <h3>{item.title}</h3>
+        <div class="rss-item-content" id={`content-${idx}`}>
+          <div class="img-grid">
+            {item.images.map((img, index) => (
+              <img src={img} alt="RSS image" />
+            ))}
+          </div>
+          <p>{item.description}</p>
+          <p>
+            <a href={item.link} target="_blank" rel="noopener">
+              Read more
+            </a>
+          </p>
+          <p>Published on: {item.pubDate}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+<div id="imageModal" class="modal">
+  <img id="modalImage" src="" alt="Preview" />
+</div>
+<script>
+  function setupImagePreview() {
+    const images = document.querySelectorAll(".img-grid img");
+    const modal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+
+    images.forEach((image) => {
+      image.addEventListener("click", () => {
+        const imgElement = image as HTMLImageElement;
+        if (imgElement) {
+          modalImage.src = imgElement.src;
+          modal.classList.add("show");
+        }
+      });
+    });
+
+    modal.addEventListener("click", () => {
+      modal.classList.remove("show");
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", setupImagePreview);
+</script>
