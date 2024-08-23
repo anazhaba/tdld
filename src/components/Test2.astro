@@ -255,7 +255,10 @@
     object-fit: cover;
     border-radius: 20px;
   }
-
+  .main-media img::selection,
+  .main-media video::selection {
+    background: inherit;
+  }
   @media (max-width: 868px) {
     .main-section {
       display: inherit;

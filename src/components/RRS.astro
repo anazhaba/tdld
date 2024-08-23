@@ -51,12 +51,12 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
     border-radius: 0 0 14px 14px;
     padding: 10px;
     background-color: var(--color-white);
-    display: none;
+    display: block;
     transition: max-height 0.3s ease;
     box-shadow: 0px 12px 14px 0px rgba(0, 0, 0, 0.09);
   }
   .rss-item-content.show {
-    display: block;
+    display: none;
   }
   .rss-item p {
     color: var(--color-black);
@@ -85,11 +85,13 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
     width: 100%;
     height: auto;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
   }
-
+  .img-grid img::selection {
+    background: inherit;
+  }
   .img-grid img:hover {
-    transform: scale(1.05);
+    transform: scale(1.01);
   }
 
   .modal {
@@ -100,7 +102,9 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.127);
     justify-content: center;
     align-items: center;
   }
@@ -108,8 +112,11 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
   .modal img {
     max-width: 90%;
     max-height: 90%;
+    box-shadow: 0px 0px 46px 17px rgba(0, 0, 0, 0.2);
   }
-
+  .modal img::selection {
+    background: inherit;
+  }
   .modal.show {
     display: flex;
   }
@@ -140,12 +147,14 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
       <div class="rss-item">
         <h3>{item.title}</h3>
         <div class="rss-item-content" id={`content-${idx}`}>
-          <div class="img-grid">
-            {item.images.map((img, index) => (
-              <img src={img} alt="RSS image" />
-            ))}
-          </div>
-          <p>{item.description}</p>
+          <p>
+            {item.description}
+            <div class="img-grid">
+              {item.images.map((img, index) => (
+                <img src={img} alt="RSS image" />
+              ))}
+            </div>
+          </p>
           <p>
             <a href={item.link} target="_blank" rel="noopener">
               Смотреть в телеграм
@@ -173,12 +182,14 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
         if (imgElement) {
           modalImage.src = imgElement.src;
           modal.classList.add("show");
+          document.body.style.overflow = "hidden";
         }
       });
     });
 
     modal.addEventListener("click", () => {
       modal.classList.remove("show");
+      document.body.style.overflow = "auto";
     });
   }
 
