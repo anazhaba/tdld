@@ -137,7 +137,6 @@ const pageIcon = "/icons/buy.svg";
   }
   .donate-section {
     display: flex;
-    padding: 20px;
     border-radius: 14px;
     position: relative;
     justify-content: center;
@@ -285,6 +284,7 @@ const pageIcon = "/icons/buy.svg";
     height: 24px;
   }
   .notification {
+    text-align: center;
     text-wrap: wrap;
     font-size: 2rem;
     font-family: gilroy-black;
@@ -304,7 +304,22 @@ const pageIcon = "/icons/buy.svg";
       opacity 0.3s ease,
       visibility 0.3s ease;
   }
-
+  @media (max-width: 668px) {
+    .notification {
+      font-size: 1.5rem;
+    }
+  }
+  @media (max-width: 468px) {
+    .notification {
+      font-size: 1rem;
+    }
+  }
+  @media (max-width: 368px) {
+    .buy-heading,
+    .buy-subheading {
+      font-size: 1.2rem;
+    }
+  }
   /* Анимации */
   @keyframes fadeIn {
     from {

@@ -18,7 +18,6 @@
       <!-- <video autoplay muted loop src="/assets/create.webm"></video> -->
     </div>
   </div>
-
   <div class="main-section">
     <div class="main-section-content">
       <h2>Смена пор года❄️☀️</h2>
@@ -169,10 +168,16 @@
     </div>
     <div class="main-media">
       <!--<img src="your-image-url-here.jpg" alt="Economy and Create Image" /> -->
-      <video autoplay muted loop src="/assets/create.webm"></video>
+      <video autoplay muted loop playsinline src="/assets/create.webm"></video>
     </div>
   </div>
+  <div class="join-container">
+    <a href="/buy" class="join-link"
+      ><h2 class="join-text">Присоединиться к нам</h2></a
+    >
+  </div>
 </div>
+
 <style>
   .main-container {
     max-width: 1440px;
@@ -180,7 +185,26 @@
     padding: 20px;
     overflow: hidden;
   }
-
+  .join-text {
+    font-family: gilroy-black;
+    color: var(--color-white);
+    background-color: var(--color-accent);
+    padding: 1rem;
+    border-radius: 14px;
+    transition: 0.2s;
+  }
+  .join-text:hover {
+    background-color: var(--color-accent-hover);
+  }
+  .join-link {
+    font-size: 1.5em;
+    text-decoration: none;
+  }
+  .join-container {
+    text-align: center;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
   .main-section {
     border-radius: 14px;
     background-color: var(--color-white);

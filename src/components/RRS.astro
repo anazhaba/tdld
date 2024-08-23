@@ -48,11 +48,12 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
     color: var(--color-green-100);
   }
   .rss-item-content {
+    overflow: hidden;
+    transition: max-height 0.3s ease;
     border-radius: 0 0 14px 14px;
     padding: 10px;
     background-color: var(--color-white);
     display: block;
-    transition: max-height 0.3s ease;
     box-shadow: 0px 12px 14px 0px rgba(0, 0, 0, 0.09);
   }
   .rss-item-content.show {
@@ -96,6 +97,7 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
 
   .modal {
     display: none;
+    opacity: 0;
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -103,12 +105,21 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
     width: 100%;
     height: 100%;
     backdrop-filter: blur(10px);
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.127);
     justify-content: center;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.127);
+    transition: opacity 0.3s ease;
   }
 
+  .modal.open {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .modal.hide {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
   .modal img {
     max-width: 90%;
     max-height: 90%;
@@ -117,9 +128,7 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
   .modal img::selection {
     background: inherit;
   }
-  .modal.show {
-    display: flex;
-  }
+
   @media (max-width: 600px) {
     .rss-feed {
       padding: 15px;
@@ -137,6 +146,24 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
   @media (max-width: 480px) {
     .img-grid {
       grid-template-columns: repeat(1, 1fr);
+    }
+  }
+  /* Анимации */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
     }
   }
 </style>
@@ -171,56 +198,52 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
   <img id="modalImage" src="" alt="Preview" />
 </div>
 <script>
+  function setupToggle() {
+    const items = document.querySelectorAll(".rss-item h3");
+    items.forEach((item, index) => {
+      const content = document.getElementById(`content-${index}`);
+      content.style.maxHeight = `${content.scrollHeight}px`; // Открыть контент изначально
+      content.style.overflow = "hidden"; // Для анимации скрытия
+
+      item.addEventListener("click", () => {
+        if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+          content.style.maxHeight = "0px"; // Закрыть контент
+        } else {
+          content.style.maxHeight = `${content.scrollHeight}px`; // Открыть контент
+        }
+      });
+    });
+  }
+
   function setupImagePreview() {
     const images = document.querySelectorAll(".img-grid img");
     const modal = document.getElementById("imageModal");
     const modalImage = document.getElementById("modalImage");
 
-    images.forEach((image) => {
-      image.addEventListener("click", () => {
-        const imgElement = image as HTMLImageElement;
-        if (imgElement) {
-          modalImage.src = imgElement.src;
-          modal.classList.add("show");
-          document.body.style.overflow = "hidden";
-        }
+    images.forEach((imgElement) => {
+      imgElement.addEventListener("click", () => {
+        const imgSrc = (imgElement as HTMLImageElement).src;
+        (modalImage as HTMLImageElement).src = imgSrc;
+        modal.classList.add("open");
+        modal.classList.remove("hide");
+        modal.style.display = "flex";
+        setTimeout(() => {
+          modal.style.opacity = "1";
+        }, 10); // Немного задерживаем, чтобы применился переход
+        document.body.style.overflow = "hidden"; // Блокировка прокрутки при открытии
       });
     });
 
-    modal.addEventListener("click", () => {
-      modal.classList.remove("show");
-      document.body.style.overflow = "auto";
-    });
-  }
-
-  document.addEventListener("astro:page-load", setupImagePreview);
-</script>
-<script>
-  function setupToggle() {
-    const items = document.querySelectorAll(".rss-item h3");
-    items.forEach((item, index) => {
-      item.addEventListener("click", () => {
-        const content = document.getElementById(`content-${index}`);
-        content.classList.toggle("show");
-      });
-    });
-  }
-
-  function setupImagePreview() {
-    const images = document.querySelectorAll(".rss-item img");
-    const modal = document.getElementById("imageModal");
-    const modalImage = document.getElementById("modalImage");
-
-    image.addEventListener("click", () => {
-      const imgElement = image as HTMLImageElement;
-      if (imgElement && imgElement.src) {
-        const imgWindow = window.open(imgElement.src, "_blank");
-        imgWindow?.focus();
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        modal.style.opacity = "0";
+        modal.classList.add("hide");
+        modal.classList.remove("open");
+        setTimeout(() => {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto"; // Разблокировка прокрутки после закрытия
+        }, 300); // Длительность анимации закрытия
       }
-    });
-
-    modal.addEventListener("click", () => {
-      modal.classList.remove("show");
     });
   }
 
