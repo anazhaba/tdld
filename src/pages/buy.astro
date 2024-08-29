@@ -181,7 +181,8 @@ const pageIcon = "/icons/buy.svg";
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.053);
-    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -431,5 +432,34 @@ const pageIcon = "/icons/buy.svg";
         }
       });
     });
+  });
+  document.addEventListener("astro:page-load", () => {
+    function applyBrowserSpecificStyles() {
+      const userAgent = navigator.userAgent;
+      const isChrome =
+        /Chrome/.test(userAgent) && /Google Inc/.test(navigator.vendor);
+      const isFirefox = /Firefox/.test(userAgent);
+
+      // Найти элемент с классом .modal-background
+      const modalBackground = document.querySelector(
+        ".modal-background"
+      ) as HTMLElement | null;
+
+      // Убедиться, что элемент найден
+      if (modalBackground) {
+        if (isChrome) {
+          // Применить стили для Chrome
+          modalBackground.style.background = "rgba(0, 0, 0, 0.53)";
+          modalBackground.style.backdropFilter = "none"; // Не используем backdrop-filter в Chrome
+        } else if (isFirefox) {
+          // Применить стили для Firefox
+          modalBackground.style.background = "rgba(0, 0, 0, 0.053)";
+          modalBackground.style.backdropFilter = "blur(10px)"; // Используем backdrop-filter в Firefox
+        }
+      }
+    }
+
+    // Запустить функцию после загрузки DOM
+    applyBrowserSpecificStyles();
   });
 </script>
