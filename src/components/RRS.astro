@@ -4,7 +4,7 @@ import { parseStringPromise } from "xml2js";
 const rssFeedUrl = "https://rsshub.app/telegram/channel/toadland";
 let feed = [];
 
-const response = await fetch(rssFeedUrl);
+const response = await fetch(rssFeedUrl, { cache: "no-store" });
 const text = await response.text();
 const parsedFeed = await parseStringPromise(text);
 
@@ -83,6 +83,7 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
   }
 
   .img-grid img {
+    border-radius: 10px;
     width: 100%;
     height: auto;
     cursor: pointer;
@@ -92,7 +93,7 @@ feed = parsedFeed.rss.channel[0].item.map((item) => ({
     background: inherit;
   }
   .img-grid img:hover {
-    transform: scale(1.01);
+    transform: scale(1.02);
   }
 
   .modal {
