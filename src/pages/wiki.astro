@@ -8,5 +8,224 @@ const pageIcon = "/icons/wiki.svg";
 ---
 
 <Layout title={title} {subtitle} icon={pageIcon} description={description}>
-  <h1>Вики</h1>
+  <div class="wiki-wrapper">
+    <nav class="wiki-nav">
+      <div class="wiki-nav-container">
+        <div class="wiki-nav-toggle" onclick="toggleMenu()">>></div>
+        <ul id="wiki-nav-list" class="wiki-nav-list">
+          <li><a href="#wiki-section1">item</a></li>
+          <li><a href="#wiki-section2">item2</a></li>
+          <li><a href="#wiki-section3">item3</a></li>
+          <li><a href="#wiki-section4">item4</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="wiki-content">
+      <section id="wiki-section1">
+        <h2>item1</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis
+          ducimus odio deserunt mollitia eligendi fugiat aspernatur ut veniam
+          aperiam expedita!
+        </p>
+        <ul>
+          <li><strong>li:</strong> 1</li>
+          <li><strong>li:</strong> 2</li>
+        </ul>
+      </section>
+
+      <section id="wiki-section2">
+        <h2>item2</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam
+          saepe placeat incidunt sapiente laboriosam! Ducimus vel culpa suscipit
+          totam officiis omnis unde sint! Natus laborum consectetur quo
+          similique dolores illo!
+        </p>
+        <ul>
+          <li>
+            <strong>li:</strong> text
+          </li>
+          <li><strong>li:</strong>1</li>
+        </ul>
+      </section>
+
+      <section id="wiki-section3">
+        <h2>item3</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
+          mollitia? Repellendus quibusdam quia, obcaecati magnam voluptate
+          dolorum aperiam iure architecto dolores dignissimos explicabo veniam
+          ratione iste quos iusto perferendis suscipit cumque, eum fugit animi
+          ut ab quis ullam! Modi, voluptas.
+        </p>
+        <ul>
+          <li>
+            <strong>li</strong> text
+          </li>
+          <li><strong>li:</strong> 1</li>
+        </ul>
+      </section>
+
+      <section id="wiki-section4">
+        <h2>item4</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam
+          accusantium, explicabo consequuntur nemo quisquam modi nam similique
+          neque doloribus. Inventore, officiis suscipit ipsa sapiente cupiditate
+          fugiat ipsum illo expedita. Pariatur aliquid amet eveniet laborum
+          minus alias molestias quidem consequatur voluptate voluptates, quasi
+          eum tempora dolorum modi a unde ipsa sint.
+        </p>
+        <ul>
+          <li><strong>li</strong> 1</li>
+          <li>
+            <strong>li:</strong> 2
+          </li>
+        </ul>
+      </section>
+    </div>
+    <button onclick="scrollToTop()" id="wiki-backToTop">up</button>
+  </div>
+  <style>
+    .wiki-nav {
+      background-color: #333;
+      padding: 10px 0;
+    }
+
+    .wiki-nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .wiki-nav-logo {
+      color: white;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    .wiki-nav-list {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .wiki-nav-list li {
+      margin: 0 15px;
+    }
+
+    .wiki-nav-list li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .wiki-nav-list li a:hover {
+      color: #ddd;
+    }
+
+    .wiki-nav-toggle {
+      text-align: center;
+      margin: 0 auto;
+      display: none;
+      color: white;
+      font-size: 1.5em;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .wiki-content {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+    #wiki-backToTop {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    #wiki-backToTop:hover {
+      background-color: #555;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (max-width: 768px) {
+      .wiki-nav-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+      }
+      .wiki-nav-list.responsive {
+        display: flex;
+      }
+      .wiki-nav-list li {
+        text-align: center;
+        padding: 10px 0;
+        margin: 0;
+      }
+      .wiki-nav-toggle {
+        display: block;
+      }
+      .wiki-content {
+        padding: 15px;
+      }
+    }
+  </style>
 </Layout>
+
+<script is:inline>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  window.onscroll = function () {
+    let button = document.getElementById("wiki-backToTop");
+    if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+    ) {
+      button.style.display = "block";
+    } else {
+      button.style.display = "none";
+    }
+  };
+
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+
+  function toggleMenu() {
+    var navList = document.getElementById("wiki-nav-list");
+    if (navList.className === "wiki-nav-list") {
+      navList.className += " responsive";
+    } else {
+      navList.className = "wiki-nav-list";
+    }
+  }
+</script>
