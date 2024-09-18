@@ -4,6 +4,7 @@ import Meta from "../components/Meta.astro";
 import Footer from "../components/Footer.astro";
 import { fade } from "astro:transitions";
 import { ViewTransitions } from "astro:transitions";
+import Loader from "../components/Loader.astro";
 
 interface Props {
   subtitle?: string;
@@ -20,6 +21,7 @@ const { title, description, subtitle, icon }: Props = Astro.props;
   <head>
     <Meta {title} {subtitle} description={description} />
     <meta charset="UTF-8" />
+    <meta property="og:type" content="website" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="description" content={description} />
@@ -30,9 +32,11 @@ const { title, description, subtitle, icon }: Props = Astro.props;
       content="../assets/images/icon2.webp"
     />
     <meta property="og:image:type" content="image/webp" />
+    <meta property="og:site_name" content="Toadland" />
     <meta property="og:image:width" content="1700" />
     <meta property="og:image:height" content="1300" />
     <meta property="og:image:alt" content="logoImage" />
+    <meta property="og:locale" content="ru_RU" />
     <meta
       name="keywords"
       content="Тодленд, toadland, тод ленд, тоад ленд, toad land, тоад land, Тод land, майнкрафт сервер, приватный сервер minecraft, mineacraft toadland, minecraft, майнкрафт, сервер майнкрафт, сервер с жабами, майнкрафт с жабами"
@@ -40,6 +44,44 @@ const { title, description, subtitle, icon }: Props = Astro.props;
     <ViewTransitions />
   </head>
   <body>
+    <script is:inline>
+      document.addEventListener("DOMContentLoaded", () => {
+        const phrases = [
+          "Квакаем",
+          "Оцениваем кувшинки",
+          "Прыгаем на болоте",
+          "Пытаемся выговорить квас",
+          "Боремся за мух",
+          "Радуемся жизни",
+          "Делаем затяжные КВА",
+          "Разбираемся как из кубов сделать кувшинку",
+          "Чиллим",
+          "Обквакиваем вопросики",
+          "Ква",
+        ];
+
+        const loaderText = document.querySelector(".loader-text");
+        let currentPhraseIndex = 0;
+
+        function updateLoaderText() {
+          loaderText.textContent = phrases[currentPhraseIndex];
+          currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+        }
+
+        updateLoaderText();
+        setInterval(updateLoaderText, 130);
+
+        window.addEventListener("load", () => {
+          const loader = document.querySelector(".loader");
+          const content = document.getElementById("content");
+
+          if (loader && content) {
+            loader.style.display = "none";
+            content.style.display = "block";
+          }
+        });
+      });
+    </script>
     <style is:global>
       @font-face {
         font-family: "Gilroy";
@@ -142,7 +184,13 @@ const { title, description, subtitle, icon }: Props = Astro.props;
         }
       }
     </style>
-    <div transition:animate={fade({ duration: "0.3s" })} class="main--wrapper">
+    <Loader />
+    <div
+      transition:animate={fade({ duration: "0.3s" })}
+      id="content"
+      style="display: none;"
+      class="main--wrapper"
+    >
       <Header {title} {subtitle} icon={icon} />
       <slot />
       <Footer />
