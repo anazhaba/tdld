@@ -43,44 +43,6 @@ const { title, description, subtitle, icon }: Props = Astro.props;
     <ViewTransitions />
   </head>
   <body>
-    <script is:inline>
-      document.addEventListener("DOMContentLoaded", () => {
-        const phrases = [
-          "Квакаем",
-          "Оцениваем кувшинки",
-          "Прыгаем на болоте",
-          "Пытаемся выговорить квас",
-          "Боремся за мух",
-          "Радуемся жизни",
-          "Делаем затяжные КВА",
-          "Разбираемся как из кубов сделать кувшинку",
-          "Чиллим",
-          "Обквакиваем вопросики",
-          "Ква",
-        ];
-
-        const loaderText = document.querySelector(".loader-text");
-        let currentPhraseIndex = 0;
-
-        function updateLoaderText() {
-          loaderText.textContent = phrases[currentPhraseIndex];
-          currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-        }
-
-        updateLoaderText();
-        setInterval(updateLoaderText, 130);
-
-        window.addEventListener("load", () => {
-          const loader = document.querySelector(".loader");
-          const content = document.getElementById("content");
-
-          if (loader && content) {
-            loader.style.display = "none";
-            content.style.display = "block";
-          }
-        });
-      });
-    </script>
     <style is:global>
       @font-face {
         font-family: "Gilroy";
@@ -149,31 +111,7 @@ const { title, description, subtitle, icon }: Props = Astro.props;
         grid-template-rows: auto 1fr auto;
         min-height: 100vh;
       }
-      .slide-enter {
-        transform: translateX(100%);
-        opacity: 0;
-      }
 
-      .slide-enter-active {
-        transform: translateX(0);
-        opacity: 1;
-        transition:
-          transform 300ms ease-in-out,
-          opacity 300ms ease-in-out;
-      }
-
-      .slide-exit {
-        transform: translateX(0);
-        opacity: 1;
-      }
-
-      .slide-exit-active {
-        transform: translateX(-100%);
-        opacity: 0;
-        transition:
-          transform 300ms ease-in-out,
-          opacity 300ms ease-in-out;
-      }
       .page-icon {
         margin-left: 10px;
         width: 28px;
@@ -187,7 +125,6 @@ const { title, description, subtitle, icon }: Props = Astro.props;
     <div
       transition:animate={fade({ duration: "0.3s" })}
       id="content"
-      style="display: none;"
       class="main--wrapper"
     >
       <Header {title} {subtitle} icon={icon} />
