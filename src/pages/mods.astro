@@ -1,9 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getFiles } from "../utils/getFiles";
 import JSZip from "jszip";
+import { getFiles } from "../utils/getFiles";
+import { getFiles2 } from "../utils/getFiles2";
 const directory = "./public/mods";
 const files = getFiles(directory);
+const directory2 = "./public/mods/lastUpdate";
+const files2 = getFiles2(directory2);
 const title = "Toadland";
 const subtitle = "Моды";
 const description =
@@ -20,10 +23,34 @@ const pageIcon = "/icons/files.svg";
         моды, так как могут возникнуть конфликты, из-за которых у вас не выйдет зайти
         на сервер. <br /></span
       >
+      <button id="download-last-update" class="last-update-download-button">
+        Скачать последние обновленные моды
+        <span class="loader"></span>
+      </button>
+      <div class="last-update-header-block">
+        <h3 class="dropdown-header">
+          Update list
+          <img
+            class="dropdown-icon"
+            src="/icons/arrow_down.svg"
+            alt="Arrow Icon"
+          />
+        </h3>
+        <div class="dropdown-list">
+          {
+            files2.map((file2) => (
+              <a class="dropdown-link" href={file2.path} download>
+                {file2.name}
+              </a>
+            ))
+          }
+        </div>
+      </div>
       <button id="download-all" class="mods-download-all-button">
         Скачать все моды
         <span class="loader"></span>
       </button>
+
       <span class="mods-list">
         {
           files.map((file) => (
@@ -53,7 +80,28 @@ const pageIcon = "/icons/files.svg";
       padding: 0;
     }
   }
-
+  .last-update-download-button {
+    font-family: gilroy-bold;
+    transition: 0.2s;
+    border: none;
+    width: 100%;
+    padding: 15px;
+    font-size: 24px;
+    background-color: var(--color-green-400);
+    color: white;
+    border-radius: 14px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    text-align: center;
+    @media (max-width: 598px) {
+      padding: 30px;
+      font-size: 2rem;
+    }
+    @media (max-width: 448px) {
+      padding: 20px;
+      font-size: 1rem;
+    }
+  }
   .mods-container {
     max-width: 100%;
     margin: 0 auto;
@@ -277,8 +325,96 @@ const pageIcon = "/icons/files.svg";
   details[open] .mods-summary:before {
     content: "Скрыть ";
   }
-</style>
+  .dropdown-header {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-family: gilroy-medium;
+    color: var(--color-white);
+    background-color: var(--color-green-300);
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px 10px 0px 0px;
+    justify-content: center;
+    margin: 0;
+  }
+  .last-update-header-block {
+    text-align: center;
+  }
+  .dropdown-header .dropdown-icon {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+  }
 
+  .dropdown-list {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease;
+    margin: 0;
+    padding: 0px;
+    margin-bottom: 20px;
+    background-color: var(--color-white);
+    border-radius: 0px 0px 10px 10px;
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: var(--color-black);
+    transition: 0.3s all;
+    font-family: gilroy-bold;
+    text-transform: uppercase;
+  }
+
+  .dropdown-link:hover {
+    background-color: var(--color-green-100);
+  }
+</style>
+<script>
+  function setupDropdown() {
+    const headers = document.querySelectorAll(".dropdown-header");
+    const openItems = []; // Для управления открытыми элементами
+
+    function toggleDropdown(event) {
+      const header = event.currentTarget;
+      const list = header.nextElementSibling;
+      const icon = header.querySelector(".dropdown-icon");
+      const isOpen = list.style.maxHeight;
+
+      if (isOpen) {
+        // Закрыть текущий список
+        list.style.maxHeight = null;
+        icon.style.transform = "rotate(0deg)"; // Возвращаем стрелку вниз
+        openItems.splice(openItems.indexOf(list), 1);
+      } else {
+        // Закрыть предыдущие, если открыто больше одного
+        if (openItems.length >= 1) {
+          const oldestOpenItem = openItems.shift();
+          oldestOpenItem.style.maxHeight = null;
+        }
+
+        // Открыть текущий список
+        list.style.maxHeight = list.scrollHeight + "px";
+        icon.style.transform = "rotate(180deg)"; // Переворачиваем стрелку вверх
+        openItems.push(list);
+      }
+    }
+
+    headers.forEach((header) => {
+      header.removeEventListener("click", toggleDropdown); // На случай повторной инициализации
+      header.addEventListener("click", toggleDropdown);
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", setupDropdown);
+</script>
 <script>
   import JSZip from "jszip";
 
@@ -313,6 +449,40 @@ const pageIcon = "/icons/files.svg";
     button.classList.remove("loading");
   }
 
+  async function downloadLastUpdate() {
+    const button = document.getElementById("download-last-update");
+    const loader = button.querySelector(".loader");
+
+    // Устанавливаем состояние загрузки
+    button.classList.add("loading");
+
+    const zip = new JSZip();
+    const files2 = [...document.querySelectorAll(".dropdown-link")];
+
+    for (const file of files2) {
+      const anchor = file;
+
+      if (anchor instanceof HTMLAnchorElement) {
+        const response = await fetch(anchor.href);
+        const blob = await response.blob();
+        zip.file(anchor.innerText.trim(), blob);
+      }
+    }
+
+    const content = await zip.generateAsync({ type: "blob" });
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(content);
+    link.download = "lastUpdate.zip";
+    link.click();
+
+    // Убираем состояние загрузки после завершения
+    button.classList.remove("loading");
+  }
+
+  document
+    .getElementById("download-last-update")
+    .addEventListener("click", downloadLastUpdate);
   document
     .getElementById("download-all")
     .addEventListener("click", downloadAllMods);
