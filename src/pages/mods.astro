@@ -398,6 +398,7 @@ const pageIcon = "/icons/files.svg";
     justify-content: center;
   }
 </style>
+
 <script>
   function setupDropdown() {
     const headers = document.querySelectorAll(".dropdown-header");
@@ -434,9 +435,7 @@ const pageIcon = "/icons/files.svg";
     });
   }
 
-  document.addEventListener("DOMContentLoaded", setupDropdown);
-</script>
-<script>
+  document.addEventListener("astro:page-load", setupDropdown);
   import JSZip from "jszip";
 
   async function downloadAllMods() {
@@ -501,10 +500,18 @@ const pageIcon = "/icons/files.svg";
     button.classList.remove("loading");
   }
 
-  document
-    .getElementById("download-last-update")
-    .addEventListener("click", downloadLastUpdate);
-  document
-    .getElementById("download-all")
-    .addEventListener("click", downloadAllMods);
+  document.addEventListener("astro:page-load", () => {
+    const downloadAllButton = document.getElementById("download-all");
+    const downloadLastUpdateButton = document.getElementById(
+      "download-last-update"
+    );
+
+    if (downloadAllButton) {
+      downloadAllButton.addEventListener("click", downloadAllMods);
+    }
+
+    if (downloadLastUpdateButton) {
+      downloadLastUpdateButton.addEventListener("click", downloadLastUpdate);
+    }
+  });
 </script>
