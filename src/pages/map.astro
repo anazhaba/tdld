@@ -5,9 +5,17 @@ const subtitle = "Карта";
 const description =
   "Приватный minecraft сервер 1.20.1 с модами и дружелюбной атмосферой! | Карта сервера";
 const pageIcon = "/icons/map.svg";
+import { ViewTransitions } from "astro:transitions";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<ViewTransitions />
+<Layout
+  transition:animate="fade"
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <div class="map-wrapper">
     <iframe class="map-iframe" src="https://map.toadland.ru">Загрузка</iframe>
   </div>

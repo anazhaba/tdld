@@ -18,6 +18,37 @@ const { title, description, subtitle, icon }: Props = Astro.props;
 <!doctype html>
 <html lang="ru">
   <head>
+    <script src="../components/theme.js"></script>
+    <style>
+      :root {
+        --color-black: #1d1e18;
+        --color-bg: #fefffd;
+        --color-note-text: #3b3b3b;
+        --color-green-500: #2d7331;
+        --color-green-400: #328036;
+        --color-green-300: #388e3c;
+        --color-green-200: #4caf50;
+        --color-green-100: #a5d6a7;
+        --color-accent: #ffb300;
+        --color-accent-hover: #ff9900;
+        --color-gray-100: #bdbdbd;
+        --color-white: #f5f5f5;
+      }
+      [data-theme="dark"] {
+        --color-black: #18191a;
+        --color-bg: #1d1f21;
+        --color-note-text: #eeeeee;
+        --color-green-500: #237a26;
+        --color-green-400: #2a9430;
+        --color-green-300: #38a343;
+        --color-green-200: #56c268;
+        --color-green-100: #9ee1a7;
+        --color-accent: #ffa000;
+        --color-accent-hover: #ff8500;
+        --color-gray-100: #757575;
+        --color-white: #202124;
+      }
+    </style>
     <Meta {title} {subtitle} description={description} />
     <meta charset="UTF-8" />
     <meta property="og:type" content="website" />
@@ -42,6 +73,7 @@ const { title, description, subtitle, icon }: Props = Astro.props;
     />
     <ViewTransitions />
   </head>
+
   <body>
     <style is:global>
       @font-face {
@@ -97,6 +129,20 @@ const { title, description, subtitle, icon }: Props = Astro.props;
         --color-gray-100: #bdbdbd;
         --color-white: #f5f5f5;
       }
+      [data-theme="dark"] {
+        --color-black: #18191a;
+        --color-bg: #1d1f21;
+        --color-note-text: #eeeeee;
+        --color-green-500: #237a26;
+        --color-green-400: #2a9430;
+        --color-green-300: #38a343;
+        --color-green-200: #56c268;
+        --color-green-100: #9ee1a7;
+        --color-accent: #ffa000;
+        --color-accent-hover: #ff8500;
+        --color-gray-100: #757575;
+        --color-white: #202124;
+      }
       body {
         margin: 0 auto;
         padding: 0;
@@ -123,7 +169,7 @@ const { title, description, subtitle, icon }: Props = Astro.props;
     </style>
 
     <div
-      transition:animate={fade({ duration: "0.3s" })}
+      transition:animate={fade({ duration: "0.5s" })}
       id="content"
       class="main--wrapper"
     >
