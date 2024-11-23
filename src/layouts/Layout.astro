@@ -19,9 +19,18 @@ const { title, description, subtitle, icon }: Props = Astro.props;
 <html lang="ru">
   <head>
     <script src="../components/theme.js"></script>
+
     <style>
       html {
         visibility: hidden; /* Скрываем страницу до установки темы */
+         background-color: #fefffd; /* светлая тема */
+        color: #1d1e18;
+      }
+      @media (prefers-color-scheme: dark) {
+        html {
+          background-color: #1d1f21; /* темная тема */
+          color: #eeeeee;
+        }
       }
       :root {
         --color-black: #1d1e18;
