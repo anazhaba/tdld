@@ -104,10 +104,12 @@ const pageIcon = "/icons/buy.svg";
   .buy-heading {
     font-family: gilroy-bold;
     text-align: center;
+    color: var(--color-title);
   }
   .buy-subheading {
     font-family: gilroy-bold;
     text-align: center;
+    color: var(--color-note-text);
   }
   .buy-subheading span {
     font-family: gilroy-exbold;
@@ -133,7 +135,7 @@ const pageIcon = "/icons/buy.svg";
     padding-left: 20px;
   }
   .tg-link {
-    color: var(--color-black);
+    color: var(--color-accent);
   }
   .donate-container {
     display: flex;
@@ -201,6 +203,7 @@ const pageIcon = "/icons/buy.svg";
     z-index: 1000;
   }
   .modal-title {
+    color: var(--color-title);
     font-size: 2rem;
     font-family: gilroy-bold;
   }
@@ -238,7 +241,8 @@ const pageIcon = "/icons/buy.svg";
     transition: 0.2s;
   }
   .modal-content {
-    background-color: #fff;
+    background-color: var(--color-white);
+
     padding: 30px;
     border-radius: 14px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -256,7 +260,7 @@ const pageIcon = "/icons/buy.svg";
     right: 15px;
     font-size: 24px;
     cursor: pointer;
-    color: #333;
+    color: var(--color-title);
   }
 
   .modal-heading {
