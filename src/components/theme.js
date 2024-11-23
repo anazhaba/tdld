@@ -11,7 +11,6 @@ const initTheme = () => {
   const savedTheme =
     localStorage.getItem("site-theme") || (prefersDarkMode ? "dark" : "light");
   applyTheme(savedTheme);
-<<<<<<< Updated upstream
   document.documentElement.style.visibility =
     "visible"; /* Отображаем страницу обратно страницу до установки темы */
 };
@@ -19,13 +18,9 @@ const initTheme = () => {
 // Применяем тему перед подготовкой страницы
 document.addEventListener("astro:after-swap", initTheme);
 // Также инициализируем при первоначальной загрузке
-=======
-  document.documentElement.style.visibility = "visible";
-};
-
+document.documentElement.style.visibility = "visible";
 document.addEventListener("astro:after-swap", initTheme);
 
->>>>>>> Stashed changes
 initTheme();
 
 // Обработчик изменения системной темы
