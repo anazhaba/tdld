@@ -77,7 +77,8 @@ const pageIcon = "/icons/files.svg";
     padding: 20px;
     box-sizing: border-box;
     @media (max-width: 398px) {
-      padding: 0;
+      padding: 5px;
+      max-width: 298px;
     }
   }
   .last-update-download-button {
@@ -112,7 +113,7 @@ const pageIcon = "/icons/files.svg";
     justify-content: center;
     overflow: hidden;
     @media (max-width: 398px) {
-      padding: 5px;
+      padding: 0px;
     }
   }
 
@@ -127,6 +128,9 @@ const pageIcon = "/icons/files.svg";
     overflow: hidden;
     @media (max-width: 448px) {
       gap: 10px;
+    }
+    @media (max-width: 398px) {
+      grid-template-columns: inherit;
     }
   }
 
@@ -151,10 +155,14 @@ const pageIcon = "/icons/files.svg";
       font-size: 14px;
       height: 40px;
     }
+    @media (max-width: 398px) {
+      border-radius: 10px;
+    }
     @media (max-width: 368px) {
       padding: 5px;
-      border-radius: 5px;
-      height: 30px;
+      border-radius: 6px;
+      height: 35px;
+      font-size: 10px;
     }
   }
 
@@ -181,7 +189,7 @@ const pageIcon = "/icons/files.svg";
     @media (max-width: 398px) {
       font-size: 20px;
     }
-    @media (max-width: 310px) {
+    @media (max-width: 348px) {
       font-size: 14px;
     }
   }
