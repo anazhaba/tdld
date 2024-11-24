@@ -13,7 +13,13 @@ const pageIcon = "/icons/love.svg";
 ---
 
 <ViewTransitions />
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  transition:animate={fade({ duration: "0.5s" })}
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <main class="main-page-container">
     <Test2 slot="MainTest" />
   </main>

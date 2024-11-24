@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { fade } from "astro:transitions";
 const title = "Toadland";
 const subtitle = "404";
 const description =
@@ -7,7 +8,13 @@ const description =
 const pageIcon = "/icons/error.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  transition:animate={fade({ duration: "0.5s" })}
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <div class="wrapper">
     <h1 class="err-title">
       ⛔️Такой страницы не существует потому что.. <span></span>

@@ -1,5 +1,5 @@
 ---
-import { slide } from "astro:transitions";
+import { fade } from "astro:transitions";
 import { ViewTransitions } from "astro:transitions";
 const { title, subtitle, icon } = Astro.props;
 ---
@@ -31,18 +31,18 @@ const { title, subtitle, icon } = Astro.props;
 <div class="unique-menu-overlay" id="uniqueMenuOverlay"></div>
 <div class="unique-menu" id="uniqueMenu">
   <div
-    transition:animate={slide({ duration: "0.5s" })}
+    transition:animate={fade({ duration: "0.5s" })}
     class="unique-menu-top"
     id="uniqueMenuTop"
   >
     <p id="uniqueSplashText"></p>
   </div>
   <div
-    transition:animate={slide({ duration: "0.5s" })}
+    transition:animate={fade({ duration: "0.5s" })}
     class="unique-menu-content"
   >
     <div
-      transition:animate={slide({ duration: "0.5s" })}
+      transition:animate={fade({ duration: "0.5s" })}
       class="unique-menu-links"
     >
       <a href="/buy"

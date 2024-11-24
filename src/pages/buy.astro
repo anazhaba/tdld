@@ -182,7 +182,7 @@ const pageIcon = "/icons/buy.svg";
   .donate-button:hover svg {
     background-color: var(--color-green-500);
   }
-  /* Модальное окно */
+
   .modal-background {
     position: fixed;
     top: 0;
@@ -207,15 +207,7 @@ const pageIcon = "/icons/buy.svg";
     font-size: 2rem;
     font-family: gilroy-bold;
   }
-  .modal-content-icon {
-    transition: 0.2s;
-    fill: #fff;
-    height: 24px;
-    width: 24px;
-    background-color: var(--color-green-400);
-    padding: 0.5rem;
-    border-radius: 10px;
-  }
+
   .modal-background.open {
     opacity: 1;
     visibility: visible;
@@ -225,24 +217,9 @@ const pageIcon = "/icons/buy.svg";
     flex-direction: row;
     align-items: center;
   }
-  .donate-option {
-    text-decoration: none;
-    color: #fff;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .modal-option:hover {
-    background-color: var(--color-green-400);
-    transition: 0.2s;
-  }
-  .modal-option:hover .modal-content-icon {
-    background: var(--color-green-500);
-    transition: 0.2s;
-  }
+
   .modal-content {
     background-color: var(--color-white);
-
     padding: 30px;
     border-radius: 14px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
@@ -267,8 +244,33 @@ const pageIcon = "/icons/buy.svg";
     font-family: "Gilroy-Bold", sans-serif;
     font-size: 1.5rem;
     margin: 0;
+    flex: 1;
+    text-align: center;
   }
-
+  .modal-content-icon {
+    transition: 0.2s;
+    fill: #fff;
+    height: 24px;
+    width: 24px;
+    background-color: var(--color-green-400);
+    padding: 0.5rem;
+    border-radius: 10px;
+  }
+  .donate-option {
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .modal-option:hover {
+    background-color: var(--color-green-400);
+    transition: 0.2s;
+  }
+  .modal-option:hover .modal-content-icon {
+    background: var(--color-green-500);
+    transition: 0.2s;
+  }
   .modal-options {
     list-style: none;
     padding: 0;
@@ -460,7 +462,7 @@ const pageIcon = "/icons/buy.svg";
       if (modalBackground) {
         if (isChrome) {
           // Применить стили для Chrome
-          modalBackground.style.background = "rgba(0, 0, 0, 0.53)";
+          modalBackground.style.background = "rgba(0, 0, 0, 0.88)";
           modalBackground.style.backdropFilter = "none"; // Не используем backdrop-filter в Chrome
         } else if (isFirefox) {
           // Применить стили для Firefox

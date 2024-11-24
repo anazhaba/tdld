@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Frogs from "../components/Frogs.astro";
+import { fade } from "astro:transitions";
 import { ViewTransitions } from "astro:transitions";
 const title = "Toadland";
 const subtitle = "О нас";
@@ -9,7 +10,13 @@ const description =
 const pageIcon = "/icons/about.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  transition:animate={fade({ duration: "0.5s" })}
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <div class="about-wrapper">
     <div class="about-container">
       <p class="about-text">

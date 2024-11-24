@@ -1,4 +1,5 @@
 ---
+import { fade } from "astro:transitions";
 import Layout from "../layouts/Layout.astro";
 const title = "Toadland";
 const description =
@@ -7,8 +8,33 @@ const subtitle = "Правила";
 const pageIcon = "/icons/rules.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  transition:animate={fade({ duration: "0.5s" })}
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <div class="rules-container">
+    <div class="warning-banner">
+      <div class="icon-wrapper">
+        <svg
+          class="warning-svg"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 -960 960 960"
+        >
+          <path
+            d="M480-120q-33 0-56.5-23.5T400-200q0-33 23.5-56.5T480-280q33 0 56.5 23.5T560-200q0 33-23.5 56.5T480-120Zm-80-240v-480h160v480H400Z"
+          ></path>
+        </svg>
+      </div>
+      <p>
+        Зайдя на сервер, игрок автоматически считается ознакомленным со всеми
+        действующими правилами и принимает на себя ответственность за их
+        соблюдение.
+      </p>
+    </div>
+
     <ul class="rules-list">
       <li class="rule-item">
         <h2 class="rule-title">Чат</h2>
@@ -41,7 +67,10 @@ const pageIcon = "/icons/rules.svg";
             преимущество над другими игроками.
           </li>
           <li>Запрещено создание и использование дюпа.</li>
-          <li>Запрещено использование багов и ошибок игры и сервера.</li>
+          <li>
+            Запрещено использование багов и ошибок игры и сервера если таковые
+            дают преимущества над другими игроками.
+          </li>
           <li>
             Запрещён несанкционированный доступ к чужому аккаунту на сервере.
           </li>
@@ -55,6 +84,17 @@ const pageIcon = "/icons/rules.svg";
           <li>
             Запрещён шантаж, вымогательство реальных/игровых денежных средств,
             ресурсов, информации и пр.
+          </li>
+          <li>
+            Запрещена автоматизация игрового процесса: <br /> Разрешено находиться
+            в игре в состоянии AFK (отсутствие активности), но запрещается любая
+            форма автоматизации игрового процесса, включая использование стороннего
+            софта, макросов, бинд клавиш или других способов, имитирующих действия
+            игрока. <br /> Пример: Игрок может находиться AFK на спавн-ферме для
+            ожидания появления мобов, при условии, что он не производит автоматических
+            действий. Разрешается самостоятельно, вручную производить действия (например,
+            удары мобов), но только без использования автоматизации. Нарушение данного
+            правила рассматривается администрацией как использование нечестных преимуществ.
           </li>
         </ul>
         <h3 class="sub-title">Грифферство</h3>
@@ -74,9 +114,20 @@ const pageIcon = "/icons/rules.svg";
             Запрещено строиться на чужой территории либо поблизости без
             разрешения ответственного лица.
           </li>
+          <p class="rule-dop">
+            Занятая территория определяется как область, ограниченная самыми
+            крайними размещенными блоками игрока в каждом из четырех направлений
+            (север, юг, восток, запад), с радиусом 200 блоков от этих границ.
+            Строительство в пределах этой зоны без разрешения ответственного
+            лица запрещено. Данное правило актуально только в случае, если
+            территория игрока не нанесена на игровую карту.
+          </p>
           <li>
-            Территория считается занятой после нанесения ее границ на карте.
-            Спорные ситуации решаются по усмотрению администрации.
+            Территория считается занятой, если ее границы нанесены на игровую
+            карту. Если границы не нанесены, считается, что территория включает
+            область от самых крайних размещенных блоков игрока в каждом из
+            четырех направлений с радиусом 200 блоков от них. Спорные ситуации
+            решаются по усмотрению администрации.
           </li>
           <li>
             Запрещено портить ландшафт мира бесполезными
@@ -116,6 +167,13 @@ const pageIcon = "/icons/rules.svg";
           вопросам наказаний и жалобы принимаются в личных сообщениях
           Администраторов в «ВКонтакте».
         </p>
+        <li class="rule-item">
+          <br />
+          Администрация оставляет за собой право принимать окончательные решения
+          в любых ситуациях, включая те, которые не предусмотрены правилами, а также
+          изменять свои решения даже вопреки установленным правилам, если это необходимо
+          для обеспечения порядка или поддержания интересов игрового сообщества.
+        </li>
       </li>
       <li class="rule-item">
         <h2 class="rule-title">Города</h2>
@@ -160,7 +218,7 @@ const pageIcon = "/icons/rules.svg";
       font-family: gilroy-bold;
       letter-spacing: 1px;
       font-size: 20px;
-      color: var(--color-black);
+      color: var(--color-title);
     }
     .rule-description {
       font-size: 1rem;
@@ -278,6 +336,62 @@ const pageIcon = "/icons/rules.svg";
       color: white;
       text-decoration: none;
       font-family: gilroy-black;
+    }
+    .warning-banner {
+      display: flex;
+      align-items: center;
+      background-color: #ffdddd; /* Неяркий красный фон */
+      border-left: 6px solid #ff5a5a; /* Бордюр */
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-family: Arial, sans-serif;
+      color: #600000; /* Темный красный текст */
+      margin: 10px 0;
+    }
+
+    .icon-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background-color: #ff5a5a;
+      border-radius: 8px;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    .warning-svg {
+      width: 20px;
+      height: 20px;
+      fill: white;
+    }
+
+    .warning-banner p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.5;
+      font-family: gilroy-bold;
+      @media (max-width: 612px) {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .warning-banner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .icon-wrapper {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+
+      .warning-banner p {
+        font-size: 13px;
+      }
     }
   </style>
 </Layout>

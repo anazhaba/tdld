@@ -16,7 +16,7 @@ const { title, description, subtitle, icon }: Props = Astro.props;
 ---
 
 <!doctype html>
-<html lang="ru">
+<html transition:animate={fade({ duration: "0.5s" })} lang="ru">
   <head>
     <script src="../components/theme.js"></script>
 
@@ -168,10 +168,58 @@ const { title, description, subtitle, icon }: Props = Astro.props;
           display: none;
         }
       }
+      /* Webkit-браузеры (Chrome, Edge, Safari) */
+      ::-webkit-scrollbar {
+        width: 4px; /* Узкий скроллбар */
+        height: 4px;
+        background: transparent; /* Фон по умолчанию */
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.3); /* Полупрозрачный темный цвет */
+        border-radius: 10px; /* Закругленные края */
+        transition:
+          background-color 0.2s,
+          width 0.2s; /* Плавное изменение ширины и цвета */
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(0, 0, 0, 0.6); /* Более заметный цвет */
+        width: 8px; /* Расширение при наведении */
+      }
+
+      ::-webkit-scrollbar-track {
+        background: transparent; /* Скрытие трека для минимализма */
+      }
+
+      /* Firefox */
+      * {
+        scrollbar-width: thin; /* Узкий скроллбар */
+        scrollbar-color: rgba(0, 0, 0, 0.3) transparent; /* Цвет ползунка и фона */
+      }
+
+      *::-webkit-scrollbar-thumb:hover {
+        scrollbar-width: auto; /* Немного шире */
+        scrollbar-color: rgba(0, 0, 0, 0.6) transparent; /* Более заметный при наведении */
+      }
+
+      /* Microsoft Edge (старая версия) */
+      @supports (-ms-overflow-style: none) {
+        .scrollable {
+          -ms-overflow-style: -ms-autohiding-scrollbar; /* Узкий и исчезающий */
+        }
+      }
+
+      /* Пример для более старых версий IE (устарело) */
+      .scrollable {
+        overflow-y: auto; /* Стандартное поведение */
+        scrollbar-face-color: rgba(0, 0, 0, 0.3); /* Цвет ползунка */
+        scrollbar-track-color: transparent; /* Цвет фона трека */
+      }
     </style>
 
     <div
-      transition:animate={fade({ duration: "0.3s" })}
+      transition:animate={fade({ duration: "0.5s" })}
       id="content"
       class="main--wrapper"
     >
