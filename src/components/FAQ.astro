@@ -42,8 +42,10 @@
       <p>
         Если у вас есть вопросы или вам требуется дополнительная информация
         перед покупкой, вы можете связаться с администрацией нашего сервера. Для
-        этого перейдите по следующей <a href="#" class="faq-link">ссылке</a>.
-        Наша команда будет рада помочь вам и ответить на все ваши вопросы.
+        этого перейдите по следующей <a
+          href="https://t.me/toadland_bot"
+          class="faq-link">ссылке</a
+        >. Наша команда будет рада помочь вам и ответить на все ваши вопросы.
       </p>
     </div>
   </div>
@@ -76,8 +78,8 @@
         Если вы сталкиваетесь с трудностями при оплате доступа по предложенным
         реквизитам, пожалуйста, свяжитесь с нами. Мы постараемся предложить
         альтернативные варианты или помочь вам в решении проблемы. Напишите нам
-        по <a href="#" class="faq-link">ссылке</a>, и мы обязательно найдем
-        решение.
+        по <a href="https://t.me/toadland_bot" class="faq-link">ссылке</a>, и мы
+        обязательно найдем решение.
       </p>
     </div>
   </div>
@@ -96,7 +98,8 @@
         сервером, прежде чем принимать решение о покупке. Мы готовы рассмотреть
         возможность предоставления бесплатного доступа на ограниченное время в
         индивидуальном порядке. Чтобы обсудить детали и условия, пожалуйста,
-        <a href="#" class="faq-link">свяжитесь с нами</a>.
+        <a href="https://t.me/toadland_bot" class="faq-link">свяжитесь с нами</a
+        >.
       </p>
     </div>
   </div>
@@ -131,6 +134,7 @@
   }
   .faq-question::selection {
     background-color: initial;
+    color: inherit;
   }
   .faq-question {
     background-color: var(--color-green-300);
@@ -161,6 +165,7 @@
   }
   .faq-icon::selection {
     background-color: initial;
+    color: initial;
   }
   .faq-icon {
     margin-left: auto;
@@ -201,12 +206,14 @@
 </style>
 
 <!--faq/buy-page -->
-<script type="module">
-  function setupFAQInteraction() {
-    const questions = document.querySelectorAll(".faq-item .faq-question");
-    const openItems = [];
+<script is:inline>
+  class FAQManager {
+    constructor() {
+      this.isInitialized = false;
+      this.openItems = [];
+    }
 
-    function toggleFAQ(event) {
+    toggleFAQ(event) {
       const question = event.currentTarget;
       const answer = question.nextElementSibling;
       const icon = question.querySelector(".faq-icon");
@@ -215,63 +222,65 @@
       if (isOpen) {
         answer.style.maxHeight = null;
         icon.style.transform = "rotate(0deg)";
-        openItems.splice(openItems.indexOf(answer), 1);
+        this.openItems = this.openItems.filter((item) => item !== answer);
       } else {
-        if (openItems.length >= 2) {
-          const oldestOpenItem = openItems.shift();
+        if (this.openItems.length >= 2) {
+          const oldestOpenItem = this.openItems.shift();
           const oldestIcon =
             oldestOpenItem.previousElementSibling.querySelector(".faq-icon");
           oldestOpenItem.style.maxHeight = null;
           oldestIcon.style.transform = "rotate(0deg)";
         }
-
         answer.style.maxHeight = answer.scrollHeight + "px";
         icon.style.transform = "rotate(180deg)";
-        openItems.push(answer);
+        this.openItems.push(answer);
       }
     }
 
-    questions.forEach((question) => {
-      question.removeEventListener("click", toggleFAQ);
-      question.addEventListener("click", toggleFAQ);
-    });
-  }
+    setupFAQInteraction() {
+      const questions = document.querySelectorAll(".faq-item .faq-question");
+      if (questions.length === 0) return;
 
-  function initFAQ() {
-    const title = document.querySelector(".faq-title");
-
-    if (title) {
-      title.style.pointerEvents = "none";
+      questions.forEach((question) => {
+        // Удаляем старые обработчики
+        const clone = question.cloneNode(true);
+        question.parentNode.replaceChild(clone, question);
+        // Добавляем новый обработчик
+        clone.addEventListener("click", (e) => this.toggleFAQ(e));
+      });
     }
 
-    setupFAQInteraction();
-  }
-
-  function observeDOMChanges() {
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (
-          mutation.addedNodes.length > 0 ||
-          mutation.removedNodes.length > 0
-        ) {
-          initFAQ();
+    init() {
+      // Добавляем небольшую задержку для гарантии загрузки DOM
+      setTimeout(() => {
+        const title = document.querySelector(".faq-title");
+        if (title) {
+          title.style.pointerEvents = "none";
         }
-      });
-    });
+        this.setupFAQInteraction();
+        this.isInitialized = true;
+      }, 0);
+    }
 
-    observer.observe(document.body, { childList: true, subtree: true });
+    reset() {
+      this.isInitialized = false;
+      this.openItems = [];
+    }
   }
 
-  window.addEventListener("load", () => {
-    initFAQ();
-    observeDOMChanges();
-  });
+  // Создаем единственный экземпляр менеджера FAQ в глобальной области видимости
+  window.faqManager = window.faqManager || new FAQManager();
 
-  // Также добавляем Astro события
+  // Функция инициализации
+  function initFAQ() {
+    if (window.faqManager) {
+      window.faqManager.reset();
+      window.faqManager.init();
+    }
+  }
+
+  // Обработчики для разных сценариев загрузки
+  document.addEventListener("DOMContentLoaded", initFAQ);
+  window.addEventListener("load", initFAQ);
   document.addEventListener("astro:page-load", initFAQ);
-  document.addEventListener("astro:after-swap", initFAQ);
-  document.addEventListener("DOMContentLoaded", () => {
-    initFAQ();
-    observeDOMChanges();
-  });
 </script>

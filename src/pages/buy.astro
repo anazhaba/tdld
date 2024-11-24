@@ -43,7 +43,8 @@ const pageIcon = "/icons/buy.svg";
       </section>
       <p class="buy-text">
         Обязательно напишите нам в <a
-          href="https://t.me/anazhaba"
+          href="https://t.me/toadland_bot"
+          target="_blank"
           class="tg-link">личные сообщения</a
         > после оплаты по форме ниже, чтобы мы могли выслать Вам все необходимые
         данные!
@@ -135,7 +136,7 @@ const pageIcon = "/icons/buy.svg";
     padding-left: 20px;
   }
   .tg-link {
-    color: var(--color-accent);
+    color: var(--color-green-400);
   }
   .donate-container {
     display: flex;
@@ -355,29 +356,32 @@ const pageIcon = "/icons/buy.svg";
 </style>
 
 <script>
-  document.addEventListener("astro:page-load", function () {
+  // Функция инициализации FAQ
+  function initializeFAQ() {
     const faqTitles = document.querySelectorAll(".faq-title");
-
     faqTitles.forEach((title) => {
       title.addEventListener("click", function () {
         const content = this.nextElementSibling;
-
-        // Убедимся, что content действительно является HTMLElement
         if (content instanceof HTMLElement) {
           // Закрываем другие открытые элементы
           document.querySelectorAll(".faq-content").forEach((item) => {
-            if (item !== content) {
-              (item as HTMLElement).style.display = "none";
+            if (item !== content && item instanceof HTMLElement) {
+              item.style.display = "none";
             }
           });
-
           // Переключаем отображение текущего элемента
           content.style.display =
             content.style.display === "block" ? "none" : "block";
         }
       });
     });
-  });
+  }
+
+  // Обработчик для начальной загрузки страницы
+  document.addEventListener("DOMContentLoaded", initializeFAQ);
+
+  // Обработчик для навигации между страницами
+  document.addEventListener("astro:page-load", initializeFAQ);
 </script>
 <script>
   document.addEventListener("astro:page-load", function () {

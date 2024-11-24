@@ -32,7 +32,7 @@ const pageIcon = "/icons/files.svg";
       >
       <button id="download-last-update" class="last-update-download-button">
         Скачать последние обновленные моды
-        <span class="loader"></span>
+        <span class="progress-text"></span>
       </button>
       <div class="last-update-header-block">
         <h3 class="dropdown-header">
@@ -55,7 +55,7 @@ const pageIcon = "/icons/files.svg";
       </div>
       <button id="download-all" class="mods-download-all-button">
         Скачать все моды
-        <span class="loader"></span>
+        <span class="progress-text"></span>
       </button>
 
       <span class="mods-list">
@@ -234,6 +234,10 @@ const pageIcon = "/icons/files.svg";
   }
 
   .mods-download-all-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
     font-family: gilroy-bold;
     transition: 0.2s;
     border: none;
@@ -354,7 +358,10 @@ const pageIcon = "/icons/files.svg";
     justify-content: center;
     margin: 0;
   }
-
+  .dropdown-header::selection {
+    background: initial;
+    color: inherit;
+  }
   .last-update-header-block {
     text-align: center;
   }
@@ -364,7 +371,10 @@ const pageIcon = "/icons/files.svg";
     margin-left: 10px;
     transition: transform 0.3s ease;
   }
-
+  .dropdown-icon::selection {
+    background: initial;
+    color: inherit;
+  }
   .dropdown-list {
     display: grid;
     grid-template-rows: auto;
@@ -412,6 +422,18 @@ const pageIcon = "/icons/files.svg";
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+  }
+  .last-update-download-button:active,
+  .mods-download-all-button:active {
+    background-color: var(--color-green-600);
+    transform: scale(0.95);
+  }
+  .progress-text {
+    font-family: gilroy-black;
+    display: block;
+    color: #ffffff;
+    text-align: center;
   }
 </style>
 <script>
@@ -450,28 +472,33 @@ const pageIcon = "/icons/files.svg";
     });
   }
 
-  document.addEventListener("DOMContentLoaded", setupDropdown);
+  document.addEventListener("astro:page-load", setupDropdown);
 </script>
 <script>
   import JSZip from "jszip";
 
   async function downloadAllMods() {
     const button = document.getElementById("download-all");
-    const loader = button.querySelector(".loader");
+    const progressText = button.querySelector(".progress-text");
 
-    // Устанавливаем состояние загрузки
     button.classList.add("loading");
+    progressText.textContent = "0.0%"; // Начинаем с 0.0%
 
     const zip = new JSZip();
     const files = [...document.querySelectorAll(".mods-download-link")];
+    const totalFiles = files.length;
 
-    for (const file of files) {
-      const anchor = file;
+    for (let i = 0; i < totalFiles; i++) {
+      const anchor = files[i];
 
       if (anchor instanceof HTMLAnchorElement) {
         const response = await fetch(anchor.href);
         const blob = await response.blob();
         zip.file(anchor.innerText.trim(), blob);
+
+        // Обновляем процент прогресса с точностью до десятых
+        const progress = (((i + 1) / totalFiles) * 100).toFixed(1);
+        progressText.textContent = `${progress}%`;
       }
     }
 
@@ -482,27 +509,32 @@ const pageIcon = "/icons/files.svg";
     link.download = "mods.zip";
     link.click();
 
-    // Убираем состояние загрузки после завершения
     button.classList.remove("loading");
+    progressText.textContent = ""; // Сбрасываем текст после завершения
   }
 
   async function downloadLastUpdate() {
     const button = document.getElementById("download-last-update");
-    const loader = button.querySelector(".loader");
+    const progressText = button.querySelector(".progress-text");
 
-    // Устанавливаем состояние загрузки
     button.classList.add("loading");
+    progressText.textContent = "0.0%"; // Начинаем с 0.0%
 
     const zip = new JSZip();
     const files2 = [...document.querySelectorAll(".dropdown-link")];
+    const totalFiles = files2.length;
 
-    for (const file of files2) {
-      const anchor = file;
+    for (let i = 0; i < totalFiles; i++) {
+      const anchor = files2[i];
 
       if (anchor instanceof HTMLAnchorElement) {
         const response = await fetch(anchor.href);
         const blob = await response.blob();
         zip.file(anchor.innerText.trim(), blob);
+
+        // Обновляем процент прогресса с точностью до десятых
+        const progress = (((i + 1) / totalFiles) * 100).toFixed(1);
+        progressText.textContent = `${progress}%`;
       }
     }
 
@@ -513,13 +545,14 @@ const pageIcon = "/icons/files.svg";
     link.download = "lastUpdate.zip";
     link.click();
 
-    // Убираем состояние загрузки после завершения
     button.classList.remove("loading");
+    progressText.textContent = ""; // Сбрасываем текст после завершения
   }
 
   document
     .getElementById("download-last-update")
     .addEventListener("click", downloadLastUpdate);
+
   document
     .getElementById("download-all")
     .addEventListener("click", downloadAllMods);
