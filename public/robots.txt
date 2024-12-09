@@ -1,4 +1,4 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://toadland.ru/sitemap-index.xml
+Disallow: /public/
+Disallow: /private/
+Sitemap: https://tdld.vercel.app/sitemap-index.xml

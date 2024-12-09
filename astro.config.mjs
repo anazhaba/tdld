@@ -4,7 +4,7 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://toadland.ru",
+  site: "https://tdld.vercel.app",
   integrations: [sitemap()],
   integrations: [react()], // Добавляем React как интеграцию
 });
