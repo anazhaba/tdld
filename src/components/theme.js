@@ -19,7 +19,6 @@ const initTheme = () => {
 document.addEventListener("astro:after-swap", initTheme);
 // Также инициализируем при первоначальной загрузке
 document.documentElement.style.visibility = "visible";
-document.addEventListener("astro:after-swap", initTheme);
 
 initTheme();
 

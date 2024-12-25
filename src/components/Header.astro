@@ -1,14 +1,13 @@
 ---
 import { fade } from "astro:transitions";
-import { ViewTransitions } from "astro:transitions";
+
 const { title, subtitle, icon } = Astro.props;
 ---
 
-<ViewTransitions />
 <header class="main--header">
   <span class="header-title-block"
     ><div class="header-title-dynamic-container">
-      <a class="header-title-link-back" href="/"
+      <a class="header-title-link-back" ' href="/"
         ><img class="header-logo" src="/icons/logo_circle.webp" alt="" /></a
       ><h1 class="header-title">
         {icon && <img src={icon} alt="header icon" class="page-icon" />}
@@ -30,21 +29,11 @@ const { title, subtitle, icon } = Astro.props;
 
 <div class="unique-menu-overlay" id="uniqueMenuOverlay"></div>
 <div class="unique-menu" id="uniqueMenu">
-  <div
-    transition:animate={fade({ duration: "0.5s" })}
-    class="unique-menu-top"
-    id="uniqueMenuTop"
-  >
+  <div class="unique-menu-top" id="uniqueMenuTop">
     <p id="uniqueSplashText"></p>
   </div>
-  <div
-    transition:animate={fade({ duration: "0.5s" })}
-    class="unique-menu-content"
-  >
-    <div
-      transition:animate={fade({ duration: "0.5s" })}
-      class="unique-menu-links"
-    >
+  <div class="unique-menu-content">
+    <div class="unique-menu-links">
       <a href="/buy"
         ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
           ><path

@@ -4,7 +4,7 @@ import MainTest from "../components/MainTest.astro";
 import Test2 from "../components/Test2.astro";
 import Layout from "../layouts/Layout.astro";
 import { fade } from "astro:transitions";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 const title = "Toadland";
 const subtitle = "Главная";
 const description =
@@ -12,14 +12,8 @@ const description =
 const pageIcon = "/icons/love.svg";
 ---
 
-<ViewTransitions />
-<Layout
-  transition:animate={fade({ duration: "0.5s" })}
-  title={title}
-  {subtitle}
-  icon={pageIcon}
-  description={description}
->
+<ClientRouter />
+<Layout title={title} {subtitle} icon={pageIcon} description={description}>
   <main class="main-page-container">
     <Test2 slot="MainTest" />
   </main>

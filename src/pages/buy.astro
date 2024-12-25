@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import FAQ from "../components/FAQ.astro";
 import { fade } from "astro:transitions";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from "astro:transitions";
 const title = "Toadland";
 const subtitle = "Доступ";
 const description =
@@ -10,14 +10,8 @@ const description =
 const pageIcon = "/icons/buy.svg";
 ---
 
-<ViewTransitions />
-<Layout
-  title={title}
-  {subtitle}
-  icon={pageIcon}
-  description={description}
-  transition:animate={fade({ duration: "0.5s" })}
->
+<ClientRouter />
+<Layout title={title} {subtitle} icon={pageIcon} description={description}>
   <div class="buy-wrapper">
     <h1 class="buy-heading">
       Здесь Вы можете оплатить игру на сервере или же совершить пожертвование на

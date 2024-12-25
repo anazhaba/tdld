@@ -4,6 +4,7 @@ import { fade } from "astro:transitions";
 import JSZip from "jszip";
 import { getFiles } from "../utils/getFiles";
 import { getFiles2 } from "../utils/getFiles2";
+import { ClientRouter } from "astro:transitions";
 const directory = "./public/mods";
 const files = getFiles(directory);
 const directory2 = "./public/mods/lastUpdate";
@@ -15,13 +16,7 @@ const description =
 const pageIcon = "/icons/files.svg";
 ---
 
-<Layout
-  transition:animate={fade({ duration: "0.5s" })}
-  title={title}
-  {subtitle}
-  icon={pageIcon}
-  description={description}
->
+<Layout title={title} {subtitle} icon={pageIcon} description={description}>
   <div class="mods-wrapper">
     <div class="mods-container">
       <h1 class="mods-title">Необходимый минимум для игры на сервере.</h1>

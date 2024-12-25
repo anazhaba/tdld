@@ -3,7 +3,8 @@ import Header from "../components/Header.astro";
 import Meta from "../components/Meta.astro";
 import Footer from "../components/Footer.astro";
 import { fade } from "astro:transitions";
-import { ViewTransitions } from "astro:transitions";
+
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   subtitle?: string;
@@ -16,7 +17,7 @@ const { title, description, subtitle, icon }: Props = Astro.props;
 ---
 
 <!doctype html>
-<html transition:animate={fade({ duration: "0.5s" })} lang="ru">
+<html lang="ru">
   <head>
     <script src="../components/theme.js"></script>
 
@@ -92,7 +93,7 @@ const { title, description, subtitle, icon }: Props = Astro.props;
       name="keywords"
       content="Тодленд, toadland, тод ленд, тоад ленд, toad land, тоад land, Тод land, майнкрафт сервер, приватный сервер minecraft, mineacraft toadland, minecraft, майнкрафт, сервер майнкрафт, сервер с жабами, майнкрафт с жабами"
     />
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <style is:global>
@@ -226,11 +227,7 @@ const { title, description, subtitle, icon }: Props = Astro.props;
       }
     </style>
 
-    <div
-      transition:animate={fade({ duration: "0.5s" })}
-      id="content"
-      class="main--wrapper"
-    >
+    <div id="content" class="main--wrapper">
       <Header {title} {subtitle} icon={icon} />
       <slot />
       <Footer />

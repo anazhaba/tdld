@@ -1,6 +1,7 @@
 ---
 import { fade } from "astro:transitions";
 import Layout from "../layouts/Layout.astro";
+import { ClientRouter } from "astro:transitions";
 const title = "Toadland";
 const description =
   "Приватный minecraft сервер 1.20.1 с модами и дружелюбной атмосферой! | Правила сервера";
@@ -8,13 +9,7 @@ const subtitle = "Правила";
 const pageIcon = "/icons/rules.svg";
 ---
 
-<Layout
-  transition:animate={fade({ duration: "0.5s" })}
-  title={title}
-  {subtitle}
-  icon={pageIcon}
-  description={description}
->
+<Layout title={title} {subtitle} icon={pageIcon} description={description}>
   <div class="rules-container">
     <div class="warning-banner">
       <div class="icon-wrapper">
