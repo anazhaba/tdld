@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { ClientRouter } from "astro:transitions";
+const title = "Toadland";
+const subtitle = "Предложения";
+const description = "Предложения по улучшению сервера";
+const pageIcon = "/icons/wiki.svg";
+---
+
+<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+  <div class="improvement-container">
+    <script is:inline src="https://forms.yandex.ru/_static/embed.js"></script>
+
+    <div class="iframe-container">
+      <iframe
+        src="https://forms.yandex.ru/cloud/676c5c655056909b14da5c27/?iframe=1"
+        frameborder="0"
+        name="ya-form-676c5c655056909b14da5c27"
+        overflow-y="scroll"></iframe>
+    </div>
+  </div>
+</Layout>
+<style>
+  iframe {
+    width: 768px;
+  }
+  .iframe-container {
+    position: relative;
+    overflow: hidden;
+    height: calc(100% - 60px);
+  }
+  .improvement-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+</style>
