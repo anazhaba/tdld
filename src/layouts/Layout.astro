@@ -2,7 +2,7 @@
 import Header from "../components/Header.astro";
 import Meta from "../components/Meta.astro";
 import Footer from "../components/Footer.astro";
-import { fade } from "astro:transitions";
+import "../components/transitions.css";
 
 import { ClientRouter } from "astro:transitions";
 
@@ -19,6 +19,7 @@ const { title, description, subtitle, icon }: Props = Astro.props;
 <!doctype html>
 <html lang="ru">
   <head>
+    <ClientRouter />
     <script src="../components/theme.js"></script>
 
     <style>
@@ -94,7 +95,6 @@ const { title, description, subtitle, icon }: Props = Astro.props;
       name="keywords"
       content="Тодленд, toadland, тод ленд, тоад ленд, toad land, тоад land, Тод land, майнкрафт сервер, приватный сервер minecraft, mineacraft toadland, minecraft, майнкрафт, сервер майнкрафт, сервер с жабами, майнкрафт с жабами"
     />
-    <ClientRouter />
   </head>
   <body>
     <style is:global>
@@ -228,7 +228,7 @@ const { title, description, subtitle, icon }: Props = Astro.props;
       }
     </style>
 
-    <div id="content" class="main--wrapper">
+    <div id="content" class="main--wrapper" data-astro-transition="animate">
       <Header {title} {subtitle} icon={icon} />
       <slot />
       <Footer />
