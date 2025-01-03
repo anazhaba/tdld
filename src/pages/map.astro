@@ -8,7 +8,13 @@ const description =
 const pageIcon = "/icons/map.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  data-astro-transition="animate"
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <div class="map-wrapper">
     <iframe class="map-iframe" src="https://map.toadland.ru">Загрузка</iframe>
   </div>

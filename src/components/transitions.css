@@ -4,13 +4,15 @@ body {
 
 @-moz-keyframes blurFade {
     from {
-        margin: 100%;
+        transform: translateY(5%);
+
         opacity: 0;
         filter: blur(30px);
     }
 
     to {
-        margin: 0;
+        transform: translateY(0);
+
         opacity: 1;
         filter: blur(0);
     }
@@ -18,20 +20,23 @@ body {
 
 @keyframes blurFade {
     from {
-        margin: 100%;
+        transform: translateY(5%);
+
         opacity: 0;
         filter: blur(30px);
     }
 
     to {
-        margin: 0;
+        transform: translateY(0);
+
         opacity: 1;
         filter: blur(0);
     }
 }
 
 [data-astro-transition="animate"] {
-    animation: blurFade 0.3s linear;
+    animation: blurFade 0.2s linear;
+    -moz-animation: blurFade 0.2s linear;
     max-width: 100vw;
     overflow: hidden;
 }
