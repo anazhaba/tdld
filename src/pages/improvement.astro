@@ -22,16 +22,34 @@ const pageIcon = "/icons/wiki.svg";
 </Layout>
 <style>
   iframe {
+    margin: 0 auto;
+
     width: 768px;
+
+    @media (max-width: 800px) {
+      width: 600px;
+    }
+    @media (max-width: 650px) {
+      width: 450px;
+    }
+    @media (max-width: 512px) {
+      width: 340px;
+    }
+    @media (max-width: 378px) {
+      width: 240px;
+      overflow-x: auto;
+    }
   }
   .iframe-container {
-    position: relative;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     overflow: hidden;
-    height: calc(100% - 60px);
+    height: calc(100% - 80px);
   }
   .improvement-container {
     max-width: 1440px;
     margin: 0 auto;
-    padding: 20px;
   }
 </style>

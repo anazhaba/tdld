@@ -87,6 +87,13 @@ const { title, subtitle, icon } = Astro.props;
           ></path></svg
         ><span>Новости</span></a
       >
+      <a data-astro-prefetch="tap" href="/improvement"
+        ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
+          ><path
+            d="M480-358.87q20.6 0 34.54-14.33 13.94-14.32 13.94-34.71t-13.94-34.44Q500.6-456.39 480-456.39t-34.54 13.94q-13.94 13.93-13.94 34.54 0 20.39 13.94 34.71 13.94 14.33 34.54 14.33Zm0-156.61q18.92 0 31.72-12.8 12.8-12.8 12.8-31.72v-155.48q0-18.92-12.8-31.72Q498.92-760 480-760q-18.92 0-31.72 12.8-12.8 12.8-12.8 31.72V-560q0 18.92 12.8 31.72 12.8 12.8 31.72 12.8Zm-259.22 294.7-69.39 69.39q-25.22 25.22-57.91 11.5-32.7-13.71-32.7-48.98v-604.35q0-44.3 30.85-75.15 30.85-30.85 75.15-30.85h626.44q44.3 0 75.15 30.85 30.85 30.85 30.85 75.15v466.44q0 44.3-30.85 75.15-30.85 30.85-75.15 30.85H220.78Zm-34-106h606.44v-466.44H166.78v486l20-19.56Zm-20 0v-466.44 466.44Z"
+          ></path></svg
+        ><span>Предложения</span></a
+      >
     </div>
     <a class="unique-menu-close-button" id="uniqueMenuCloseButton"
       ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"
@@ -178,7 +185,7 @@ const { title, subtitle, icon } = Astro.props;
   .header-title {
     color: var(--color-text-title);
     letter-spacing: 1px;
-    font-family: Gilroy-black;
+    font-weight: var(--black);
     font-size: 44px;
     margin: 0px 0px 0px 1rem;
     padding: 5px;
@@ -265,7 +272,7 @@ const { title, subtitle, icon } = Astro.props;
       height: 35%;
     }
     @media (max-width: 368px) {
-      height: 20%;
+      height: 35%;
     }
   }
   #uniqueSplashText::selection {
@@ -274,7 +281,7 @@ const { title, subtitle, icon } = Astro.props;
   }
   #uniqueSplashText {
     color: var(--color-text-title);
-    font-family: Gilroy-black;
+    font-weight: var(--black);
     letter-spacing: 3px;
     text-align: center;
     padding: 10px 50px 50px 50px;
@@ -287,7 +294,7 @@ const { title, subtitle, icon } = Astro.props;
       padding: 40px;
     }
     @media (max-width: 468px) {
-      font-size: 1.5rem;
+      font-size: 1rem;
       padding: 20px;
     }
   }
@@ -312,15 +319,19 @@ const { title, subtitle, icon } = Astro.props;
     max-width: 600px;
     @media (max-width: 768px) {
       grid-template-columns: repeat(2, 1fr);
+      width: auto;
     }
     @media (max-width: 480px) {
-      margin-top: 7rem;
-      grid-template-columns: 1fr;
+      margin-top: 6rem;
+      grid-template-columns: 2fr;
+      width: 100%;
+      max-width: 500px;
     }
   }
   .unique-menu-links a {
     font-size: 1.5rem;
-    font-family: Gilroy-bold;
+
+    font-weight: var(--black);
     display: flex;
     align-items: center;
     padding: 1rem;
@@ -331,6 +342,15 @@ const { title, subtitle, icon } = Astro.props;
     border-radius: 15px;
     text-transform: uppercase;
     position: relative;
+
+    @media (max-width: 668px) {
+      font-size: 1.2rem;
+      padding: 0.7rem;
+    }
+    @media (max-width: 58px) {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
   }
   .unique-menu-links a:hover {
     background-color: var(--color-green-400);
@@ -353,7 +373,7 @@ const { title, subtitle, icon } = Astro.props;
     flex: 1;
     text-align: center;
     letter-spacing: 2px;
-    font-family: Gilroy-Black;
+    font-weight: var(--black);
   }
   .unique-menu-close-button {
     border: none;

@@ -1,8 +1,0 @@
-// components/SlideTransition.astro
-
-import { useState } from 'react'; const SlideTransition = ({ children }) => { const
-[inTransition, setInTransition] = useState(false); const handleTransition = () =>
-{ setInTransition(true); document.startViewTransition(() => { setTimeout(() => {
-setInTransition(false); }, 300); // Время анимации }); }; return ( <div className={`transition-container
-${inTransition ? 'slide-enter-active' : 'slide-exit-active'}`} onClick={handleTransition}
-> {children} </div> ); }; export default SlideTransition;

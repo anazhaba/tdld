@@ -6,4 +6,5 @@ export default defineConfig({
   output: "static", // обязательно, без предварительно отрисованных страниц
   site: "https://toadland.ru",
   integrations: [sitemap()],
+  prefetch: true,
 });
