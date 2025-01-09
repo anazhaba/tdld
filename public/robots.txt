@@ -1,4 +1,8 @@
 User-agent: *
 Disallow: /public/
 Disallow: /private/
+<<<<<<< Updated upstream
 Sitemap: https://tdld.vercel.app/sitemap-index.xml
+=======
+Sitemap: https://sh1z.online/sitemap-index.xml
+>>>>>>> Stashed changes
