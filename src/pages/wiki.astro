@@ -9,7 +9,13 @@ const description =
 const pageIcon = "/icons/wiki.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  data-astro-transition="fade"
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <div data-astro-transition="animate" class="wiki-wrapper">
     <nav class="wiki-nav">
       <div class="wiki-nav-container">

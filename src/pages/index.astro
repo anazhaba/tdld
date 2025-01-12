@@ -12,7 +12,13 @@ const description =
 const pageIcon = "/icons/love.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  data-astro-transition="fade"
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <main data-astro-transition="animate" class="main-page-container">
     <Test2 slot="MainTest" />
   </main>

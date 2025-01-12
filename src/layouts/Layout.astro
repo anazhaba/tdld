@@ -3,6 +3,7 @@ import Header from "../components/Header.astro";
 import Meta from "../components/Meta.astro";
 import Footer from "../components/Footer.astro";
 import "../components/transitions.css";
+import "../components/fade.css";
 import { ClientRouter } from "astro:transitions";
 
 interface Props {
@@ -96,7 +97,7 @@ const { title, description, subtitle, icon }: Props = Astro.props;
       content="Тодленд, toadland, тод ленд, тоад ленд, toad land, тоад land, Тод land, майнкрафт сервер, приватный сервер minecraft, mineacraft toadland, minecraft, майнкрафт, сервер майнкрафт, сервер с жабами, майнкрафт с жабами"
     />
   </head>
-  <body>
+  <body data-astro-transition="fade">
     <style is:global>
       ::selection {
         background-color: var(--color-select);

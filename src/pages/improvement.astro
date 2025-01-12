@@ -7,7 +7,13 @@ const description = "Предложения по улучшению сервер
 const pageIcon = "/icons/feedback.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  data-astro-transition="fade"
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <div data-astro-transition="animate" class="improvement-container">
     <script is:inline src="https://forms.yandex.ru/_static/embed.js"></script>
 

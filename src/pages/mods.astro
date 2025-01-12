@@ -16,7 +16,13 @@ const description =
 const pageIcon = "/icons/files.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  data-astro-transition="fade"
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <div data-astro-transition="animate" class="mods-wrapper">
     <div class="mods-container">
       <h1 class="mods-title">Необходимый минимум для игры на сервере.</h1>

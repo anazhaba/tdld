@@ -9,7 +9,13 @@ const subtitle = "Правила";
 const pageIcon = "/icons/rules.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  data-astro-transition="fade"
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <div data-astro-transition="animate" class="rules-container">
     <div class="warning-banner">
       <div class="icon-wrapper">

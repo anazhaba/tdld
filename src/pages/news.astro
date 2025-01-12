@@ -9,7 +9,13 @@ const description =
 const pageIcon = "/icons/news.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  data-astro-transition="fade"
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <div data-astro-transition="animate" class="news-wrapper">
     <h1 class="news-down-heading">В разработке</h1>
   </div>

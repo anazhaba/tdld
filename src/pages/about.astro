@@ -10,7 +10,13 @@ const description =
 const pageIcon = "/icons/about.svg";
 ---
 
-<Layout title={title} {subtitle} icon={pageIcon} description={description}>
+<Layout
+  data-astro-transition="fade"
+  title={title}
+  {subtitle}
+  icon={pageIcon}
+  description={description}
+>
   <div data-astro-transition="animate" class="about-wrapper">
     <div class="about-container">
       <p class="about-text">
